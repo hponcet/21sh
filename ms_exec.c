@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/27 09:58:34 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/05/27 15:35:51 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void		ms_exec(char **env)
 		env = ms_search_builtin_env(env);
 	if (!g_cmd)
 		return ;
-	if (g_cmd)
-		ms_exec_bin(ms_search_bin(env), env);
+	ms_exec_bin(ms_search_bin(env), env);
 }
 
 char		**ms_search_builtin_env(char **env)
@@ -106,8 +105,15 @@ char		*ms_search_pathbin(char **path, char **env)
 
 void		ms_exec_bin(char *pathbin, char **env)
 {
-	if (pathbin)
+	pid_t	pid;
+	
+	if (!pathbin)
+		return ;
+	pid = fork();
+	if (pid == 0)
 		execve(pathbin, g_cmd, env);
+	else
+		wait(&pid);
 	g_cmd = ms_free_tab(g_cmd);
 	if (g_moddedenv > 0)
 	{
