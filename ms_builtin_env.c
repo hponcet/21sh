@@ -6,13 +6,13 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/11 12:38:07 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/27 13:59:08 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/05/29 14:17:17 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ms_minishell.h"
 
-void	ms_builtin_env(char **env)
+void	ms_builtin_env(char *cmd, char **env)
 {
 	ms_del_cmd(0);
 	if (!g_cmd)
@@ -32,10 +32,11 @@ void	ms_builtin_env(char **env)
 		if (g_cmd && ft_cindex(g_cmd[0], '=') > -1)
 			env = ms_builtin_setenv(env);
 	}
-	if (g_cmd)
-		ms_exec(env);
+	if (!g_cmd)
+		ms_exec_fork(cmd, env);
 	else
 		ms_print_env(env);
+	free(g_cmd);
 }
 
 char	**ms_builtin_env_opt(char **env)

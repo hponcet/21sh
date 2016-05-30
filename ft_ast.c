@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 01:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/27 16:22:44 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/05/29 01:21:56 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,23 @@
 
 void		ft_ast(char *cmd)
 {
-	char	**pipetab;
-	int		i;
-	pid_t pid;
+	char	*cmd1;
+	char	*cmd2;
+	int		len;
+	int		j;
 
-	i = 0;
-	pipetab = ft_strsplit(cmd, '|');
-	while (pipetab[i + 1])
-		i++;
-	pid = fork();
-	if (pid == 0)
+	len = 0;
+	j = 0;
+	while (cmd[len])
 	{
-		while (i > 0)
-		{
-			ft_printf("\n\ni == %d\n\n", i);
-			ft_pipe(pipetab[i - 1], pipetab[i]);
-			ft_printf("\nexit ft_pipe\n");
-			i -= 2;
-		}
-		if (i == 0)
-		{
-			g_cmd = ms_get_cmd(pipetab[i]);
-			ms_exec(g_env);
-		}
+		if (cmd[len] == '|')
+			j = len;
+		len++;
 	}
-	else
-		wait(&pid);
+	cmd1 = ft_strsub(cmd, 0, j);
+	cmd2 = ft_strsub(cmd, j + 1, (ft_strlen(cmd) - j + 1));
+	free(cmd);
+	ft_pipe(cmd1, cmd2);	
 }
 
 void		ft_pipe(char *cmd1, char *cmd2)
@@ -51,21 +42,16 @@ void		ft_pipe(char *cmd1, char *cmd2)
 	pid = fork();
 	if (pid > 0)
 	{
-			ft_printf("\ncmd2\n");
 		close(pipefd[1]);
 		dup2(pipefd[0], STDIN_FILENO);
-		g_cmd = ms_get_cmd(cmd2);
-		ms_exec(g_env);
+		ms_exec(cmd2, g_env);
+		wait(&pid);
 	}
 	else
 	{
-			ft_printf("\ncmd1\n");
 		close(pipefd[0]);
 		dup2(pipefd[1], STDOUT_FILENO);
-		g_cmd = ms_get_cmd(cmd1);
-		ms_exec(g_env);
+		ms_exec(cmd1, g_env);
 	}
-			ft_printf("\nexit\n");
 	exit(0);
-			ft_printf("\nexit\n");
 }
