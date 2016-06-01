@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 14:25:57 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/29 22:43:43 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/01 15:15:09 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@ void	ft_redir(char *cmd)
 	if (ft_cindex(cmd, '>') > 0)
 	{
 		i = ft_cindex(cmd, '>');
-		if (cmd[i + 1] == '>')
+		if (cmd[i +i 1] == '>')
 			ft_redir_double_right(cmd);
 		else if (cmd[i + 1] == '&')
 			ft_redir_fd(cmd);
 		else
 			ft_redir_right(cmd);
 	}
-	else if (ft_cindex(cmd, '<') > 0)
+	else if ((i = ft_cindex(cmd, '<') > 0) && cmd[i + 1] != '<')
 	{
-		i = ft_cindex(cmd, '<');
 		if (cmd[i + 1] == '<')
 			ft_redir_double_left(cmd);
+		else if (cmd[i + 1] == '&')
+			ft_redir_fd_left(cmd);
 		else
 			ft_redir_left(cmd);
 	}

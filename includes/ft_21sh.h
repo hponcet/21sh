@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/29 19:29:39 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/01 15:15:04 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ int					g_error;
 ** ft_redir_fd.c
 */
 void				ft_redir_fd(char *cmd);
+
+/*
+** ft_redir_fd_left.c
+*/
+void				ft_redir_fd_left(char *cmd);
 
 /*
 ** ft_redir.c
