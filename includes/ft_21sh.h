@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/01 15:15:04 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/01 18:14:12 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct		s_curs
 	int				*ws;
 	int				hist;
 	int				qt;
+	char			*hd;
+	char			*hd_cmd;
 	size_t			nb_chr;
 	size_t			id;
 	struct s_chain	*select;
@@ -77,6 +79,11 @@ char				*g_retval;
 int					g_error;
 
 /*
+** ft_redir_heredoc.c
+*/
+int					ft_redir_heredoc(void);
+
+/*
 ** ft_redir_fd.c
 */
 void				ft_redir_fd(char *cmd);
@@ -85,6 +92,11 @@ void				ft_redir_fd(char *cmd);
 ** ft_redir_fd_left.c
 */
 void				ft_redir_fd_left(char *cmd);
+
+/*
+** ft_redir_fd_right.c
+*/
+void				ft_redir_fd_right(char *cmd);
 
 /*
 ** ft_redir.c

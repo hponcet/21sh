@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 08:48:57 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/23 17:57:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/01 17:57:09 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,8 @@ void		ft_debug(void)
 	ft_printf("%i", g_moddedenv);
 	tputs(tgoto(tgetstr("do", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
-	ft_putstr_fd("g_curs.select = ", g_fd);
-	if (g_curs.select)
-		ft_printf("%c", g_curs.select->c);
+	ft_putstr_fd("g_curs.hd = ", g_fd);
+	ft_printf("%s", g_curs.hd);
 
 
 
