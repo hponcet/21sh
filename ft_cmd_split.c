@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 21:27:35 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/07 02:14:29 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/07 14:51:37 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static unsigned int	ft_count_word(char const *s)
 
 	count = 0;
 	i = 0;
-	if (s[0] != ';' && s[0] != '\0')
-		count++;
+	while (s[i] == ';' && s[i + 1] == ';' && s[i])
+		i++;
 	while (s[i])
 	{
 		if (s[i] == 92)
@@ -31,59 +31,72 @@ static unsigned int	ft_count_word(char const *s)
 		if (s[i] == '"')
 			while (s[++i] != '"')
 				;
-		if ((s[i] == ';' && s[i + 1] != ';' && s[i + 1] != '\0') || (s[i] == '\0'))
-			count++;
+		if (s[i] == ';' && count++)
+			while (s[i + 1] == ';')
+				i++;
 		i++;
 	}
+	if (s[i] != ';')
+		count++;
 	return (count);
 }
 
-static char			**ft_cmd_parse(char **teub, char const *s)
+static int			ft_cmd_count_quote(char *s, int i, char c)
+{
+	int		j;
+
+	j = 1;
+	i++;
+	while (s[i] != c && s[i])
+	{
+		i++;
+		j++;
+	}
+	return (j);
+}
+
+static char			**ft_cmd_parse(char **teub, char *s)
 {
 	int		i;
 	int		j;
 	size_t	start;
 
-	start = 0;
 	j = 0;
 	i = 0;
+	while (s[i] && (s[i] == ';' || s[i] == ' ' || s[i] == '	'))
+		i++;
+	start = i;
 	while (s[i])
 	{
-		if (s[i] == 92)
-			i++;
-		if (s[i] && s[i] == 39 && ++i)
-			while (s[i] != 39 && s[i])
-				i++;
-		if (s[i] && s[i] == '"' && ++i)
-			while (s[i] != '"' && s[i])
-				i++;
-		if (s[i] == ';' || !s[i])
+		if (s[i] && (s[i] == 39 || s[i] == '"' || s[i] == 92))
+			i += ft_cmd_count_quote(s, i, s[i]);
+		if (s[i] == ';')
 		{
 			teub[j] = ft_strsub(s, start, (i - start));
 			j++;
-			if (!s[i])
-				return (teub);
-			while (s[i] && s[i] == ';')
+			while (s[i + 1] == ';')
 				i++;
 			start = i + 1;
 		}
-		if (!s[i])
-			return (teub);
 		i++;
 	}
+	teub[j] = ((int)start != i) ? ft_strsub(s, start, (i - start)) : NULL;
 	return (teub);
 }
 
-char				**ft_cmd_split(char const *s)
+char				**ft_cmd_split(char *s)
 {
+	size_t	i;
 	size_t	len;
 	char	**teub;
 
+	i = -1;
 	if (!s)
 		return (NULL);
 	len = ft_count_word(s);
 	teub = (char**)malloc(sizeof(char*) * (len + 1));
-	teub[len] = NULL;
+	while (++i <= len)
+		teub[i] = NULL;
 	teub = ft_cmd_parse(teub, s);
 	return (teub);
 }

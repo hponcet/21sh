@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 00:16:02 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/06 22:08:53 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/07 12:05:04 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int					g_i;
 ** main.c
 */
 void				ft_cmd(char *cmd);
-char				**ft_cmd_split(char const *s);
+char				**ft_cmd_split(char *s);
 
 /*
 ** ms_get_cmd.c

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/03 23:11:15 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/07 21:00:46 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ char		**ms_search_builtin_env(char *cmd, char **env)
 			g_env = ms_builtin_unsetenv(g_env);
 	}
 	else if (ft_strcmp(g_cmd[0], "exit") == 0)
+	{
+		ft_term_reset();
 		exit(0);
+	}
 	return (env);
 }
 
@@ -49,7 +52,7 @@ char		*ms_search_bin(char **env)
 	path = NULL;
 	if (g_cmd && g_cmd[0] && g_cmd[0][0] == '/')
 		return (g_cmd[0]);
-	if (!env || !env[0])
+	if (!env)
 		path = ft_strsplit(__DEFAULT_PATH__, ':');
 	pathbin = ms_search_pathbin(path, env);
 	if (!pathbin)
@@ -70,7 +73,7 @@ char		*ms_search_pathbin(char **path, char **env)
 	pathbin = NULL;
 	if (!path)
 		path = ms_get_path(env);
-	while (path[i])
+	while (path && path[i])
 	{
 		tmp = path[i];
 		pathbin = ft_strjoin(tmp, "/");
