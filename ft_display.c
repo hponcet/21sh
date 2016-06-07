@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 04:57:17 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/20 20:32:06 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/02 20:22:45 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_display(void)
 {
-	char	buf[__BUFLEN__];
+	char	*buf;
 
+	buf = ft_strnew(__BUFLEN__);
 	ft_signal();
 	while (42)
 	{

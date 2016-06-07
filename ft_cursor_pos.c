@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 18:07:36 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/15 19:38:36 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/06 12:31:28 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		get_fd(void)
 {
-	const char	*ttypath;
+	char	*ttypath;
 
 	ttypath = ttyname(3);
 	if (!ttypath)
@@ -26,6 +26,7 @@ void		get_fd(void)
 	if (!ttypath)
 		return ;
 	g_fd = open(ttypath, O_RDWR | O_NOCTTY);
+	free(ttypath);
 	if (g_fd == -1)
 		return ;
 }
@@ -55,7 +56,10 @@ static unsigned char	*read_data(void)
 		if (n > 0)
 			return (buffer);
 		else if (n == 0)
+		{
+			free(buffer);
 			return (NULL);
+		}
 	}
 	return (buffer);
 }
@@ -75,30 +79,45 @@ static int				ft_term_cread(int i)
 	return (0);
 }
 
-void					ft_cursor_pos(void)
+static int				ft_curs_pos_parse(unsigned char *result)
 {
-	int					i;
-	const unsigned char	*result;
+	int		i;
 
 	i = -1;
+	if (!result)
+		return (0);
+	if (result[++i] != 27)
+		return (0);
+	if (result[++i] != '[')
+		return (0);
+	g_curs.curs_pos[1] = 0;
+	while (result[++i] >= '0' && result[i] <= '9') 
+		g_curs.curs_pos[1] = 10 * g_curs.curs_pos[1] + result[i] - '0';
+	if (result[i] != ';')
+		return (0);
+	g_curs.curs_pos[0] = 0;
+	while (result[++i] >= '0' && result[i] <= '9')
+		g_curs.curs_pos[0] = 10 * g_curs.curs_pos[0] + result[i] - '0';
+	return (1);
+}
+
+void					ft_cursor_pos(void)
+{
+	unsigned char		*result;
+
 	if (ft_term_cread(0) == -1)
 		return ;
 	if (write_data("\033[6n", 4) == -1)
 		return ;
 	result = read_data();
-	if (!result)
-		return ;
-	if (result[++i] != 27)
-		return ;
-	if (result[++i] != '[')
-		return ;
-	g_curs.curs_pos[1] = 0;
-	while (result[++i] >= '0' && result[i] <= '9') 
-		g_curs.curs_pos[1] = 10 * g_curs.curs_pos[1] + result[i] - '0';
-	if (result[i] != ';')
-		return ;
-	g_curs.curs_pos[0] = 0;
-	while (result[++i] >= '0' && result[i] <= '9')
-		g_curs.curs_pos[0] = 10 * g_curs.curs_pos[0] + result[i] - '0';
-	ft_term_cread(1);
+	if (ft_curs_pos_parse(result) == 0)
+	{
+		free(result);
+		ft_cursor_pos();
+	}
+	else
+	{
+		ft_term_cread(1);
+		free(result);
+	}
 }

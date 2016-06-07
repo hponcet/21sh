@@ -6,11 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/29 14:25:35 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/06 21:27:23 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ms_minishell.h"
+#include "ms_minishell.h"
 
 
 
@@ -25,8 +25,8 @@ void		ms_exec(char *cmd, char **env)
 		if (g_cmd)
 			env = ms_search_builtin_env(cmd, env);
 		if (g_cmd && g_cmd[0][0] == '.')
-				if (ms_get_point() < 1)
-					return ;
+			if (ms_get_point() < 1)
+				return ;
 		ms_exec_fork(cmd, env);
 	}
 	else
@@ -44,6 +44,8 @@ void	ms_exec_fork(char *cmd, char **env)
 {
 	pid_t	pid;
 
+	if (!g_cmd)
+		return ;
 	pid = fork();
 	if (pid > 0)
 		wait(&pid);

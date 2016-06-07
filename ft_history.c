@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 02:46:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/25 18:13:09 by Gus              ###   ########.fr       */
+/*   Updated: 2016/06/02 22:44:44 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static void		ft_hist_makechain(char *homepath)
 		if (!g_hist)
 			g_hist = new;
 		tmp = new;
+		free(buf);
+		buf = NULL;
 	}
 	close(fd);
 }
@@ -76,6 +78,7 @@ void			ft_init_hist(void)
 			g_hist = g_hist->next;
 	ft_hist_addtofile(homepath);
 	ft_hist_makechain(homepath);
+	free(homepath);
 }
 
 void			ft_hist_addtohist(char *ncmd)

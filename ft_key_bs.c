@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 01:25:28 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/21 01:32:36 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/03 20:51:41 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void			ft_key_bs(void)
 	ft_init_pos();
 	ft_key_bs_cursmove();
 	g_curs.id -= 1;
+	free(tmp->cp);
 	tmp->next = NULL;
 	tmp->prev = NULL;
 	if (!g_chain && g_retval)

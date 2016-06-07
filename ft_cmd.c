@@ -6,18 +6,19 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 10:55:44 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/28 15:56:01 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/07 01:36:34 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ms_minishell.h"
+#include "ms_minishell.h"
 
-void	ft_cmd(void)
+void	ft_cmd(char *enter)
 {
 	char	**cmd;
 	int		i;
 
-	cmd = ft_strsplit(g_retval, ';');
+	enter = ft_bquote(enter);
+	cmd = ft_cmd_split(enter);
 	i = 0;
 	while (cmd[i])
 	{
@@ -25,4 +26,5 @@ void	ft_cmd(void)
 		g_moddedenv = 0;
 		i++;
 	}
+	ms_free_tab(cmd);
 }

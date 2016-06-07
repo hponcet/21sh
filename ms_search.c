@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/29 14:20:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/03 23:11:15 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char		*ms_search_bin(char **env)
 
 	pathbin = NULL;
 	path = NULL;
-	if (g_cmd[0][0] == '/')
+	if (g_cmd && g_cmd[0] && g_cmd[0][0] == '/')
 		return (g_cmd[0]);
 	if (!env || !env[0])
 		path = ft_strsplit(__DEFAULT_PATH__, ':');

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/22 17:23:44 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/02 23:52:38 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void	ft_key(char *buf)
 	ft_count_chain();
 
 	// DEBUG
-	ft_debug();
+	//ft_debug();
 }

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 09:20:53 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/21 01:32:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/03 20:50:00 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void		ft_key_del(void)
 		ft_key_del_char();
 	ft_count_chain();
 	ft_key_del_cursormove();
+	free(tmp->cp);
 	tmp->next = NULL;
 	tmp->prev = NULL;
 	free(tmp);

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 13:36:08 by hponcet           #+#    #+#             */
-/*   Updated: 2016/04/15 01:04:44 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/06 10:47:37 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ char	**ms_builtin_cd(char **env)
 	if (!g_cmd)
 		env = ms_builtin_cd_home(env);
 	else if (g_cmd[0][0] == '-')
-		env = ms_builtin_cd_minus(env);
+	{
+		if (g_cmd[0][1] != '\0')
+			ft_putendl("cd: option not implemented.");
+		else
+			env = ms_builtin_cd_minus(env);
+	}
 	else
 		env = ms_builtin_cd_absolute_path(env);
 	g_cmd = ms_free_tab(g_cmd);
@@ -38,7 +43,7 @@ char	**ms_builtin_cd_minus(char **env)
 
 	tmp = ms_get_value(env, "OLDPWD");
 	if (!tmp || tmp[0] == '\0')
-		ft_putendl("ms: cd: Environnement variable OLDPWD not set.");
+		ft_putendl("21sh: cd: Environnement variable OLDPWD not set.");
 	else if (chdir(tmp) < 0)
 		ft_printf("cd: no such directory: %s\n", tmp);
 	else
@@ -66,7 +71,7 @@ int		ms_builtin_cd_tild(char **env)
 	tmp = ms_get_value(env, "HOME");
 	if (!tmp)
 	{
-		ft_putendl("ms: cd: Environnement variable HOME not set.");
+		ft_putendl("21sh: cd: Environnement variable HOME not set.");
 		g_cmd = ms_free_tab(g_cmd);
 		return (0);
 	}
@@ -85,7 +90,7 @@ char	**ms_builtin_cd_home(char **env)
 
 	tmp = ms_get_value(env, "HOME");
 	if (!tmp)
-		ft_putendl("ms: cd: Environnement variable HOME not set.");
+		ft_putendl("21sh: cd: Environnement variable HOME not set.");
 	else if (chdir(tmp) < 0)
 		ft_printf("cd: no such directory: %s\n", tmp);
 	else

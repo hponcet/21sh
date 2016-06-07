@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:59:47 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/18 04:49:56 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/03 22:58:21 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,14 @@
 # include "libft.h"
 #include <fcntl.h>
 
-int		get_next_line(int const fd, char **line);
-int		ft_afternext(char **afternext, char **line);
-void	ft_tormoilzboub(char *buf, int eof, char **line, char **afternext);
+typedef struct	s_gnl
+{
+	char		*buf;
+	int			count;
+	int			i;
+	int			nl;
+	int			fd;
+}				t_gnl;
+int				get_next_line(int const fd, char **line);
 
 #endif
