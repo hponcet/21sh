@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 02:46:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/02 22:44:44 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/08 17:10:13 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,4 @@ void			ft_histtochain(void)
 	}
 	g_curs.hist = 0;
 	ft_init_hist();
-	ft_count_chain();
-	ft_init_pos();
 }

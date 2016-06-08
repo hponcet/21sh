@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 08:48:57 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/01 17:57:09 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/08 17:41:45 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,21 @@
 
 void		ft_debug(void)
 {
+	int		i;
+
+	i = 0;
 	ft_cursor_pos();
 	tputs(tgoto(tgetstr("sc", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("ho", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
-
+	while (i < g_curs.ws[0]) {
+		if (i == ((g_curs.ws[0] / 2) - 3)){
+			ft_putstr(" DEBUG ");
+			i += 7;
+		}
+		ft_putchar('#');
+		i++;
+	}
 	/////////////////// last_char ////////////////////
 	if (g_chain)
 	{
@@ -111,8 +121,17 @@ void		ft_debug(void)
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
 	ft_putstr_fd("g_curs.hd = ", g_fd);
 	ft_printf("%s", g_curs.hd);
-
-
-
+	
+	///////////////////// FOOT ////////////////////// 
+	tputs(tgoto(tgetstr("do", 0), 1, 0), 1, ft_char);
+	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
+	i = 0;
+	while (i < g_curs.ws[0]) {
+		ft_putchar('#');
+		i++;
+	}
+	tputs(tgoto(tgetstr("do", 0), 1, 0), 1, ft_char);
+	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("rc", 0), 1, 0), 1, ft_char);
+
 }

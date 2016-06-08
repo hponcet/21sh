@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 06:13:38 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/02 23:49:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/08 17:23:30 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void			ft_chain_addchar(int c)
 	{
 		g_chain = ft_new_chr(c);
 		g_curs.prev = g_chain;
-		g_curs.id = g_chain->id + 1;
+		g_curs.id = 2;
 		g_chain->word = 1;
 		ft_char_tc(g_chain);
 		return ;

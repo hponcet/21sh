@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/07 22:52:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/08 17:22:23 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	ft_key(char *buf)
 				(buf[2] != 65 && buf[2] != 66)))
 	{
 		ft_histtochain();
+		ft_init_pos();
+		ft_count_chain();
 		g_curs.hist = 0;
 		g_curs.next = NULL;
 		g_curs.prev = g_curs.ls;
-		ft_init_pos();
-		ft_count_chain();
 	}
 	if (buf[0] == -30 || buf[0] == -61)
 		ft_func_copy(buf);
@@ -58,8 +58,8 @@ void	ft_key(char *buf)
 	else if (buf[0] == 10)								/// Enter
 		ft_key_enter();
 	ft_cursor_pos();
-	ft_init_pos();
 	ft_count_chain();
+	ft_init_pos();
 
-	//ft_debug();
+	ft_debug();
 }

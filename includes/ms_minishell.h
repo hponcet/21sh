@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 00:16:02 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/07 12:05:04 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/09 00:28:03 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char				**ft_cmd_split(char *s);
 ** ms_get_cmd.c
 */
 int					ms_get_nbc(char *buf);
+int					ft_cmd_count_quote(char *s, int i, char c);
 char				**ms_get_cmd(char *buf);
 char				**ms_free_tab(char **teub);
 void				ms_del_cmd(int l);

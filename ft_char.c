@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 18:18:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/22 13:00:08 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/08 15:53:15 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_char_tc(t_chain *chr)
 
 	write(g_fd, &(chr->c), 1);
 	v = g_curs.curs_pos[1];
-	if (g_curs.curs_pos[0] == g_curs.ws[0])
+	if (g_curs.prev->cp[0] == g_curs.ws[0])
 	{
 		g_error = 1;
 		tputs(tgoto(tgetstr("sf", 0), 0, v + 1), 1, ft_char);
