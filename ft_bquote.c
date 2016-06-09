@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 12:12:26 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/06 21:25:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/09 15:51:33 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ static char		*ft_isbq(char *cmd)
 static char		*ft_bquote_exec(char *cmd)
 {
 	pid_t	pid;
-	char	buf[256];
+	char	*buf;
 	char	*ret;
 	int		fd[2];
 
 	ret = ft_strnew(0);
+	buf = ft_strnew(256);
 	pipe(fd);
 	pid = fork();
 	if (pid == 0)
@@ -66,6 +67,7 @@ static char		*ft_bquote_exec(char *cmd)
 		}
 		wait(&pid);
 	}
+	free(buf);
 	return (ret);
 }
 
@@ -107,6 +109,8 @@ char			*ft_bquote(char *cmd)
 	nlen = ft_strlen(cmd) - (ft_strlen(subcmd) + 2) + ft_strlen(retsubcmd) + 1;
 	ret = (char*)malloc(sizeof(char) * nlen);
 	ft_bzero(ret, nlen);
+	nlen = ft_strlen(retsubcmd) - 1;
+	retsubcmd[nlen] = '\0';
 	ret = ft_bquote_join(ret, cmd, retsubcmd);
 	ft_strdel(&subcmd);
 	ft_strdel(&retsubcmd);

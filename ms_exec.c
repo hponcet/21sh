@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/07 18:05:38 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/09 14:55:25 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ms_exec(char *cmd, char **env)
 {
 	pid_t pid;
 
-	g_cmd = ms_get_cmd(cmd);
+	g_cmd = ms_parse_cmd(cmd);
 	if (ft_cindex(cmd, '|') == -1)
 	{
 		env = ms_builtin_cd(env);

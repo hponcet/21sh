@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 21:27:35 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/09 00:22:04 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/09 15:34:46 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static unsigned int	ft_count_word(char const *s)
 		if (s[i] == 92)
 			i++;
 		if (s[i] == 39)
-			while (s[++i] != 39)
-				;
+			while (s[i] && s[i] != 39)
+				i++;
 		if (s[i] == '"')
-			while (s[++i] != '"')
-				;
+			while (s[i] && s[i] != '"')
+				i++;
 		if (s[i] == ';' && count++)
 			while (s[i + 1] == ';')
 				i++;
