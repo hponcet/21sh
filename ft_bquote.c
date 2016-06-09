@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 12:12:26 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/09 15:51:33 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/09 17:57:50 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char		*ft_bquote_exec(char *cmd)
 	{
 		close(fd[0]);
 		dup2(fd[1],STDOUT_FILENO);
-		ms_exec(cmd, g_env);
+		ft_cmd(cmd);
 		exit(0);
 	}
 	else

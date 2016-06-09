@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 10:55:44 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/09 15:27:01 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/09 17:49:22 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ void	ft_cmd(char *enter)
 
 	enter = ft_bquote(enter);
 	cmd = ft_cmd_split(enter);
-	ft_putendl("--------------------");
-	ms_print_env(cmd);
-	ft_putendl("--------------------");
 	i = 0;
 	while (cmd[i])
 	{
