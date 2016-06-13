@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/07 02:07:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/13 21:06:10 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,18 @@ void				ft_redir_fd_right(char *cmd);
 ** ft_redir.c
 */
 void				ft_redir(char *cmd);
-void				ft_redir_recurs_right(char *cmd);
-void				ft_redir_right(char *cmd);
-void				ft_redir_double_right(char *cmd);
 void				ft_redir_left(char *cmd);
+
+/*
+** ft_redir_right.c
+*/
+void				ft_redir_right(char *cmd);
+void				ft_redir_recurs_right(char *cmd);
+
+/*
+** ft_redir_right.c
+*/
+void				ft_redir_double_right(char *cmd);
 void				ft_redir_recurs_double_right(char *cmd);
 
 /*
@@ -138,6 +146,8 @@ void				ft_put_name(void);
 ** ft_signal.c
 */
 void				ft_signal(void);
+void				ft_signal_onexec(void);
+void				ft_init_prompt(void);
 
 /*
 ** ft_window_size.c
