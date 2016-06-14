@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/07 22:33:07 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/14 16:59:35 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,14 @@ static int		ft_redir_heredoc_return(char *cmd, int i)
 		ft_strdel(&cmd);
 		return (0);
 	}
+}
+
+static void		ft_redir_heredoc_joininput(char *input)
+{
+	if (g_curs.hd_input)
+		ft_joinf("%xs\n%s", g_curs.hd_input, input);
+	else
+		g_curs.hd_input = ft_strdup(input);
 }
 
 int				ft_redir_heredoc(void)
