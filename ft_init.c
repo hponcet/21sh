@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/13 21:49:10 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/13 22:01:56 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_load(void)
 	g_curs.select = NULL;
 	g_curs.qt = 0;
 	g_curs.hd = NULL;
+	g_curs.hd_input = NULL;
 	g_curs.hd_cmd = NULL;
 	ft_cursor_pos();
 	g_initpos[0] = g_curs.curs_pos[0];

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 09:09:32 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/13 21:48:39 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/13 22:45:38 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_key_enter(void)
 		ft_init();
 		return ;
 	}
+	if (!g_retval)
+		return ;
 	ft_signal_onexec();
 	ft_cmd(g_retval);
 	ft_hist_addtohist(g_retval);

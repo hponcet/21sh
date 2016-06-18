@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 14:25:57 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/13 20:27:18 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/13 23:26:31 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	ft_redir_left(char *cmd)
 	dup2(fd, STDIN_FILENO);
 	tmp = ft_strsplit(cmd, '<');
 	g_cmd = ms_get_cmd(tmp[0]);
+	ms_free_tab(tmp);
 }

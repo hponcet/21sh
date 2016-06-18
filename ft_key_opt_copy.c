@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 15:47:01 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/22 18:46:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/18 15:10:06 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ void		ft_func_copy(char *buf)
 	}
 	if (buf[0] == -30 && buf[1] == -119 && buf[2] == -91 && buf[3] == 0)
 		ft_paste();
-	if (buf[0] == -61 && buf[1] == -73 && buf[2] == 0)
-	{
-		ft_cut();
-		ft_reset_select();
-	}
 }
 
 void		ft_copy(void)
@@ -56,7 +51,6 @@ void		ft_copy(void)
 		tmp = tmp->next;
 	}
 	ft_count_chain();
-
 }
 
 void		ft_paste(void)
@@ -73,30 +67,4 @@ void		ft_paste(void)
 		ft_chain_addchar(g_copy[i]);
 		i++;
 	}
-}
-
-void		ft_cut(void)
-{
-	t_chain		*start;
-	t_chain		*end;
-
-	if (!g_curs.select)
-		return ;
-	start = g_curs.select->prev;
-	end = g_curs.select;
-	ft_copy();
-	while (end->sel == 1)
-	{
-		end->next->prev = start;
-		start->next = end->next;
-		free(end->cp);
-		free(end);
-		end = start->next;
-	}
-	tputs(tgoto(tgetstr("cm", 0), g_initpos[0] - 1, g_initpos[1] - 1), 1, ft_char);
-	ft_str_tc(g_chain);
-	tputs(tgoto(tgetstr("cd", 0), 1, 0), 1, ft_char);
-	g_curs.prev = start->prev;
-	g_curs.next = start;
-	ft_count_chain();
 }

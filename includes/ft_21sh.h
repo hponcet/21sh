@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/13 21:06:10 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/13 21:54:44 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct		s_curs
 	int				hist;
 	int				qt;
 	char			*hd;
+	char			*hd_input;
 	char			*hd_cmd;
 	size_t			nb_chr;
 	size_t			id;
