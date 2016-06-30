@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/13 21:54:44 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/18 16:09:50 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ void				ft_init_prompt(void);
 void				ft_window_size(void);
 
 /*
-** ft_window_size.c
+** ft_history.c
 */
 void				ft_history(char *cmd);
 

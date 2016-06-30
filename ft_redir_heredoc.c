@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/15 15:14:55 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/18 16:33:11 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ static void		ft_redir_heredoc_exec(void)
 	pid = fork();
 	g_cmd = ms_get_cmd(g_curs.hd_cmd);
 	if (pid > 0)
-	{
 		wait(NULL);
-	}
 	else
 	{
 		close(fd[1]);
@@ -90,14 +88,14 @@ int				ft_redir_heredoc(void)
 	int		i;
 	char	*cmd;
 
-	cmd = NULL;
 	if (!g_retval)
 	{
 		ft_putstr("heredoc> ");
 		return (1);
 	}
 	cmd = ft_strdup(g_retval);
-	if (((i = ft_cindex(cmd, '<')) > 0 && cmd[i + 1] == '<') || g_curs.hd != NULL)
+	if (((i = ft_cindex(cmd, '<')) > 0 && cmd[i + 1] == '<')
+			|| g_curs.hd != NULL)
 	{
 		if (!g_curs.hd && ft_redir_heredoc_hd(&cmd) == 1)
 			return (1);

@@ -6,13 +6,23 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/09 15:13:54 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/18 16:10:42 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-void	ft_key_group_dir(char *buf)
+static void	ft_reinit_hist(void)
+{
+	ft_histtochain();
+	ft_init_pos();
+	ft_count_chain();
+	g_curs.hist = 0;
+	g_curs.next = NULL;
+	g_curs.prev = g_curs.ls;
+}
+
+void		ft_key_group_dir(char *buf)
 {
 	if (buf[1] == 91 && buf[2] == 51 && buf[3] == 126 && buf[4] == 0 && g_chain)
 		ft_key_del();
@@ -33,20 +43,15 @@ void	ft_key_group_dir(char *buf)
 	}
 }
 
-void	ft_key(char *buf)
+void		ft_key(char *buf)
 {
+	if (buf[0] == 4 && buf[1] == 0)
+		exit(0);
 	if (g_curs.select && (buf[0] != -30 && buf[0] != -61 && buf[3] != 59))
 		ft_reset_select();
 	if (g_curs.hist == 1 && (buf[0] != 27 || buf[1] != 91 ||
 				(buf[2] != 65 && buf[2] != 66)))
-	{
-		ft_histtochain();
-		ft_init_pos();
-		ft_count_chain();
-		g_curs.hist = 0;
-		g_curs.next = NULL;
-		g_curs.prev = g_curs.ls;
-	}
+		ft_reinit_hist();
 	if (buf[0] == -30 || buf[0] == -61)
 		ft_func_copy(buf);
 	if (ft_isprint(buf[0]) == 1 && buf[1] == 0)			/// alpha
@@ -60,6 +65,5 @@ void	ft_key(char *buf)
 	ft_cursor_pos();
 	ft_count_chain();
 	ft_init_pos();
-
 	//ft_debug();
 }

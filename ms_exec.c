@@ -6,13 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/15 13:59:41 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/18 16:09:10 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_minishell.h"
-
-
 
 void		ms_exec(char *cmd, char **env)
 {
