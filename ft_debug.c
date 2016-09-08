@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 08:48:57 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/08 17:41:45 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/08 11:51:19 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,8 @@ void		ft_debug(void)
 	tputs(tgoto(tgetstr("do", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("rc", 0), 1, 0), 1, ft_char);
-
+	
+//	///////////////////// Init Cursor ///////////////
+//	if (g_curs.curs_pos[0] < 12)
+//		g_curs.curs_pos[0] = 12;
 }

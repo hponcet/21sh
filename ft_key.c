@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/18 16:10:42 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/08 11:45:54 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		ft_key_group_dir(char *buf)
 
 void		ft_key(char *buf)
 {
+	if (__DEBUG__ == "Y")
+		ft_debug();
 	if (buf[0] == 4 && buf[1] == 0)
 		exit(0);
 	if (g_curs.select && (buf[0] != -30 && buf[0] != -61 && buf[3] != 59))
@@ -65,5 +67,4 @@ void		ft_key(char *buf)
 	ft_cursor_pos();
 	ft_count_chain();
 	ft_init_pos();
-	//ft_debug();
 }

@@ -1,50 +1,948 @@
-a.out
-a.out.dSYM
-file
-ft_ast.c
-ft_bquote.c
-ft_chain.c
-ft_chain_tools.c
-ft_char.c
-ft_cmd.c
-ft_cmd_split.c
-ft_cursor_pos.c
-ft_debug.c
-ft_display.c
-ft_history.c
-ft_init.c
-ft_key.c
-ft_key_bs.c
-ft_key_del.c
-ft_key_directional.c
-ft_key_down.c
-ft_key_enter.c
-ft_key_home.c
-ft_key_opt_copy.c
-ft_key_opt_directional.c
-ft_key_shift_dir_left.c
-ft_key_shift_dir_right.c
-ft_key_up.c
-ft_quotes.c
-ft_redir.c
-ft_redir_double_right.c
-ft_redir_fd_left.c
-ft_redir_fd_right.c
-ft_redir_heredoc.c
-ft_redir_simple_right.c
-ft_sh_name.c
-ft_signal.c
-ft_term.c
-ft_window_size.c
-includes
-libft
-main.c
-ms_builtin_cd.c
-ms_builtin_env.c
-ms_builtin_setenv.c
-ms_builtin_unsetenv.c
-ms_exec.c
-ms_get.c
-ms_get_cmd.c
-ms_parse_cmd.c
-ms_search.c
+total 592$$
+drwxr-xr-x  54 Gus  staff   1836 19 aoû 18:21 .$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 ..$$
+-rw-r--r--   1 Gus  staff  12288 19 aoû 18:22 .ft_key.c.swp$$
+-rw-r--r--   1 Gus  staff  12288 19 aoû 18:19 .ft_key_bs.c.swp$$
+drwxr-xr-x  15 Gus  staff    510  8 sep 11:26 .git$$
+-rwxr-xr-x   1 Gus  staff  87732 19 aoû 18:21 a.out$$
+-rw-r--r--   1 Gus  staff      0  8 sep 11:30 file$$
+-rw-r--r--   1 Gus  staff   1531 19 aoû 17:33 ft_ast.c$$
+-rw-r--r--   1 Gus  staff   2513 19 aoû 17:33 ft_bquote.c$$
+-rw-r--r--   1 Gus  staff   2456 19 aoû 17:33 ft_chain.c$$
+-rw-r--r--   1 Gus  staff   2334 19 aoû 17:33 ft_chain_tools.c$$
+-rw-r--r--   1 Gus  staff   2300 19 aoû 17:33 ft_char.c$$
+-rw-r--r--   1 Gus  staff   1127 19 aoû 17:33 ft_cmd.c$$
+-rw-r--r--   1 Gus  staff   2311 19 aoû 17:33 ft_cmd_split.c$$
+-rw-r--r--   1 Gus  staff   2760 19 aoû 17:33 ft_cursor_pos.c$$
+-rw-r--r--   1 Gus  staff   4688 19 aoû 17:33 ft_debug.c$$
+-rw-r--r--   1 Gus  staff   1090 19 aoû 17:33 ft_display.c$$
+-rw-r--r--   1 Gus  staff   2817 19 aoû 17:33 ft_history.c$$
+-rw-r--r--   1 Gus  staff   1871 19 aoû 17:33 ft_init.c$$
+-rw-r--r--   1 Gus  staff   2439 19 aoû 18:21 ft_key.c$$
+-rw-r--r--   1 Gus  staff   2600 19 aoû 17:33 ft_key_bs.c$$
+-rw-r--r--   1 Gus  staff   2283 19 aoû 17:33 ft_key_del.c$$
+-rw-r--r--   1 Gus  staff   1983 19 aoû 17:33 ft_key_directional.c$$
+-rw-r--r--   1 Gus  staff   1463 19 aoû 17:33 ft_key_down.c$$
+-rw-r--r--   1 Gus  staff   1444 19 aoû 17:33 ft_key_enter.c$$
+-rw-r--r--   1 Gus  staff   1349 19 aoû 17:33 ft_key_home.c$$
+-rw-r--r--   1 Gus  staff   1721 19 aoû 17:33 ft_key_opt_copy.c$$
+-rw-r--r--   1 Gus  staff   3385 19 aoû 17:33 ft_key_opt_directional.c$$
+-rw-r--r--   1 Gus  staff    959 19 aoû 17:33 ft_key_shift_dir_left.c$$
+-rw-r--r--   1 Gus  staff   2196 19 aoû 17:33 ft_key_shift_dir_right.c$$
+-rw-r--r--   1 Gus  staff   1481 19 aoû 17:33 ft_key_up.c$$
+-rw-r--r--   1 Gus  staff   2814 19 aoû 17:33 ft_quotes.c$$
+-rw-r--r--   1 Gus  staff   1811 19 aoû 17:33 ft_redir.c$$
+-rw-r--r--   1 Gus  staff   2018 19 aoû 17:33 ft_redir_double_right.c$$
+-rw-r--r--   1 Gus  staff   2210 19 aoû 17:33 ft_redir_fd_left.c$$
+-rw-r--r--   1 Gus  staff   2205 19 aoû 17:33 ft_redir_fd_right.c$$
+-rw-r--r--   1 Gus  staff   2778 19 aoû 17:33 ft_redir_heredoc.c$$
+-rw-r--r--   1 Gus  staff   2586 19 aoû 17:33 ft_redir_simple_right.c$$
+-rw-r--r--   1 Gus  staff   1881 19 aoû 17:33 ft_sh_name.c$$
+-rw-r--r--   1 Gus  staff   1466 19 aoû 17:33 ft_signal.c$$
+-rw-r--r--   1 Gus  staff   1590 19 aoû 17:33 ft_term.c$$
+-rw-r--r--   1 Gus  staff   1052 19 aoû 17:33 ft_window_size.c$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:33 includes$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:35 libft$$
+-rw-r--r--   1 Gus  staff   1033 19 aoû 17:33 main.c$$
+-rw-r--r--   1 Gus  staff   3533 19 aoû 17:33 ms_builtin_cd.c$$
+-rw-r--r--   1 Gus  staff   2553 19 aoû 17:33 ms_builtin_env.c$$
+-rw-r--r--   1 Gus  staff   2008 19 aoû 17:33 ms_builtin_setenv.c$$
+-rw-r--r--   1 Gus  staff   1990 19 aoû 17:33 ms_builtin_unsetenv.c$$
+-rw-r--r--   1 Gus  staff   1819 19 aoû 17:33 ms_exec.c$$
+-rw-r--r--   1 Gus  staff   2291 19 aoû 17:33 ms_get.c$$
+-rw-r--r--   1 Gus  staff   2334 19 aoû 17:33 ms_get_cmd.c$$
+-rw-r--r--   1 Gus  staff   2520 19 aoû 17:33 ms_parse_cmd.c$$
+-rw-r--r--   1 Gus  staff   2450 19 aoû 17:33 ms_search.c$$
+$$
+./.git:$$
+total 80$$
+drwxr-xr-x  15 Gus  staff    510  8 sep 11:26 .$$
+drwxr-xr-x  54 Gus  staff   1836 19 aoû 18:21 ..$$
+-rw-r--r--   1 Gus  staff    102  8 sep 11:22 FETCH_HEAD$$
+-rw-r--r--   1 Gus  staff     23 19 aoû 17:33 HEAD$$
+-rw-r--r--   1 Gus  staff     41  8 sep 11:22 ORIG_HEAD$$
+drwxr-xr-x   2 Gus  staff     68 19 aoû 17:33 branches$$
+-rw-r--r--   1 Gus  staff    325 19 aoû 17:33 config$$
+-rw-r--r--   1 Gus  staff     73 19 aoû 17:33 description$$
+drwxr-xr-x  11 Gus  staff    374 19 aoû 17:33 hooks$$
+-rw-r--r--   1 Gus  staff  14188 19 aoû 17:35 index$$
+drwxr-xr-x   3 Gus  staff    102 19 aoû 17:33 info$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 logs$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 objects$$
+-rw-r--r--   1 Gus  staff    107 19 aoû 17:33 packed-refs$$
+drwxr-xr-x   5 Gus  staff    170 19 aoû 17:33 refs$$
+$$
+./.git/branches:$$
+total 0$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+$$
+./.git/hooks:$$
+total 80$$
+drwxr-xr-x  11 Gus  staff   374 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff   510  8 sep 11:26 ..$$
+-rwxr-xr-x   1 Gus  staff   478 19 aoû 17:33 applypatch-msg.sample$$
+-rwxr-xr-x   1 Gus  staff   896 19 aoû 17:33 commit-msg.sample$$
+-rwxr-xr-x   1 Gus  staff   189 19 aoû 17:33 post-update.sample$$
+-rwxr-xr-x   1 Gus  staff   424 19 aoû 17:33 pre-applypatch.sample$$
+-rwxr-xr-x   1 Gus  staff  1642 19 aoû 17:33 pre-commit.sample$$
+-rwxr-xr-x   1 Gus  staff  1348 19 aoû 17:33 pre-push.sample$$
+-rwxr-xr-x   1 Gus  staff  4951 19 aoû 17:33 pre-rebase.sample$$
+-rwxr-xr-x   1 Gus  staff  1239 19 aoû 17:33 prepare-commit-msg.sample$$
+-rwxr-xr-x   1 Gus  staff  3610 19 aoû 17:33 update.sample$$
+$$
+./.git/info:$$
+total 8$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+-rw-r--r--   1 Gus  staff  240 19 aoû 17:33 exclude$$
+$$
+./.git/logs:$$
+total 8$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+-rw-r--r--   1 Gus  staff  205 19 aoû 17:33 HEAD$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 refs$$
+$$
+./.git/logs/refs:$$
+total 0$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 heads$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 remotes$$
+$$
+./.git/logs/refs/heads:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff  205 19 aoû 17:33 master$$
+$$
+./.git/logs/refs/remotes:$$
+total 0$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 origin$$
+$$
+./.git/logs/refs/remotes/origin:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff  205 19 aoû 17:33 HEAD$$
+$$
+./.git/objects:$$
+total 0$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 info$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 pack$$
+$$
+./.git/objects/info:$$
+total 0$$
+drwxr-xr-x  2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+$$
+./.git/objects/pack:$$
+total 848$$
+drwxr-xr-x  4 Gus  staff     136 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff     136 19 aoû 17:33 ..$$
+-r--r--r--  1 Gus  staff   13280 19 aoû 17:33 pack-48bd32944f7956c7c258bb657cd4410f4822994e.idx$$
+-r--r--r--  1 Gus  staff  413997 19 aoû 17:33 pack-48bd32944f7956c7c258bb657cd4410f4822994e.pack$$
+$$
+./.git/refs:$$
+total 0$$
+drwxr-xr-x   5 Gus  staff  170 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 heads$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 remotes$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 tags$$
+$$
+./.git/refs/heads:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff   41 19 aoû 17:33 master$$
+$$
+./.git/refs/remotes:$$
+total 0$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 origin$$
+$$
+./.git/refs/remotes/origin:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff   32 19 aoû 17:33 HEAD$$
+$$
+./.git/refs/tags:$$
+total 0$$
+drwxr-xr-x  2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+$$
+./includes:$$
+total 80$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:33 .$$
+drwxr-xr-x  54 Gus  staff   1836 19 aoû 18:21 ..$$
+-rw-r--r--   1 Gus  staff  20480 19 aoû 17:33 .nfs.20051027.2706$$
+-rw-r--r--   1 Gus  staff   5501 19 aoû 17:33 ft_21sh.h$$
+-rw-r--r--   1 Gus  staff   2086 19 aoû 17:33 ft_config.h$$
+-rw-r--r--   1 Gus  staff   2701 19 aoû 17:33 ms_minishell.h$$
+-rw-r--r--   1 Gus  staff   1183 19 aoû 17:33 pipe.c$$
+$$
+./libft:$$
+total 272$$
+drwxr-xr-x    7 Gus  staff     238 19 aoû 17:35 .$$
+drwxr-xr-x   54 Gus  staff    1836 19 aoû 18:21 ..$$
+-rw-r--r--    1 Gus  staff    3657 19 aoû 17:35 Makefile$$
+-rw-r--r--    1 Gus  staff       8 19 aoû 17:35 auteur$$
+drwxr-xr-x    6 Gus  staff     204 19 aoû 17:35 includes$$
+-rw-r--r--    1 Gus  staff  129088 19 aoû 17:35 libft.a$$
+drwxr-xr-x  104 Gus  staff    3536 19 aoû 17:35 srcs$$
+$$
+./libft/includes:$$
+total 48$$
+drwxr-xr-x  6 Gus  staff   204 19 aoû 17:35 .$$
+drwxr-xr-x  7 Gus  staff   238 19 aoû 17:35 ..$$
+-rw-r--r--  1 Gus  staff  1420 19 aoû 17:35 ft_colors.h$$
+-rw-r--r--  1 Gus  staff  6698 19 aoû 17:35 ft_printf.h$$
+-rw-r--r--  1 Gus  staff  1154 19 aoû 17:35 get_next_line.h$$
+-rw-r--r--  1 Gus  staff  4964 19 aoû 17:35 libft.h$$
+$$
+./libft/srcs:$$
+total 816$$
+drwxr-xr-x  104 Gus  staff  3536 19 aoû 17:35 .$$
+drwxr-xr-x    7 Gus  staff   238 19 aoû 17:35 ..$$
+-rw-r--r--    1 Gus  staff   987 19 aoû 17:35 ft_abs.c$$
+-rw-r--r--    1 Gus  staff  1321 19 aoû 17:35 ft_atoi.c$$
+-rw-r--r--    1 Gus  staff  1057 19 aoû 17:35 ft_bzero.c$$
+-rw-r--r--    1 Gus  staff  3051 19 aoû 17:35 ft_check_arg_list.c$$
+-rw-r--r--    1 Gus  staff  2395 19 aoû 17:35 ft_check_format.c$$
+-rw-r--r--    1 Gus  staff  1926 19 aoû 17:35 ft_check_type.c$$
+-rw-r--r--    1 Gus  staff  1060 19 aoû 17:35 ft_cindex.c$$
+-rw-r--r--    1 Gus  staff  1078 19 aoû 17:35 ft_cindex_rev.c$$
+-rw-r--r--    1 Gus  staff  2152 19 aoû 17:35 ft_error.c$$
+-rw-r--r--    1 Gus  staff  1197 19 aoû 17:35 ft_error_d.c$$
+-rw-r--r--    1 Gus  staff  2026 19 aoû 17:35 ft_error_s.c$$
+-rw-r--r--    1 Gus  staff  1329 19 aoû 17:35 ft_error_u.c$$
+-rw-r--r--    1 Gus  staff  1122 19 aoû 17:35 ft_error_x.c$$
+-rw-r--r--    1 Gus  staff  1281 19 aoû 17:35 ft_init.c$$
+-rw-r--r--    1 Gus  staff  1018 19 aoû 17:35 ft_isalnum.c$$
+-rw-r--r--    1 Gus  staff  1021 19 aoû 17:35 ft_isalpha.c$$
+-rw-r--r--    1 Gus  staff   998 19 aoû 17:35 ft_isascii.c$$
+-rw-r--r--    1 Gus  staff  1000 19 aoû 17:35 ft_isdigit.c$$
+-rw-r--r--    1 Gus  staff   999 19 aoû 17:35 ft_isprint.c$$
+-rw-r--r--    1 Gus  staff  1464 19 aoû 17:35 ft_itoa.c$$
+-rw-r--r--    1 Gus  staff  1781 19 aoû 17:35 ft_joinf.c$$
+-rw-r--r--    1 Gus  staff   994 19 aoû 17:35 ft_lstadd.c$$
+-rw-r--r--    1 Gus  staff  1056 19 aoû 17:35 ft_lstaddend.c$$
+-rw-r--r--    1 Gus  staff  1077 19 aoû 17:35 ft_lstdel.c$$
+-rw-r--r--    1 Gus  staff  1054 19 aoû 17:35 ft_lstdelone.c$$
+-rw-r--r--    1 Gus  staff  1027 19 aoû 17:35 ft_lstiter.c$$
+-rw-r--r--    1 Gus  staff  1050 19 aoû 17:35 ft_lstlen.c$$
+-rw-r--r--    1 Gus  staff  1227 19 aoû 17:35 ft_lstmap.c$$
+-rw-r--r--    1 Gus  staff  1373 19 aoû 17:35 ft_lstnew.c$$
+-rw-r--r--    1 Gus  staff  1175 19 aoû 17:35 ft_memalloc.c$$
+-rw-r--r--    1 Gus  staff  1294 19 aoû 17:35 ft_memccpy.c$$
+-rw-r--r--    1 Gus  staff  1227 19 aoû 17:35 ft_memchr.c$$
+-rw-r--r--    1 Gus  staff  1241 19 aoû 17:35 ft_memcmp.c$$
+-rw-r--r--    1 Gus  staff  1158 19 aoû 17:35 ft_memcpy.c$$
+-rw-r--r--    1 Gus  staff   967 19 aoû 17:35 ft_memdel.c$$
+-rw-r--r--    1 Gus  staff  1320 19 aoû 17:35 ft_memmove.c$$
+-rw-r--r--    1 Gus  staff  1098 19 aoû 17:35 ft_memset.c$$
+-rw-r--r--    1 Gus  staff  1874 19 aoû 17:35 ft_print.c$$
+-rw-r--r--    1 Gus  staff  1426 19 aoû 17:35 ft_print_list_arg_c.c$$
+-rw-r--r--    1 Gus  staff  2465 19 aoû 17:35 ft_print_list_arg_d.c$$
+-rw-r--r--    1 Gus  staff  1453 19 aoû 17:35 ft_print_list_arg_o.c$$
+-rw-r--r--    1 Gus  staff  1488 19 aoû 17:35 ft_print_list_arg_p.c$$
+-rw-r--r--    1 Gus  staff  1360 19 aoû 17:35 ft_print_list_arg_pc.c$$
+-rw-r--r--    1 Gus  staff  2750 19 aoû 17:35 ft_print_list_arg_s.c$$
+-rw-r--r--    1 Gus  staff  1167 19 aoû 17:35 ft_print_list_arg_u.c$$
+-rw-r--r--    1 Gus  staff  2428 19 aoû 17:35 ft_print_list_arg_x.c$$
+-rw-r--r--    1 Gus  staff  1562 19 aoû 17:35 ft_print_list_flags_ht.c$$
+-rw-r--r--    1 Gus  staff  1658 19 aoû 17:35 ft_print_list_str.c$$
+-rw-r--r--    1 Gus  staff  1752 19 aoû 17:35 ft_print_nchar.c$$
+-rw-r--r--    1 Gus  staff  1095 19 aoû 17:35 ft_printf.c$$
+-rw-r--r--    1 Gus  staff   958 19 aoû 17:35 ft_putchar.c$$
+-rw-r--r--    1 Gus  staff   970 19 aoû 17:35 ft_putchar_fd.c$$
+-rw-r--r--    1 Gus  staff  1033 19 aoû 17:35 ft_putendl.c$$
+-rw-r--r--    1 Gus  staff  1009 19 aoû 17:35 ft_putendl_fd.c$$
+-rw-r--r--    1 Gus  staff  1166 19 aoû 17:35 ft_putnbr.c$$
+-rw-r--r--    1 Gus  staff  1144 19 aoû 17:35 ft_putnbr_base.c$$
+-rw-r--r--    1 Gus  staff  1217 19 aoû 17:35 ft_putnbr_fd.c$$
+-rw-r--r--    1 Gus  staff  1031 19 aoû 17:35 ft_putnstr.c$$
+-rw-r--r--    1 Gus  staff   974 19 aoû 17:35 ft_putstr.c$$
+-rw-r--r--    1 Gus  staff   986 19 aoû 17:35 ft_putstr_fd.c$$
+-rw-r--r--    1 Gus  staff  1085 19 aoû 17:35 ft_rootsquare.c$$
+-rw-r--r--    1 Gus  staff  1131 19 aoû 17:35 ft_strcat.c$$
+-rw-r--r--    1 Gus  staff  1169 19 aoû 17:35 ft_strchr.c$$
+-rw-r--r--    1 Gus  staff  1039 19 aoû 17:35 ft_strclr.c$$
+-rw-r--r--    1 Gus  staff  1157 19 aoû 17:35 ft_strcmp.c$$
+-rw-r--r--    1 Gus  staff  1068 19 aoû 17:35 ft_strcpy.c$$
+-rw-r--r--    1 Gus  staff  1278 19 aoû 17:35 ft_strcut.c$$
+-rw-r--r--    1 Gus  staff   992 19 aoû 17:35 ft_strdel.c$$
+-rw-r--r--    1 Gus  staff  1208 19 aoû 17:35 ft_strdelc.c$$
+-rw-r--r--    1 Gus  staff  1147 19 aoû 17:35 ft_strdup.c$$
+-rw-r--r--    1 Gus  staff  1183 19 aoû 17:35 ft_strequ.c$$
+-rw-r--r--    1 Gus  staff  1067 19 aoû 17:35 ft_striter.c$$
+-rw-r--r--    1 Gus  staff  1092 19 aoû 17:35 ft_striteri.c$$
+-rw-r--r--    1 Gus  staff  1289 19 aoû 17:35 ft_strjoin.c$$
+-rw-r--r--    1 Gus  staff  1284 19 aoû 17:35 ft_strlcat.c$$
+-rw-r--r--    1 Gus  staff  1012 19 aoû 17:35 ft_strlen.c$$
+-rw-r--r--    1 Gus  staff  1194 19 aoû 17:35 ft_strmap.c$$
+-rw-r--r--    1 Gus  staff  1218 19 aoû 17:35 ft_strmapi.c$$
+-rw-r--r--    1 Gus  staff  1037 19 aoû 17:35 ft_strmerge.c$$
+-rw-r--r--    1 Gus  staff  1151 19 aoû 17:35 ft_strncat.c$$
+-rw-r--r--    1 Gus  staff  1334 19 aoû 17:35 ft_strncmp.c$$
+-rw-r--r--    1 Gus  staff  1161 19 aoû 17:35 ft_strncpy.c$$
+-rw-r--r--    1 Gus  staff  1119 19 aoû 17:35 ft_strnequ.c$$
+-rw-r--r--    1 Gus  staff  1113 19 aoû 17:35 ft_strnew.c$$
+-rw-r--r--    1 Gus  staff  1295 19 aoû 17:35 ft_strnstr.c$$
+-rw-r--r--    1 Gus  staff  1129 19 aoû 17:35 ft_strrchr.c$$
+-rw-r--r--    1 Gus  staff  1069 19 aoû 17:35 ft_strrepchar.c$$
+-rw-r--r--    1 Gus  staff  1105 19 aoû 17:35 ft_strrvrs.c$$
+-rw-r--r--    1 Gus  staff  1711 19 aoû 17:35 ft_strsplit.c$$
+-rw-r--r--    1 Gus  staff  1254 19 aoû 17:35 ft_strstr.c$$
+-rw-r--r--    1 Gus  staff  1202 19 aoû 17:35 ft_strsub.c$$
+-rw-r--r--    1 Gus  staff  1235 19 aoû 17:35 ft_strtrim.c$$
+-rw-r--r--    1 Gus  staff  1003 19 aoû 17:35 ft_tolower.c$$
+-rw-r--r--    1 Gus  staff  2306 19 aoû 17:35 ft_tools_buf.c$$
+-rw-r--r--    1 Gus  staff  1317 19 aoû 17:35 ft_tools_format.c$$
+-rw-r--r--    1 Gus  staff  1399 19 aoû 17:35 ft_tools_lst.c$$
+-rw-r--r--    1 Gus  staff  2306 19 aoû 17:35 ft_tools_nbr.c$$
+-rw-r--r--    1 Gus  staff  2392 19 aoû 17:35 ft_tools_str.c$$
+-rw-r--r--    1 Gus  staff  1003 19 aoû 17:35 ft_toupper.c$$
+-rw-r--r--    1 Gus  staff  1953 19 aoû 17:35 ft_wchar_conv_bit.c$$
+-rw-r--r--    1 Gus  staff  2590 19 aoû 17:35 ft_wchar_to_char.c$$
+-rw-r--r--    1 Gus  staff  2959 19 aoû 17:35 get_next_line.c$$
+total 624$$
+drwxr-xr-x  54 Gus  staff   1836  8 sep 11:30 .$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 ..$$
+-rw-r--r--   1 Gus  staff  12288 19 aoû 18:22 .ft_key.c.swp$$
+-rw-r--r--   1 Gus  staff  12288 19 aoû 18:19 .ft_key_bs.c.swp$$
+drwxr-xr-x  15 Gus  staff    510  8 sep 11:26 .git$$
+-rwxr-xr-x   1 Gus  staff  87732 19 aoû 18:21 a.out$$
+-rw-r--r--   1 Gus  staff  15840  8 sep 11:30 file$$
+-rw-r--r--   1 Gus  staff   1531 19 aoû 17:33 ft_ast.c$$
+-rw-r--r--   1 Gus  staff   2513 19 aoû 17:33 ft_bquote.c$$
+-rw-r--r--   1 Gus  staff   2456 19 aoû 17:33 ft_chain.c$$
+-rw-r--r--   1 Gus  staff   2334 19 aoû 17:33 ft_chain_tools.c$$
+-rw-r--r--   1 Gus  staff   2300 19 aoû 17:33 ft_char.c$$
+-rw-r--r--   1 Gus  staff   1127 19 aoû 17:33 ft_cmd.c$$
+-rw-r--r--   1 Gus  staff   2311 19 aoû 17:33 ft_cmd_split.c$$
+-rw-r--r--   1 Gus  staff   2760 19 aoû 17:33 ft_cursor_pos.c$$
+-rw-r--r--   1 Gus  staff   4688 19 aoû 17:33 ft_debug.c$$
+-rw-r--r--   1 Gus  staff   1090 19 aoû 17:33 ft_display.c$$
+-rw-r--r--   1 Gus  staff   2817 19 aoû 17:33 ft_history.c$$
+-rw-r--r--   1 Gus  staff   1871 19 aoû 17:33 ft_init.c$$
+-rw-r--r--   1 Gus  staff   2439 19 aoû 18:21 ft_key.c$$
+-rw-r--r--   1 Gus  staff   2600 19 aoû 17:33 ft_key_bs.c$$
+-rw-r--r--   1 Gus  staff   2283 19 aoû 17:33 ft_key_del.c$$
+-rw-r--r--   1 Gus  staff   1983 19 aoû 17:33 ft_key_directional.c$$
+-rw-r--r--   1 Gus  staff   1463 19 aoû 17:33 ft_key_down.c$$
+-rw-r--r--   1 Gus  staff   1444 19 aoû 17:33 ft_key_enter.c$$
+-rw-r--r--   1 Gus  staff   1349 19 aoû 17:33 ft_key_home.c$$
+-rw-r--r--   1 Gus  staff   1721 19 aoû 17:33 ft_key_opt_copy.c$$
+-rw-r--r--   1 Gus  staff   3385 19 aoû 17:33 ft_key_opt_directional.c$$
+-rw-r--r--   1 Gus  staff    959 19 aoû 17:33 ft_key_shift_dir_left.c$$
+-rw-r--r--   1 Gus  staff   2196 19 aoû 17:33 ft_key_shift_dir_right.c$$
+-rw-r--r--   1 Gus  staff   1481 19 aoû 17:33 ft_key_up.c$$
+-rw-r--r--   1 Gus  staff   2814 19 aoû 17:33 ft_quotes.c$$
+-rw-r--r--   1 Gus  staff   1811 19 aoû 17:33 ft_redir.c$$
+-rw-r--r--   1 Gus  staff   2018 19 aoû 17:33 ft_redir_double_right.c$$
+-rw-r--r--   1 Gus  staff   2210 19 aoû 17:33 ft_redir_fd_left.c$$
+-rw-r--r--   1 Gus  staff   2205 19 aoû 17:33 ft_redir_fd_right.c$$
+-rw-r--r--   1 Gus  staff   2778 19 aoû 17:33 ft_redir_heredoc.c$$
+-rw-r--r--   1 Gus  staff   2586 19 aoû 17:33 ft_redir_simple_right.c$$
+-rw-r--r--   1 Gus  staff   1881 19 aoû 17:33 ft_sh_name.c$$
+-rw-r--r--   1 Gus  staff   1466 19 aoû 17:33 ft_signal.c$$
+-rw-r--r--   1 Gus  staff   1590 19 aoû 17:33 ft_term.c$$
+-rw-r--r--   1 Gus  staff   1052 19 aoû 17:33 ft_window_size.c$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:33 includes$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:35 libft$$
+-rw-r--r--   1 Gus  staff   1033 19 aoû 17:33 main.c$$
+-rw-r--r--   1 Gus  staff   3533 19 aoû 17:33 ms_builtin_cd.c$$
+-rw-r--r--   1 Gus  staff   2553 19 aoû 17:33 ms_builtin_env.c$$
+-rw-r--r--   1 Gus  staff   2008 19 aoû 17:33 ms_builtin_setenv.c$$
+-rw-r--r--   1 Gus  staff   1990 19 aoû 17:33 ms_builtin_unsetenv.c$$
+-rw-r--r--   1 Gus  staff   1819 19 aoû 17:33 ms_exec.c$$
+-rw-r--r--   1 Gus  staff   2291 19 aoû 17:33 ms_get.c$$
+-rw-r--r--   1 Gus  staff   2334 19 aoû 17:33 ms_get_cmd.c$$
+-rw-r--r--   1 Gus  staff   2520 19 aoû 17:33 ms_parse_cmd.c$$
+-rw-r--r--   1 Gus  staff   2450 19 aoû 17:33 ms_search.c$$
+$$
+./.git:$$
+total 80$$
+drwxr-xr-x  15 Gus  staff    510  8 sep 11:26 .$$
+drwxr-xr-x  54 Gus  staff   1836  8 sep 11:30 ..$$
+-rw-r--r--   1 Gus  staff    102  8 sep 11:22 FETCH_HEAD$$
+-rw-r--r--   1 Gus  staff     23 19 aoû 17:33 HEAD$$
+-rw-r--r--   1 Gus  staff     41  8 sep 11:22 ORIG_HEAD$$
+drwxr-xr-x   2 Gus  staff     68 19 aoû 17:33 branches$$
+-rw-r--r--   1 Gus  staff    325 19 aoû 17:33 config$$
+-rw-r--r--   1 Gus  staff     73 19 aoû 17:33 description$$
+drwxr-xr-x  11 Gus  staff    374 19 aoû 17:33 hooks$$
+-rw-r--r--   1 Gus  staff  14188 19 aoû 17:35 index$$
+drwxr-xr-x   3 Gus  staff    102 19 aoû 17:33 info$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 logs$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 objects$$
+-rw-r--r--   1 Gus  staff    107 19 aoû 17:33 packed-refs$$
+drwxr-xr-x   5 Gus  staff    170 19 aoû 17:33 refs$$
+$$
+./.git/branches:$$
+total 0$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+$$
+./.git/hooks:$$
+total 80$$
+drwxr-xr-x  11 Gus  staff   374 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff   510  8 sep 11:26 ..$$
+-rwxr-xr-x   1 Gus  staff   478 19 aoû 17:33 applypatch-msg.sample$$
+-rwxr-xr-x   1 Gus  staff   896 19 aoû 17:33 commit-msg.sample$$
+-rwxr-xr-x   1 Gus  staff   189 19 aoû 17:33 post-update.sample$$
+-rwxr-xr-x   1 Gus  staff   424 19 aoû 17:33 pre-applypatch.sample$$
+-rwxr-xr-x   1 Gus  staff  1642 19 aoû 17:33 pre-commit.sample$$
+-rwxr-xr-x   1 Gus  staff  1348 19 aoû 17:33 pre-push.sample$$
+-rwxr-xr-x   1 Gus  staff  4951 19 aoû 17:33 pre-rebase.sample$$
+-rwxr-xr-x   1 Gus  staff  1239 19 aoû 17:33 prepare-commit-msg.sample$$
+-rwxr-xr-x   1 Gus  staff  3610 19 aoû 17:33 update.sample$$
+$$
+./.git/info:$$
+total 8$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+-rw-r--r--   1 Gus  staff  240 19 aoû 17:33 exclude$$
+$$
+./.git/logs:$$
+total 8$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+-rw-r--r--   1 Gus  staff  205 19 aoû 17:33 HEAD$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 refs$$
+$$
+./.git/logs/refs:$$
+total 0$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 heads$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 remotes$$
+$$
+./.git/logs/refs/heads:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff  205 19 aoû 17:33 master$$
+$$
+./.git/logs/refs/remotes:$$
+total 0$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 origin$$
+$$
+./.git/logs/refs/remotes/origin:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff  205 19 aoû 17:33 HEAD$$
+$$
+./.git/objects:$$
+total 0$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 info$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 pack$$
+$$
+./.git/objects/info:$$
+total 0$$
+drwxr-xr-x  2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+$$
+./.git/objects/pack:$$
+total 848$$
+drwxr-xr-x  4 Gus  staff     136 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff     136 19 aoû 17:33 ..$$
+-r--r--r--  1 Gus  staff   13280 19 aoû 17:33 pack-48bd32944f7956c7c258bb657cd4410f4822994e.idx$$
+-r--r--r--  1 Gus  staff  413997 19 aoû 17:33 pack-48bd32944f7956c7c258bb657cd4410f4822994e.pack$$
+$$
+./.git/refs:$$
+total 0$$
+drwxr-xr-x   5 Gus  staff  170 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 heads$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 remotes$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 tags$$
+$$
+./.git/refs/heads:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff   41 19 aoû 17:33 master$$
+$$
+./.git/refs/remotes:$$
+total 0$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 origin$$
+$$
+./.git/refs/remotes/origin:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff   32 19 aoû 17:33 HEAD$$
+$$
+./.git/refs/tags:$$
+total 0$$
+drwxr-xr-x  2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+$$
+./includes:$$
+total 80$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:33 .$$
+drwxr-xr-x  54 Gus  staff   1836  8 sep 11:30 ..$$
+-rw-r--r--   1 Gus  staff  20480 19 aoû 17:33 .nfs.20051027.2706$$
+-rw-r--r--   1 Gus  staff   5501 19 aoû 17:33 ft_21sh.h$$
+-rw-r--r--   1 Gus  staff   2086 19 aoû 17:33 ft_config.h$$
+-rw-r--r--   1 Gus  staff   2701 19 aoû 17:33 ms_minishell.h$$
+-rw-r--r--   1 Gus  staff   1183 19 aoû 17:33 pipe.c$$
+$$
+./libft:$$
+total 272$$
+drwxr-xr-x    7 Gus  staff     238 19 aoû 17:35 .$$
+drwxr-xr-x   54 Gus  staff    1836  8 sep 11:30 ..$$
+-rw-r--r--    1 Gus  staff    3657 19 aoû 17:35 Makefile$$
+-rw-r--r--    1 Gus  staff       8 19 aoû 17:35 auteur$$
+drwxr-xr-x    6 Gus  staff     204 19 aoû 17:35 includes$$
+-rw-r--r--    1 Gus  staff  129088 19 aoû 17:35 libft.a$$
+drwxr-xr-x  104 Gus  staff    3536 19 aoû 17:35 srcs$$
+$$
+./libft/includes:$$
+total 48$$
+drwxr-xr-x  6 Gus  staff   204 19 aoû 17:35 .$$
+drwxr-xr-x  7 Gus  staff   238 19 aoû 17:35 ..$$
+-rw-r--r--  1 Gus  staff  1420 19 aoû 17:35 ft_colors.h$$
+-rw-r--r--  1 Gus  staff  6698 19 aoû 17:35 ft_printf.h$$
+-rw-r--r--  1 Gus  staff  1154 19 aoû 17:35 get_next_line.h$$
+-rw-r--r--  1 Gus  staff  4964 19 aoû 17:35 libft.h$$
+$$
+./libft/srcs:$$
+total 816$$
+drwxr-xr-x  104 Gus  staff  3536 19 aoû 17:35 .$$
+drwxr-xr-x    7 Gus  staff   238 19 aoû 17:35 ..$$
+-rw-r--r--    1 Gus  staff   987 19 aoû 17:35 ft_abs.c$$
+-rw-r--r--    1 Gus  staff  1321 19 aoû 17:35 ft_atoi.c$$
+-rw-r--r--    1 Gus  staff  1057 19 aoû 17:35 ft_bzero.c$$
+-rw-r--r--    1 Gus  staff  3051 19 aoû 17:35 ft_check_arg_list.c$$
+-rw-r--r--    1 Gus  staff  2395 19 aoû 17:35 ft_check_format.c$$
+-rw-r--r--    1 Gus  staff  1926 19 aoû 17:35 ft_check_type.c$$
+-rw-r--r--    1 Gus  staff  1060 19 aoû 17:35 ft_cindex.c$$
+-rw-r--r--    1 Gus  staff  1078 19 aoû 17:35 ft_cindex_rev.c$$
+-rw-r--r--    1 Gus  staff  2152 19 aoû 17:35 ft_error.c$$
+-rw-r--r--    1 Gus  staff  1197 19 aoû 17:35 ft_error_d.c$$
+-rw-r--r--    1 Gus  staff  2026 19 aoû 17:35 ft_error_s.c$$
+-rw-r--r--    1 Gus  staff  1329 19 aoû 17:35 ft_error_u.c$$
+-rw-r--r--    1 Gus  staff  1122 19 aoû 17:35 ft_error_x.c$$
+-rw-r--r--    1 Gus  staff  1281 19 aoû 17:35 ft_init.c$$
+-rw-r--r--    1 Gus  staff  1018 19 aoû 17:35 ft_isalnum.c$$
+-rw-r--r--    1 Gus  staff  1021 19 aoû 17:35 ft_isalpha.c$$
+-rw-r--r--    1 Gus  staff   998 19 aoû 17:35 ft_isascii.c$$
+-rw-r--r--    1 Gus  staff  1000 19 aoû 17:35 ft_isdigit.c$$
+-rw-r--r--    1 Gus  staff   999 19 aoû 17:35 ft_isprint.c$$
+-rw-r--r--    1 Gus  staff  1464 19 aoû 17:35 ft_itoa.c$$
+-rw-r--r--    1 Gus  staff  1781 19 aoû 17:35 ft_joinf.c$$
+-rw-r--r--    1 Gus  staff   994 19 aoû 17:35 ft_lstadd.c$$
+-rw-r--r--    1 Gus  staff  1056 19 aoû 17:35 ft_lstaddend.c$$
+-rw-r--r--    1 Gus  staff  1077 19 aoû 17:35 ft_lstdel.c$$
+-rw-r--r--    1 Gus  staff  1054 19 aoû 17:35 ft_lstdelone.c$$
+-rw-r--r--    1 Gus  staff  1027 19 aoû 17:35 ft_lstiter.c$$
+-rw-r--r--    1 Gus  staff  1050 19 aoû 17:35 ft_lstlen.c$$
+-rw-r--r--    1 Gus  staff  1227 19 aoû 17:35 ft_lstmap.c$$
+-rw-r--r--    1 Gus  staff  1373 19 aoû 17:35 ft_lstnew.c$$
+-rw-r--r--    1 Gus  staff  1175 19 aoû 17:35 ft_memalloc.c$$
+-rw-r--r--    1 Gus  staff  1294 19 aoû 17:35 ft_memccpy.c$$
+-rw-r--r--    1 Gus  staff  1227 19 aoû 17:35 ft_memchr.c$$
+-rw-r--r--    1 Gus  staff  1241 19 aoû 17:35 ft_memcmp.c$$
+-rw-r--r--    1 Gus  staff  1158 19 aoû 17:35 ft_memcpy.c$$
+-rw-r--r--    1 Gus  staff   967 19 aoû 17:35 ft_memdel.c$$
+-rw-r--r--    1 Gus  staff  1320 19 aoû 17:35 ft_memmove.c$$
+-rw-r--r--    1 Gus  staff  1098 19 aoû 17:35 ft_memset.c$$
+-rw-r--r--    1 Gus  staff  1874 19 aoû 17:35 ft_print.c$$
+-rw-r--r--    1 Gus  staff  1426 19 aoû 17:35 ft_print_list_arg_c.c$$
+-rw-r--r--    1 Gus  staff  2465 19 aoû 17:35 ft_print_list_arg_d.c$$
+-rw-r--r--    1 Gus  staff  1453 19 aoû 17:35 ft_print_list_arg_o.c$$
+-rw-r--r--    1 Gus  staff  1488 19 aoû 17:35 ft_print_list_arg_p.c$$
+-rw-r--r--    1 Gus  staff  1360 19 aoû 17:35 ft_print_list_arg_pc.c$$
+-rw-r--r--    1 Gus  staff  2750 19 aoû 17:35 ft_print_list_arg_s.c$$
+-rw-r--r--    1 Gus  staff  1167 19 aoû 17:35 ft_print_list_arg_u.c$$
+-rw-r--r--    1 Gus  staff  2428 19 aoû 17:35 ft_print_list_arg_x.c$$
+-rw-r--r--    1 Gus  staff  1562 19 aoû 17:35 ft_print_list_flags_ht.c$$
+-rw-r--r--    1 Gus  staff  1658 19 aoû 17:35 ft_print_list_str.c$$
+-rw-r--r--    1 Gus  staff  1752 19 aoû 17:35 ft_print_nchar.c$$
+-rw-r--r--    1 Gus  staff  1095 19 aoû 17:35 ft_printf.c$$
+-rw-r--r--    1 Gus  staff   958 19 aoû 17:35 ft_putchar.c$$
+-rw-r--r--    1 Gus  staff   970 19 aoû 17:35 ft_putchar_fd.c$$
+-rw-r--r--    1 Gus  staff  1033 19 aoû 17:35 ft_putendl.c$$
+-rw-r--r--    1 Gus  staff  1009 19 aoû 17:35 ft_putendl_fd.c$$
+-rw-r--r--    1 Gus  staff  1166 19 aoû 17:35 ft_putnbr.c$$
+-rw-r--r--    1 Gus  staff  1144 19 aoû 17:35 ft_putnbr_base.c$$
+-rw-r--r--    1 Gus  staff  1217 19 aoû 17:35 ft_putnbr_fd.c$$
+-rw-r--r--    1 Gus  staff  1031 19 aoû 17:35 ft_putnstr.c$$
+-rw-r--r--    1 Gus  staff   974 19 aoû 17:35 ft_putstr.c$$
+-rw-r--r--    1 Gus  staff   986 19 aoû 17:35 ft_putstr_fd.c$$
+-rw-r--r--    1 Gus  staff  1085 19 aoû 17:35 ft_rootsquare.c$$
+-rw-r--r--    1 Gus  staff  1131 19 aoû 17:35 ft_strcat.c$$
+-rw-r--r--    1 Gus  staff  1169 19 aoû 17:35 ft_strchr.c$$
+-rw-r--r--    1 Gus  staff  1039 19 aoû 17:35 ft_strclr.c$$
+-rw-r--r--    1 Gus  staff  1157 19 aoû 17:35 ft_strcmp.c$$
+-rw-r--r--    1 Gus  staff  1068 19 aoû 17:35 ft_strcpy.c$$
+-rw-r--r--    1 Gus  staff  1278 19 aoû 17:35 ft_strcut.c$$
+-rw-r--r--    1 Gus  staff   992 19 aoû 17:35 ft_strdel.c$$
+-rw-r--r--    1 Gus  staff  1208 19 aoû 17:35 ft_strdelc.c$$
+-rw-r--r--    1 Gus  staff  1147 19 aoû 17:35 ft_strdup.c$$
+-rw-r--r--    1 Gus  staff  1183 19 aoû 17:35 ft_strequ.c$$
+-rw-r--r--    1 Gus  staff  1067 19 aoû 17:35 ft_striter.c$$
+-rw-r--r--    1 Gus  staff  1092 19 aoû 17:35 ft_striteri.c$$
+-rw-r--r--    1 Gus  staff  1289 19 aoû 17:35 ft_strjoin.c$$
+-rw-r--r--    1 Gus  staff  1284 19 aoû 17:35 ft_strlcat.c$$
+-rw-r--r--    1 Gus  staff  1012 19 aoû 17:35 ft_strlen.c$$
+-rw-r--r--    1 Gus  staff  1194 19 aoû 17:35 ft_strmap.c$$
+-rw-r--r--    1 Gus  staff  1218 19 aoû 17:35 ft_strmapi.c$$
+-rw-r--r--    1 Gus  staff  1037 19 aoû 17:35 ft_strmerge.c$$
+-rw-r--r--    1 Gus  staff  1151 19 aoû 17:35 ft_strncat.c$$
+-rw-r--r--    1 Gus  staff  1334 19 aoû 17:35 ft_strncmp.c$$
+-rw-r--r--    1 Gus  staff  1161 19 aoû 17:35 ft_strncpy.c$$
+-rw-r--r--    1 Gus  staff  1119 19 aoû 17:35 ft_strnequ.c$$
+-rw-r--r--    1 Gus  staff  1113 19 aoû 17:35 ft_strnew.c$$
+-rw-r--r--    1 Gus  staff  1295 19 aoû 17:35 ft_strnstr.c$$
+-rw-r--r--    1 Gus  staff  1129 19 aoû 17:35 ft_strrchr.c$$
+-rw-r--r--    1 Gus  staff  1069 19 aoû 17:35 ft_strrepchar.c$$
+-rw-r--r--    1 Gus  staff  1105 19 aoû 17:35 ft_strrvrs.c$$
+-rw-r--r--    1 Gus  staff  1711 19 aoû 17:35 ft_strsplit.c$$
+-rw-r--r--    1 Gus  staff  1254 19 aoû 17:35 ft_strstr.c$$
+-rw-r--r--    1 Gus  staff  1202 19 aoû 17:35 ft_strsub.c$$
+-rw-r--r--    1 Gus  staff  1235 19 aoû 17:35 ft_strtrim.c$$
+-rw-r--r--    1 Gus  staff  1003 19 aoû 17:35 ft_tolower.c$$
+-rw-r--r--    1 Gus  staff  2306 19 aoû 17:35 ft_tools_buf.c$$
+-rw-r--r--    1 Gus  staff  1317 19 aoû 17:35 ft_tools_format.c$$
+-rw-r--r--    1 Gus  staff  1399 19 aoû 17:35 ft_tools_lst.c$$
+-rw-r--r--    1 Gus  staff  2306 19 aoû 17:35 ft_tools_nbr.c$$
+-rw-r--r--    1 Gus  staff  2392 19 aoû 17:35 ft_tools_str.c$$
+-rw-r--r--    1 Gus  staff  1003 19 aoû 17:35 ft_toupper.c$$
+-rw-r--r--    1 Gus  staff  1953 19 aoû 17:35 ft_wchar_conv_bit.c$$
+-rw-r--r--    1 Gus  staff  2590 19 aoû 17:35 ft_wchar_to_char.c$$
+-rw-r--r--    1 Gus  staff  2959 19 aoû 17:35 get_next_line.c$$
+total 656$$
+drwxr-xr-x  54 Gus  staff   1836  8 sep 11:30 .$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 ..$$
+-rw-r--r--   1 Gus  staff  12288 19 aoû 18:22 .ft_key.c.swp$$
+-rw-r--r--   1 Gus  staff  12288 19 aoû 18:19 .ft_key_bs.c.swp$$
+drwxr-xr-x  15 Gus  staff    510  8 sep 11:26 .git$$
+-rwxr-xr-x   1 Gus  staff  87732 19 aoû 18:21 a.out$$
+-rw-r--r--   1 Gus  staff  31676  8 sep 11:30 file$$
+-rw-r--r--   1 Gus  staff   1531 19 aoû 17:33 ft_ast.c$$
+-rw-r--r--   1 Gus  staff   2513 19 aoû 17:33 ft_bquote.c$$
+-rw-r--r--   1 Gus  staff   2456 19 aoû 17:33 ft_chain.c$$
+-rw-r--r--   1 Gus  staff   2334 19 aoû 17:33 ft_chain_tools.c$$
+-rw-r--r--   1 Gus  staff   2300 19 aoû 17:33 ft_char.c$$
+-rw-r--r--   1 Gus  staff   1127 19 aoû 17:33 ft_cmd.c$$
+-rw-r--r--   1 Gus  staff   2311 19 aoû 17:33 ft_cmd_split.c$$
+-rw-r--r--   1 Gus  staff   2760 19 aoû 17:33 ft_cursor_pos.c$$
+-rw-r--r--   1 Gus  staff   4688 19 aoû 17:33 ft_debug.c$$
+-rw-r--r--   1 Gus  staff   1090 19 aoû 17:33 ft_display.c$$
+-rw-r--r--   1 Gus  staff   2817 19 aoû 17:33 ft_history.c$$
+-rw-r--r--   1 Gus  staff   1871 19 aoû 17:33 ft_init.c$$
+-rw-r--r--   1 Gus  staff   2439 19 aoû 18:21 ft_key.c$$
+-rw-r--r--   1 Gus  staff   2600 19 aoû 17:33 ft_key_bs.c$$
+-rw-r--r--   1 Gus  staff   2283 19 aoû 17:33 ft_key_del.c$$
+-rw-r--r--   1 Gus  staff   1983 19 aoû 17:33 ft_key_directional.c$$
+-rw-r--r--   1 Gus  staff   1463 19 aoû 17:33 ft_key_down.c$$
+-rw-r--r--   1 Gus  staff   1444 19 aoû 17:33 ft_key_enter.c$$
+-rw-r--r--   1 Gus  staff   1349 19 aoû 17:33 ft_key_home.c$$
+-rw-r--r--   1 Gus  staff   1721 19 aoû 17:33 ft_key_opt_copy.c$$
+-rw-r--r--   1 Gus  staff   3385 19 aoû 17:33 ft_key_opt_directional.c$$
+-rw-r--r--   1 Gus  staff    959 19 aoû 17:33 ft_key_shift_dir_left.c$$
+-rw-r--r--   1 Gus  staff   2196 19 aoû 17:33 ft_key_shift_dir_right.c$$
+-rw-r--r--   1 Gus  staff   1481 19 aoû 17:33 ft_key_up.c$$
+-rw-r--r--   1 Gus  staff   2814 19 aoû 17:33 ft_quotes.c$$
+-rw-r--r--   1 Gus  staff   1811 19 aoû 17:33 ft_redir.c$$
+-rw-r--r--   1 Gus  staff   2018 19 aoû 17:33 ft_redir_double_right.c$$
+-rw-r--r--   1 Gus  staff   2210 19 aoû 17:33 ft_redir_fd_left.c$$
+-rw-r--r--   1 Gus  staff   2205 19 aoû 17:33 ft_redir_fd_right.c$$
+-rw-r--r--   1 Gus  staff   2778 19 aoû 17:33 ft_redir_heredoc.c$$
+-rw-r--r--   1 Gus  staff   2586 19 aoû 17:33 ft_redir_simple_right.c$$
+-rw-r--r--   1 Gus  staff   1881 19 aoû 17:33 ft_sh_name.c$$
+-rw-r--r--   1 Gus  staff   1466 19 aoû 17:33 ft_signal.c$$
+-rw-r--r--   1 Gus  staff   1590 19 aoû 17:33 ft_term.c$$
+-rw-r--r--   1 Gus  staff   1052 19 aoû 17:33 ft_window_size.c$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:33 includes$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:35 libft$$
+-rw-r--r--   1 Gus  staff   1033 19 aoû 17:33 main.c$$
+-rw-r--r--   1 Gus  staff   3533 19 aoû 17:33 ms_builtin_cd.c$$
+-rw-r--r--   1 Gus  staff   2553 19 aoû 17:33 ms_builtin_env.c$$
+-rw-r--r--   1 Gus  staff   2008 19 aoû 17:33 ms_builtin_setenv.c$$
+-rw-r--r--   1 Gus  staff   1990 19 aoû 17:33 ms_builtin_unsetenv.c$$
+-rw-r--r--   1 Gus  staff   1819 19 aoû 17:33 ms_exec.c$$
+-rw-r--r--   1 Gus  staff   2291 19 aoû 17:33 ms_get.c$$
+-rw-r--r--   1 Gus  staff   2334 19 aoû 17:33 ms_get_cmd.c$$
+-rw-r--r--   1 Gus  staff   2520 19 aoû 17:33 ms_parse_cmd.c$$
+-rw-r--r--   1 Gus  staff   2450 19 aoû 17:33 ms_search.c$$
+$$
+./.git:$$
+total 80$$
+drwxr-xr-x  15 Gus  staff    510  8 sep 11:26 .$$
+drwxr-xr-x  54 Gus  staff   1836  8 sep 11:30 ..$$
+-rw-r--r--   1 Gus  staff    102  8 sep 11:22 FETCH_HEAD$$
+-rw-r--r--   1 Gus  staff     23 19 aoû 17:33 HEAD$$
+-rw-r--r--   1 Gus  staff     41  8 sep 11:22 ORIG_HEAD$$
+drwxr-xr-x   2 Gus  staff     68 19 aoû 17:33 branches$$
+-rw-r--r--   1 Gus  staff    325 19 aoû 17:33 config$$
+-rw-r--r--   1 Gus  staff     73 19 aoû 17:33 description$$
+drwxr-xr-x  11 Gus  staff    374 19 aoû 17:33 hooks$$
+-rw-r--r--   1 Gus  staff  14188 19 aoû 17:35 index$$
+drwxr-xr-x   3 Gus  staff    102 19 aoû 17:33 info$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 logs$$
+drwxr-xr-x   4 Gus  staff    136 19 aoû 17:33 objects$$
+-rw-r--r--   1 Gus  staff    107 19 aoû 17:33 packed-refs$$
+drwxr-xr-x   5 Gus  staff    170 19 aoû 17:33 refs$$
+$$
+./.git/branches:$$
+total 0$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+$$
+./.git/hooks:$$
+total 80$$
+drwxr-xr-x  11 Gus  staff   374 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff   510  8 sep 11:26 ..$$
+-rwxr-xr-x   1 Gus  staff   478 19 aoû 17:33 applypatch-msg.sample$$
+-rwxr-xr-x   1 Gus  staff   896 19 aoû 17:33 commit-msg.sample$$
+-rwxr-xr-x   1 Gus  staff   189 19 aoû 17:33 post-update.sample$$
+-rwxr-xr-x   1 Gus  staff   424 19 aoû 17:33 pre-applypatch.sample$$
+-rwxr-xr-x   1 Gus  staff  1642 19 aoû 17:33 pre-commit.sample$$
+-rwxr-xr-x   1 Gus  staff  1348 19 aoû 17:33 pre-push.sample$$
+-rwxr-xr-x   1 Gus  staff  4951 19 aoû 17:33 pre-rebase.sample$$
+-rwxr-xr-x   1 Gus  staff  1239 19 aoû 17:33 prepare-commit-msg.sample$$
+-rwxr-xr-x   1 Gus  staff  3610 19 aoû 17:33 update.sample$$
+$$
+./.git/info:$$
+total 8$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+-rw-r--r--   1 Gus  staff  240 19 aoû 17:33 exclude$$
+$$
+./.git/logs:$$
+total 8$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+-rw-r--r--   1 Gus  staff  205 19 aoû 17:33 HEAD$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 refs$$
+$$
+./.git/logs/refs:$$
+total 0$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 heads$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 remotes$$
+$$
+./.git/logs/refs/heads:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff  205 19 aoû 17:33 master$$
+$$
+./.git/logs/refs/remotes:$$
+total 0$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 origin$$
+$$
+./.git/logs/refs/remotes/origin:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff  205 19 aoû 17:33 HEAD$$
+$$
+./.git/objects:$$
+total 0$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 info$$
+drwxr-xr-x   4 Gus  staff  136 19 aoû 17:33 pack$$
+$$
+./.git/objects/info:$$
+total 0$$
+drwxr-xr-x  2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff  136 19 aoû 17:33 ..$$
+$$
+./.git/objects/pack:$$
+total 848$$
+drwxr-xr-x  4 Gus  staff     136 19 aoû 17:33 .$$
+drwxr-xr-x  4 Gus  staff     136 19 aoû 17:33 ..$$
+-r--r--r--  1 Gus  staff   13280 19 aoû 17:33 pack-48bd32944f7956c7c258bb657cd4410f4822994e.idx$$
+-r--r--r--  1 Gus  staff  413997 19 aoû 17:33 pack-48bd32944f7956c7c258bb657cd4410f4822994e.pack$$
+$$
+./.git/refs:$$
+total 0$$
+drwxr-xr-x   5 Gus  staff  170 19 aoû 17:33 .$$
+drwxr-xr-x  15 Gus  staff  510  8 sep 11:26 ..$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 heads$$
+drwxr-xr-x   3 Gus  staff  102 19 aoû 17:33 remotes$$
+drwxr-xr-x   2 Gus  staff   68 19 aoû 17:33 tags$$
+$$
+./.git/refs/heads:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff   41 19 aoû 17:33 master$$
+$$
+./.git/refs/remotes:$$
+total 0$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 origin$$
+$$
+./.git/refs/remotes/origin:$$
+total 8$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 .$$
+drwxr-xr-x  3 Gus  staff  102 19 aoû 17:33 ..$$
+-rw-r--r--  1 Gus  staff   32 19 aoû 17:33 HEAD$$
+$$
+./.git/refs/tags:$$
+total 0$$
+drwxr-xr-x  2 Gus  staff   68 19 aoû 17:33 .$$
+drwxr-xr-x  5 Gus  staff  170 19 aoû 17:33 ..$$
+$$
+./includes:$$
+total 80$$
+drwxr-xr-x   7 Gus  staff    238 19 aoû 17:33 .$$
+drwxr-xr-x  54 Gus  staff   1836  8 sep 11:30 ..$$
+-rw-r--r--   1 Gus  staff  20480 19 aoû 17:33 .nfs.20051027.2706$$
+-rw-r--r--   1 Gus  staff   5501 19 aoû 17:33 ft_21sh.h$$
+-rw-r--r--   1 Gus  staff   2086 19 aoû 17:33 ft_config.h$$
+-rw-r--r--   1 Gus  staff   2701 19 aoû 17:33 ms_minishell.h$$
+-rw-r--r--   1 Gus  staff   1183 19 aoû 17:33 pipe.c$$
+$$
+./libft:$$
+total 272$$
+drwxr-xr-x    7 Gus  staff     238 19 aoû 17:35 .$$
+drwxr-xr-x   54 Gus  staff    1836  8 sep 11:30 ..$$
+-rw-r--r--    1 Gus  staff    3657 19 aoû 17:35 Makefile$$
+-rw-r--r--    1 Gus  staff       8 19 aoû 17:35 auteur$$
+drwxr-xr-x    6 Gus  staff     204 19 aoû 17:35 includes$$
+-rw-r--r--    1 Gus  staff  129088 19 aoû 17:35 libft.a$$
+drwxr-xr-x  104 Gus  staff    3536 19 aoû 17:35 srcs$$
+$$
+./libft/includes:$$
+total 48$$
+drwxr-xr-x  6 Gus  staff   204 19 aoû 17:35 .$$
+drwxr-xr-x  7 Gus  staff   238 19 aoû 17:35 ..$$
+-rw-r--r--  1 Gus  staff  1420 19 aoû 17:35 ft_colors.h$$
+-rw-r--r--  1 Gus  staff  6698 19 aoû 17:35 ft_printf.h$$
+-rw-r--r--  1 Gus  staff  1154 19 aoû 17:35 get_next_line.h$$
+-rw-r--r--  1 Gus  staff  4964 19 aoû 17:35 libft.h$$
+$$
+./libft/srcs:$$
+total 816$$
+drwxr-xr-x  104 Gus  staff  3536 19 aoû 17:35 .$$
+drwxr-xr-x    7 Gus  staff   238 19 aoû 17:35 ..$$
+-rw-r--r--    1 Gus  staff   987 19 aoû 17:35 ft_abs.c$$
+-rw-r--r--    1 Gus  staff  1321 19 aoû 17:35 ft_atoi.c$$
+-rw-r--r--    1 Gus  staff  1057 19 aoû 17:35 ft_bzero.c$$
+-rw-r--r--    1 Gus  staff  3051 19 aoû 17:35 ft_check_arg_list.c$$
+-rw-r--r--    1 Gus  staff  2395 19 aoû 17:35 ft_check_format.c$$
+-rw-r--r--    1 Gus  staff  1926 19 aoû 17:35 ft_check_type.c$$
+-rw-r--r--    1 Gus  staff  1060 19 aoû 17:35 ft_cindex.c$$
+-rw-r--r--    1 Gus  staff  1078 19 aoû 17:35 ft_cindex_rev.c$$
+-rw-r--r--    1 Gus  staff  2152 19 aoû 17:35 ft_error.c$$
+-rw-r--r--    1 Gus  staff  1197 19 aoû 17:35 ft_error_d.c$$
+-rw-r--r--    1 Gus  staff  2026 19 aoû 17:35 ft_error_s.c$$
+-rw-r--r--    1 Gus  staff  1329 19 aoû 17:35 ft_error_u.c$$
+-rw-r--r--    1 Gus  staff  1122 19 aoû 17:35 ft_error_x.c$$
+-rw-r--r--    1 Gus  staff  1281 19 aoû 17:35 ft_init.c$$
+-rw-r--r--    1 Gus  staff  1018 19 aoû 17:35 ft_isalnum.c$$
+-rw-r--r--    1 Gus  staff  1021 19 aoû 17:35 ft_isalpha.c$$
+-rw-r--r--    1 Gus  staff   998 19 aoû 17:35 ft_isascii.c$$
+-rw-r--r--    1 Gus  staff  1000 19 aoû 17:35 ft_isdigit.c$$
+-rw-r--r--    1 Gus  staff   999 19 aoû 17:35 ft_isprint.c$$
+-rw-r--r--    1 Gus  staff  1464 19 aoû 17:35 ft_itoa.c$$
+-rw-r--r--    1 Gus  staff  1781 19 aoû 17:35 ft_joinf.c$$
+-rw-r--r--    1 Gus  staff   994 19 aoû 17:35 ft_lstadd.c$$
+-rw-r--r--    1 Gus  staff  1056 19 aoû 17:35 ft_lstaddend.c$$
+-rw-r--r--    1 Gus  staff  1077 19 aoû 17:35 ft_lstdel.c$$
+-rw-r--r--    1 Gus  staff  1054 19 aoû 17:35 ft_lstdelone.c$$
+-rw-r--r--    1 Gus  staff  1027 19 aoû 17:35 ft_lstiter.c$$
+-rw-r--r--    1 Gus  staff  1050 19 aoû 17:35 ft_lstlen.c$$
+-rw-r--r--    1 Gus  staff  1227 19 aoû 17:35 ft_lstmap.c$$
+-rw-r--r--    1 Gus  staff  1373 19 aoû 17:35 ft_lstnew.c$$
+-rw-r--r--    1 Gus  staff  1175 19 aoû 17:35 ft_memalloc.c$$
+-rw-r--r--    1 Gus  staff  1294 19 aoû 17:35 ft_memccpy.c$$
+-rw-r--r--    1 Gus  staff  1227 19 aoû 17:35 ft_memchr.c$$
+-rw-r--r--    1 Gus  staff  1241 19 aoû 17:35 ft_memcmp.c$$
+-rw-r--r--    1 Gus  staff  1158 19 aoû 17:35 ft_memcpy.c$$
+-rw-r--r--    1 Gus  staff   967 19 aoû 17:35 ft_memdel.c$$
+-rw-r--r--    1 Gus  staff  1320 19 aoû 17:35 ft_memmove.c$$
+-rw-r--r--    1 Gus  staff  1098 19 aoû 17:35 ft_memset.c$$
+-rw-r--r--    1 Gus  staff  1874 19 aoû 17:35 ft_print.c$$
+-rw-r--r--    1 Gus  staff  1426 19 aoû 17:35 ft_print_list_arg_c.c$$
+-rw-r--r--    1 Gus  staff  2465 19 aoû 17:35 ft_print_list_arg_d.c$$
+-rw-r--r--    1 Gus  staff  1453 19 aoû 17:35 ft_print_list_arg_o.c$$
+-rw-r--r--    1 Gus  staff  1488 19 aoû 17:35 ft_print_list_arg_p.c$$
+-rw-r--r--    1 Gus  staff  1360 19 aoû 17:35 ft_print_list_arg_pc.c$$
+-rw-r--r--    1 Gus  staff  2750 19 aoû 17:35 ft_print_list_arg_s.c$$
+-rw-r--r--    1 Gus  staff  1167 19 aoû 17:35 ft_print_list_arg_u.c$$
+-rw-r--r--    1 Gus  staff  2428 19 aoû 17:35 ft_print_list_arg_x.c$$
+-rw-r--r--    1 Gus  staff  1562 19 aoû 17:35 ft_print_list_flags_ht.c$$
+-rw-r--r--    1 Gus  staff  1658 19 aoû 17:35 ft_print_list_str.c$$
+-rw-r--r--    1 Gus  staff  1752 19 aoû 17:35 ft_print_nchar.c$$
+-rw-r--r--    1 Gus  staff  1095 19 aoû 17:35 ft_printf.c$$
+-rw-r--r--    1 Gus  staff   958 19 aoû 17:35 ft_putchar.c$$
+-rw-r--r--    1 Gus  staff   970 19 aoû 17:35 ft_putchar_fd.c$$
+-rw-r--r--    1 Gus  staff  1033 19 aoû 17:35 ft_putendl.c$$
+-rw-r--r--    1 Gus  staff  1009 19 aoû 17:35 ft_putendl_fd.c$$
+-rw-r--r--    1 Gus  staff  1166 19 aoû 17:35 ft_putnbr.c$$
+-rw-r--r--    1 Gus  staff  1144 19 aoû 17:35 ft_putnbr_base.c$$
+-rw-r--r--    1 Gus  staff  1217 19 aoû 17:35 ft_putnbr_fd.c$$
+-rw-r--r--    1 Gus  staff  1031 19 aoû 17:35 ft_putnstr.c$$
+-rw-r--r--    1 Gus  staff   974 19 aoû 17:35 ft_putstr.c$$
+-rw-r--r--    1 Gus  staff   986 19 aoû 17:35 ft_putstr_fd.c$$
+-rw-r--r--    1 Gus  staff  1085 19 aoû 17:35 ft_rootsquare.c$$
+-rw-r--r--    1 Gus  staff  1131 19 aoû 17:35 ft_strcat.c$$
+-rw-r--r--    1 Gus  staff  1169 19 aoû 17:35 ft_strchr.c$$
+-rw-r--r--    1 Gus  staff  1039 19 aoû 17:35 ft_strclr.c$$
+-rw-r--r--    1 Gus  staff  1157 19 aoû 17:35 ft_strcmp.c$$
+-rw-r--r--    1 Gus  staff  1068 19 aoû 17:35 ft_strcpy.c$$
+-rw-r--r--    1 Gus  staff  1278 19 aoû 17:35 ft_strcut.c$$
+-rw-r--r--    1 Gus  staff   992 19 aoû 17:35 ft_strdel.c$$
+-rw-r--r--    1 Gus  staff  1208 19 aoû 17:35 ft_strdelc.c$$
+-rw-r--r--    1 Gus  staff  1147 19 aoû 17:35 ft_strdup.c$$
+-rw-r--r--    1 Gus  staff  1183 19 aoû 17:35 ft_strequ.c$$
+-rw-r--r--    1 Gus  staff  1067 19 aoû 17:35 ft_striter.c$$
+-rw-r--r--    1 Gus  staff  1092 19 aoû 17:35 ft_striteri.c$$
+-rw-r--r--    1 Gus  staff  1289 19 aoû 17:35 ft_strjoin.c$$
+-rw-r--r--    1 Gus  staff  1284 19 aoû 17:35 ft_strlcat.c$$
+-rw-r--r--    1 Gus  staff  1012 19 aoû 17:35 ft_strlen.c$$
+-rw-r--r--    1 Gus  staff  1194 19 aoû 17:35 ft_strmap.c$$
+-rw-r--r--    1 Gus  staff  1218 19 aoû 17:35 ft_strmapi.c$$
+-rw-r--r--    1 Gus  staff  1037 19 aoû 17:35 ft_strmerge.c$$
+-rw-r--r--    1 Gus  staff  1151 19 aoû 17:35 ft_strncat.c$$
+-rw-r--r--    1 Gus  staff  1334 19 aoû 17:35 ft_strncmp.c$$
+-rw-r--r--    1 Gus  staff  1161 19 aoû 17:35 ft_strncpy.c$$
+-rw-r--r--    1 Gus  staff  1119 19 aoû 17:35 ft_strnequ.c$$
+-rw-r--r--    1 Gus  staff  1113 19 aoû 17:35 ft_strnew.c$$
+-rw-r--r--    1 Gus  staff  1295 19 aoû 17:35 ft_strnstr.c$$
+-rw-r--r--    1 Gus  staff  1129 19 aoû 17:35 ft_strrchr.c$$
+-rw-r--r--    1 Gus  staff  1069 19 aoû 17:35 ft_strrepchar.c$$
+-rw-r--r--    1 Gus  staff  1105 19 aoû 17:35 ft_strrvrs.c$$
+-rw-r--r--    1 Gus  staff  1711 19 aoû 17:35 ft_strsplit.c$$
+-rw-r--r--    1 Gus  staff  1254 19 aoû 17:35 ft_strstr.c$$
+-rw-r--r--    1 Gus  staff  1202 19 aoû 17:35 ft_strsub.c$$
+-rw-r--r--    1 Gus  staff  1235 19 aoû 17:35 ft_strtrim.c$$
+-rw-r--r--    1 Gus  staff  1003 19 aoû 17:35 ft_tolower.c$$
+-rw-r--r--    1 Gus  staff  2306 19 aoû 17:35 ft_tools_buf.c$$
+-rw-r--r--    1 Gus  staff  1317 19 aoû 17:35 ft_tools_format.c$$
+-rw-r--r--    1 Gus  staff  1399 19 aoû 17:35 ft_tools_lst.c$$
+-rw-r--r--    1 Gus  staff  2306 19 aoû 17:35 ft_tools_nbr.c$$
+-rw-r--r--    1 Gus  staff  2392 19 aoû 17:35 ft_tools_str.c$$
+-rw-r--r--    1 Gus  staff  1003 19 aoû 17:35 ft_toupper.c$$
+-rw-r--r--    1 Gus  staff  1953 19 aoû 17:35 ft_wchar_conv_bit.c$$
+-rw-r--r--    1 Gus  staff  2590 19 aoû 17:35 ft_wchar_to_char.c$$
+-rw-r--r--    1 Gus  staff  2959 19 aoû 17:35 get_next_line.c$$
