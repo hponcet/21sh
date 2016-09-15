@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/18 16:09:50 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/15 01:44:29 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # include <term.h>
 # include <sys/ioctl.h>
 # include <sys/param.h>
+
+typedef struct		s_hd
+{
+	char			*cmd;
+	char			*trigger;
+}					t_hd;
 
 typedef struct		s_hist
 {
@@ -56,9 +62,6 @@ typedef struct		s_curs
 	int				*ws;
 	int				hist;
 	int				qt;
-	char			*hd;
-	char			*hd_input;
-	char			*hd_cmd;
 	size_t			nb_chr;
 	size_t			id;
 	struct s_chain	*select;
@@ -67,6 +70,7 @@ typedef struct		s_curs
 	struct s_chain	*prev;
 }					t_curs;
 
+t_hd				*g_hd;
 int					g_fd;
 char				**g_env;
 int					*g_initpos;
@@ -82,7 +86,12 @@ int					g_error;
 /*
 ** ft_redir_heredoc.c
 */
-int					ft_redir_heredoc(void);
+int					ft_heredoc_check(void);
+int					ft_heredoc_new(void);
+void				ft_heredoc_del(void);
+void				ft_heredoc_proc(void);
+int					ft_heredoc_exec(char *str);
+int					ft_heredoc_addcontent(char *str);
 
 /*
 ** ft_bquote.c

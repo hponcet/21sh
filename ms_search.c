@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/13 17:52:47 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/15 17:16:18 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ char		*ms_search_bin(char **env)
 	pathbin = ms_search_pathbin(path, env);
 	if (!pathbin)
 	{
-		ft_printf("21sh: command not found: %s\n", g_cmd[0]);
+		ft_putstr_fd("21sh: command not found: ", g_fd);
+		ft_putendl_fd(g_cmd[0], g_fd);
 		g_cmd = ms_free_tab(g_cmd);
 	}
 	ft_strdel(&joinpath);
+	free(path);
 	return (pathbin);
 }
 

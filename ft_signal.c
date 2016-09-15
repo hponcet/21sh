@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 19:48:20 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/13 21:44:52 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/15 14:09:00 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void		ft_signal(void)
 
 void		ft_init_prompt(void)
 {
+	ft_heredoc_del();
 	ft_putendl("");
 	ft_put_name();
 	ft_init();

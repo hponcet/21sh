@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 07:52:25 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/08 17:04:23 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/15 17:40:32 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,9 @@ void			ft_make_retval(void)
 	if (!g_chain)
 		return ;
 	tmp = g_chain;
-	free(g_retval);
-	g_retval = NULL;
-	g_retval = (char*)malloc(sizeof(char) * g_curs.nb_chr + 2);
-	ft_bzero(g_retval, g_curs.nb_chr + 2);
+	ft_strdel(&g_retval);
+	g_retval = (char*)malloc(sizeof(char) * g_curs.nb_chr + 1);
+	ft_bzero(g_retval, g_curs.nb_chr + 1);
 	while (i < g_curs.nb_chr)
 	{
 		g_retval[i] = tmp->c;
@@ -115,5 +114,5 @@ void			ft_del_chain(void)
 		free(tmp);
 	}
 	g_chain = NULL;
-	g_retval = NULL;
+	ft_strdel(&g_retval);
 }

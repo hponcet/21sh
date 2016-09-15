@@ -6,7 +6,7 @@
 #    By: hponcet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 19:57:28 by hponcet           #+#    #+#              #
-#*   Updated: 2016/06/03 23:02:58 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/09/15 16:26:33 by hponcet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ EXEC =	srcs/ft_atoi.c \
 		srcs/ft_isdigit.c \
 		srcs/ft_isprint.c \
 		srcs/ft_itoa.c \
+		srcs/ft_tabdel.c \
 		srcs/ft_joinf.c \
 		srcs/ft_lstadd.c \
 		srcs/ft_lstaddend.c \

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 12:48:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/08 11:52:10 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/15 14:56:09 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,19 @@
 # define __PROMPT_DIR__ "Y"
 # define __DIR_COLOR__ __BLD __WHT
 # define __DIR_COLOR_END__ " "__CLR_END__
+
+/*
+** *********************************
+** Activate Graphic Debug Mode [Y/N]
+** *********************************
+*/
 # define __DEBUG__ "N"
+
+/*
+** ********************************
+** Way to temporary directory
+** ********************************
+*/
+# define __TMP_PATH__ "/tmp"
 
 #endif

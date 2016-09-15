@@ -6,108 +6,158 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/18 16:33:11 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/15 16:44:52 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_minishell.h"
 
-static int		ft_redir_heredoc_hd(char **cmd)
+int				ft_heredoc_check(void)
 {
-	char	*word;
 	int		i;
 
-	i = ft_cindex_rev(*cmd, '<');
-	while (cmd[0][i] == '<' || cmd[0][i] == ' ' || cmd[0][i] == '\t')
+	i = ft_cindex_rev(g_retval, '<');
+	if (i > 1 && g_retval[i - 1] == '<')
+		return (i);
+	else
+		return (-1);
+}
+
+void			ft_heredoc_del(void)
+{
+	int		fd;
+
+	fd = -1;
+	if (!g_hd)
+		return ;
+	fd = open("/tmp/.__21sh_tmp_hd", O_WRONLY | O_TRUNC);
+	close(fd);
+	ft_strdel(&(g_hd->cmd));
+	ft_strdel(&(g_hd->trigger));
+	free(g_hd);
+	g_hd = NULL;
+}
+
+static void		ft_heredoc_err(int i)
+{
+	if (i == 0)
+		ft_putendl_fd("heredoc: Bad command.", g_fd);
+	if (i == 1)
+	{
+		ft_putendl_fd("heredoc: Bad trigger.", g_fd);
+		ft_strdel(&(g_hd->cmd));
+	}
+	if (i == 2)
+	{
+		ft_putstr_fd("21sh: heredoc: Can't acces to tmp directory.\n", g_fd);
+		exit(0);
+	}
+	free(g_hd);
+	g_hd = NULL;
+}
+
+int				ft_heredoc_new(void)
+{
+	int		i;
+
+	g_hd = (t_hd*)malloc(sizeof(t_hd));
+	i = ft_heredoc_check();
+	while ((g_retval[i] == ' ' || g_retval[i] == '	' || g_retval[i] == '<')
+			&& i >= 0)
+		i--;
+	if (i == 0)
+	{
+		ft_heredoc_err(0);
+		return (0);
+	}
+	g_hd->cmd = ft_strsub(g_retval, 0, i + 1);
+	i = ft_heredoc_check();
+	while (g_retval[i] == ' ' || g_retval[i] == '	' || g_retval[i] == '<')
 		i++;
-	word = ft_strsub(*cmd, i, ft_strlen(*cmd) - i);
-	g_curs.hd = word;
-	g_curs.hd_cmd = ft_strsub(*cmd, 0, ft_cindex(*cmd, '<') - 1);
+	if (g_retval[i] == '\0')
+	{
+		ft_heredoc_err(1);
+		return (0);
+	}
+	g_hd->trigger = ft_strsub(g_retval, i, ft_strlen(g_retval) - i);
 	ft_hist_addtohist(g_retval);
 	ft_strdel(&g_retval);
-	ft_strdel(cmd);
-	ft_putstr("heredoc> ");
 	return (1);
 }
 
-static void		ft_redir_heredoc_joininput(char *cmd)
+int				ft_heredoc_addcontent(char *str)
 {
-	if (ft_strcmp(cmd, g_curs.hd) == 0)
-		return ;
-	if (!g_curs.hd_input)
-		g_curs.hd_input = ft_strdup(cmd);
-	else
-		g_curs.hd_input = ft_joinf("%xs\n%s", g_curs.hd_input, cmd);
-}
+	int		fd;
+	char	ret;
 
-static void		ft_redir_heredoc_exec(void)
-{
-	pid_t	pid;
-	int		fd[2];
-
-	pipe(fd);
-	ft_putendl_fd(g_curs.hd_input, fd[1]);
-	ft_signal_onexec();
-	pid = fork();
-	g_cmd = ms_get_cmd(g_curs.hd_cmd);
-	if (pid > 0)
-		wait(NULL);
-	else
+	ret = '\n';
+	fd = -1;
+	if (!str)
+		str = ft_strdup("");
+	if (access("/tmp/.__21sh_tmp_hd", W_OK) == 0)
 	{
-		close(fd[1]);
-		dup2(fd[0], 0);
-		ms_exec_bin(ms_search_bin(g_env), g_env);
-	}
-	ft_put_name();
-	ft_init();
-}
-
-static int		ft_redir_heredoc_return(char *cmd, int i)
-{
-	if (i == 1)
-	{
+		fd = open("/tmp/.__21sh_tmp_hd", O_APPEND | O_RDWR);
+		if (fd < 0)
+			return (0);
+		write(fd, str, ft_strlen(str));
+		write(fd, &ret, 1);
+		close(fd);
 		ft_strdel(&g_retval);
-		ft_strdel(&cmd);
-		ft_putstr("hededoc> ");
 		return (1);
 	}
-	else
-	{
-		ft_redir_heredoc_exec();
-		ft_strdel(&g_retval);
-		ft_strdel(&cmd);
-		ft_strdel(&g_curs.hd);
-		ft_strdel(&g_curs.hd_cmd);
-		ft_strdel(&g_curs.hd_input);
+	fd = open("/tmp/.__21sh_tmp_hd", O_CREAT | O_WRONLY);
+	if (fd < 0)
 		return (0);
-	}
+	write(fd, &str, ft_strlen(str));
+	close(fd);
+	ft_strdel(&g_retval);
+	return (1);
 }
 
-int				ft_redir_heredoc(void)
+int				ft_heredoc_exec(char *str)
 {
-	int		i;
-	char	*cmd;
+	int		fd;
+	pid_t	pid;
 
-	if (!g_retval)
+	fd = -1;
+	if (ft_strcmp(str, g_hd->trigger) == 0)
 	{
-		ft_putstr("heredoc> ");
-		return (1);
-	}
-	cmd = ft_strdup(g_retval);
-	if (((i = ft_cindex(cmd, '<')) > 0 && cmd[i + 1] == '<')
-			|| g_curs.hd != NULL)
-	{
-		if (!g_curs.hd && ft_redir_heredoc_hd(&cmd) == 1)
-			return (1);
+		pid = fork();
+		if (pid > 0)
+			wait(&pid);
 		else
 		{
-			ft_redir_heredoc_joininput(cmd);
-			if (ft_strcmp(g_retval, g_curs.hd) == 0)
-				return (ft_redir_heredoc_return(cmd, 0));
-			else
-				return (ft_redir_heredoc_return(cmd, 1));
+			if ((fd = open("/tmp/.__21sh_tmp_hd", O_RDONLY)) == -1)
+				ft_heredoc_err(2);
+			dup2(fd, STDIN_FILENO);
+			ms_exec(g_hd->cmd, g_env);
+			close(fd);
+			exit(0);
 		}
+		return (1);
 	}
-	ft_strdel(&cmd);
-	return (0);
+	else
+		return (0);
+}
+
+void			ft_heredoc_proc(void)
+{
+	if (!g_hd && ft_heredoc_new() > 0)			// Init g_hd
+	{
+		ft_strdel(&g_retval);
+		ft_putstr_fd("heredoc> ", g_fd);
+		return ;
+	}
+	if (!g_hd)
+		return ;
+	if ((g_hd && !g_retval) || ft_heredoc_exec(g_retval) == 0)
+	{
+		ft_heredoc_addcontent(g_retval);
+		ft_putstr_fd("heredoc> ", g_fd);
+		ft_strdel(&g_retval);
+		return ;
+	}
+	else
+		ft_heredoc_del();
+	ft_strdel(&g_retval);
 }

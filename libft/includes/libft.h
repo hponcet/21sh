@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 14:56:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/03 23:02:12 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/15 17:13:51 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ char				*ft_strnstr(const char *big, const char *little,
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strtrim(char const *s);
+/*
+*************** Fonctions de gestion de tableaux ****************
+*/
+void				ft_tabdel(char **table);
 /*
 ************** Fonctions de gestion de characters ***************
 */
