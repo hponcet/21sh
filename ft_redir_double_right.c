@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 20:08:37 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/03 20:35:26 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 01:30:09 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,37 @@ void	ft_redir_recurs_double_right(char *cmd)
 	ft_redir_double_right(cmd);
 }
 
+static int		ft_redir_fdout(char *cmd)
+{
+	int		i;
+	int		j;
+	char	*fdout;
+
+	j = 0;
+	i = ft_cindex(cmd, '>');
+	if (i >= 1 && ft_isdigit(cmd[i - 1]) == 0)
+		return (STDOUT_FILENO);
+	while (i >= 1 && cmd[i - 1] >= 48 && cmd[i - 1] <= 57)
+	{
+		i--;
+		j++;
+	}
+	fdout = ft_strsub(cmd, i, j);
+	return (ft_atoi(fdout));
+}
+
 void	ft_redir_double_right(char *cmd)
 {
 	int		i;
 	int		j;
 	int		fd;
+	int		fdout;
 	char	*filename;
-	char	**tmp;
+	char	*tmp;
 
 	j = 0;
 	i = ft_cindex(cmd, '>');
+	fdout = ft_redir_fdout(cmd);
 	filename = (char*)malloc(sizeof(char) * (ft_strlen(cmd) - i));
 	ft_bzero(filename, ft_strlen(cmd) - i);
 	while (cmd[++i])
@@ -63,7 +84,10 @@ void	ft_redir_double_right(char *cmd)
 		ft_putendl("21sh: File creation has fails.");
 		return ;
 	}
-	dup2(fd, STDOUT_FILENO);
-	tmp = ft_strsplit(cmd, '>');
-	g_cmd = ms_get_cmd(tmp[0]);
+	dup2(fd, fdout);
+	i = ft_cindex(cmd, '>') - 1;
+	while (cmd[i] >= 48 && cmd[i] <= 57)
+		i--;
+	tmp = ft_strsub(cmd, 0, i);
+	g_cmd = ms_get_cmd(tmp);
 }
