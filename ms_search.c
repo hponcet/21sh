@@ -6,11 +6,17 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/15 17:16:18 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 15:16:22 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_minishell.h"
+
+static void	ms_search_exit(void)
+{
+	ft_term_reset();
+	exit(0);
+}
 
 char		**ms_search_builtin_env(char *cmd, char **env)
 {
@@ -36,10 +42,7 @@ char		**ms_search_builtin_env(char *cmd, char **env)
 			g_env = ms_builtin_unsetenv(g_env);
 	}
 	else if (ft_strcmp(g_cmd[0], "exit") == 0)
-	{
-		ft_term_reset();
-		exit(0);
-	}
+		ms_search_exit();
 	return (env);
 }
 

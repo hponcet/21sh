@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 17:56:46 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/13 20:31:54 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 15:21:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		ft_redir_recurs_right(char *cmd)
 	char	*ncmd;
 	char	*tmp;
 	char	*join;
-	
+
 	i = ft_cindex(cmd, '>');
 	j = ft_cindex_rev(cmd, '>');
 	while (i != j)

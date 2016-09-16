@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 15:05:16 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/07 02:07:32 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 15:28:01 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ int				*ft_quote_initteub(void)
 	return (teub);
 }
 
+/*
+** tq[0] : '
+** tq[1] : "
+** tq[2] : `
+** tq[3] : {}
+** tq[4] : ()
+*/
+
 static int		*ft_quote_find(char *retval)
 {
 	int			*tq;
@@ -34,19 +42,19 @@ static int		*ft_quote_find(char *retval)
 	i = -1;
 	while (retval[++i])
 	{
-		if (retval[i] == 39 && tq[1] == 0 && tq[2] == 0)  // '
+		if (retval[i] == 39 && tq[1] == 0 && tq[2] == 0)
 			tq[0] = (tq[0] == 0) ? 1 : 0;
-		if (retval[i] == 34 && tq[0] == 0 && tq[2] == 0)  // "
+		if (retval[i] == 34 && tq[0] == 0 && tq[2] == 0)
 			tq[1] = (tq[1] == 0) ? 1 : 0;
-		if (retval[i] == 96)  // `
+		if (retval[i] == 96)
 			tq[2] = (tq[2] == 0) ? 1 : 0;
-		if (retval[i] == '{' && tq[2] == 0 && tq[1] == 0 && tq[0] == 0) // {
+		if (retval[i] == '{' && tq[2] == 0 && tq[1] == 0 && tq[0] == 0)
 			tq[3]++;
-		if (retval[i] == '}' && tq[2] == 0 && tq[1] == 0 && tq[0] == 0) // }
+		if (retval[i] == '}' && tq[2] == 0 && tq[1] == 0 && tq[0] == 0)
 			tq[3]--;
-		if (retval[i] == '(' && tq[2] == 0 && tq[1] == 0 && tq[0] == 0)  // (
+		if (retval[i] == '(' && tq[2] == 0 && tq[1] == 0 && tq[0] == 0)
 			tq[4]++;
-		if (retval[i] == ')' && tq[2] == 0 && tq[1] == 0 && tq[0] == 0)  // )
+		if (retval[i] == ')' && tq[2] == 0 && tq[1] == 0 && tq[0] == 0)
 			tq[4]--;
 		if (retval[i] == 92)
 			i++;
@@ -54,7 +62,7 @@ static int		*ft_quote_find(char *retval)
 	return (tq);
 }
 
-static int			ft_quote_prompt(int *tab_quote)
+static int		ft_quote_prompt(int *tab_quote)
 {
 	if (tab_quote[0] > 0 || tab_quote[1] > 0 || tab_quote[2] > 0 ||
 			tab_quote[3] > 0 || tab_quote[4] > 0)
@@ -96,6 +104,7 @@ int				ft_quote(void)
 		free(tab_quote);
 		return (1);
 	}
+	ft_strdel(&g_retval);
 	g_retval = ft_strdup(ret);
 	g_curs.qt = 0;
 	ft_strdel(&ret);

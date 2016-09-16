@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_signal.c                                        :+:      :+:    :+:   */
+/*   ft_redir_heredoc_tools.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/23 19:48:20 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:42:17 by hponcet          ###   ########.fr       */
+/*   Created: 2016/09/16 15:18:30 by hponcet           #+#    #+#             */
+/*   Updated: 2016/09/16 15:20:02 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_21sh.h"
+#include "ms_minishell.h"
 
-static void	ft_catch_signal(int signo)
+int				ft_heredoc_check(void)
 {
-	if (signo == SIGWINCH)
-		ft_init_window();
-	if (signo == SIGINT)
-		ft_init_prompt();
+	int		i;
+
+	i = ft_cindex_rev(g_retval, '<');
+	if (i > 1 && g_retval[i - 1] == '<')
+		return (i);
+	else
+		return (-1);
 }
 
-void		ft_signal(void)
+void			ft_heredoc_del(void)
 {
-	signal(SIGWINCH, ft_catch_signal);
-	signal(SIGINT, ft_catch_signal);
+	int		fd;
+
+	fd = -1;
+	if (!g_hd)
+		return ;
+	fd = open("/tmp/.__21sh_tmp_hd", O_WRONLY | O_TRUNC);
+	close(fd);
+	ft_strdel(&(g_hd->cmd));
+	ft_strdel(&(g_hd->trigger));
+	free(g_hd);
+	g_hd = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 18:17:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 01:29:10 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 15:24:17 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int		ft_redir_fdin(char *cmd)
 	return (ft_atoi(fdin));
 }
 
-void	ft_redir_fd(char *cmd)
+void			ft_redir_fd(char *cmd)
 {
 	int		fdin;
 	int		fdout;

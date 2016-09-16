@@ -6,37 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/15 16:44:52 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 15:19:59 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_minishell.h"
-
-int				ft_heredoc_check(void)
-{
-	int		i;
-
-	i = ft_cindex_rev(g_retval, '<');
-	if (i > 1 && g_retval[i - 1] == '<')
-		return (i);
-	else
-		return (-1);
-}
-
-void			ft_heredoc_del(void)
-{
-	int		fd;
-
-	fd = -1;
-	if (!g_hd)
-		return ;
-	fd = open("/tmp/.__21sh_tmp_hd", O_WRONLY | O_TRUNC);
-	close(fd);
-	ft_strdel(&(g_hd->cmd));
-	ft_strdel(&(g_hd->trigger));
-	free(g_hd);
-	g_hd = NULL;
-}
 
 static void		ft_heredoc_err(int i)
 {
@@ -142,7 +116,7 @@ int				ft_heredoc_exec(char *str)
 
 void			ft_heredoc_proc(void)
 {
-	if (!g_hd && ft_heredoc_new() > 0)			// Init g_hd
+	if (!g_hd && ft_heredoc_new() > 0)
 	{
 		ft_strdel(&g_retval);
 		ft_putstr_fd("heredoc> ", g_fd);

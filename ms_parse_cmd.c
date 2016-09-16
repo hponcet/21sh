@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/09 14:26:12 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/09 15:00:35 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 15:12:08 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,7 @@ static char		*ft_strsub_quote(char const *s, unsigned int start, size_t len)
 		{
 			c = s[start - 1];
 			while (start < i && s[start] != c)
-			{
-				buf[j] = s[start];
-				start++;
-				j++;
-			}
+				buf[j++] = s[start++];
 			start++;
 		}
 		buf[j] = s[start];
@@ -71,34 +67,31 @@ static char		*ft_strsub_quote(char const *s, unsigned int start, size_t len)
 	return (buf);
 }
 
-char	**ms_parse_cmd(char *buf)
+char			**ms_parse_cmd(char *buf)
 {
 	char	**cmd;
-	int		i;
-	int		j;
-	int		start;
-	int		len;
+	int		t[4];
 
-	i = 0;
-	j = 0;
-	start = 0;
-	len = ms_get_number(buf);
-	if (!(cmd = (char**)malloc(sizeof(char*) * (len + 1))))
+	t[0] = 0;
+	t[1] = 0;
+	t[2] = 0;
+	t[3] = ms_get_number(buf);
+	if (!(cmd = (char**)malloc(sizeof(char*) * (t[3] + 1))))
 		return (NULL);
-	cmd[len] = NULL;
-	while (buf[i] && j < len)
+	cmd[t[3]] = NULL;
+	while (buf[t[0]] && t[1] < t[3])
 	{
-		while (buf[i] == ' ' || buf[i] == '	')
-			i++;
-		start = i;
-		while (buf[i] != ' ' && buf[i] != '	' && buf[i] != '\0')
+		while (buf[t[0]] == ' ' || buf[t[0]] == '	')
+			t[0]++;
+		t[2] = t[0];
+		while (buf[t[0]] != ' ' && buf[t[0]] != '	' && buf[t[0]] != '\0')
 		{
-			if (buf[i] && (buf[i] == 39 || buf[i] == '"' || buf[i] == 92))
-				i += ft_cmd_count_quote(buf, i, buf[i]);
-			i++;
+			if (buf[t[0]] && (buf[t[0]] == 39 || buf[t[0]] == '"'
+						|| buf[t[0]] == 92))
+				t[0] += ft_cmd_count_quote(buf, t[0], buf[t[0]]);
+			t[0]++;
 		}
-		cmd[j] = ft_strsub_quote(buf, start, (i - start));
-		j++;
+		cmd[t[1]++] = ft_strsub_quote(buf, t[2], (t[0] - t[2]));
 	}
 	return (cmd);
 }

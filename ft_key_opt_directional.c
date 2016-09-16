@@ -6,12 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 11:28:50 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/22 17:17:10 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 15:31:45 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
-
 
 static void		ft_key_opt_directional_up(void)
 {
@@ -20,13 +19,13 @@ static void		ft_key_opt_directional_up(void)
 	tmp = g_curs.prev;
 	if (g_curs.curs_pos[1] == g_initpos[1] || !g_curs.next)
 		return ;
-	if (g_curs.curs_pos[0] <= g_initpos[0] && g_curs.curs_pos[1] == 
+	if (g_curs.curs_pos[0] <= g_initpos[0] && g_curs.curs_pos[1] ==
 			g_initpos[1] + 1)
 	{
 		g_curs.prev = g_chain;
 		g_curs.next = g_chain->next;
 		g_curs.id = 1;
-		tputs(tgoto(tgetstr("cm", 0), g_initpos[0] - 1, 
+		tputs(tgoto(tgetstr("cm", 0), g_initpos[0] - 1,
 					g_initpos[1] - 1), 1, ft_char);
 	}
 	else
@@ -36,7 +35,7 @@ static void		ft_key_opt_directional_up(void)
 		g_curs.prev = tmp->prev;
 		g_curs.next = tmp;
 		g_curs.id = tmp->id;
-		tputs(tgoto(tgetstr("cm", 0), tmp->cp[0] - 1, 
+		tputs(tgoto(tgetstr("cm", 0), tmp->cp[0] - 1,
 					tmp->cp[1] - 1), 1, ft_char);
 	}
 }
@@ -64,7 +63,7 @@ static void		ft_key_opt_directional_down(void)
 		g_curs.prev = tmp->prev;
 		g_curs.next = tmp;
 		g_curs.id = tmp->id;
-		tputs(tgoto(tgetstr("cm", 0), 
+		tputs(tgoto(tgetstr("cm", 0),
 					tmp->cp[0] - 1, tmp->cp[1] - 1), 1, ft_char);
 	}
 }

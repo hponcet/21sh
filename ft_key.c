@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/15 17:20:03 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/16 13:58:58 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void		ft_key_group_dir(char *buf)
 		ft_shift_dir_left();
 	if (buf[1] == 91 && (buf[2] == 70 || buf[2] == 72) && g_chain)
 		ft_key_home(buf);
-	if (buf[1] == 0)
-	{
-		ft_term_reset();
-		exit(0);
-	}
+	//if (buf[1] == 0)
+	//{
+		//ft_term_reset();
+		//exit(0);
+	//}
 }
 
 void		ft_key(char *buf)
