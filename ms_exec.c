@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:17:04 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/19 10:22:12 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void		ms_exec(char *cmd, char **env)
 		else
 			ft_ast(cmd);
 	}
-	ft_tabdel(g_cmd);
+	if (g_cmd)
+		ft_tabdel(g_cmd);
 	g_cmd = NULL;
 }
 
