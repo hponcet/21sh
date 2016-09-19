@@ -6,11 +6,18 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 13:58:58 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/19 17:58:14 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
+
+static void ft_key_ctrl_d(void)
+{
+	ft_putendl("exit");
+	ft_term_reset();
+	exit(0);
+}
 
 static void	ft_reinit_hist(void)
 {
@@ -36,17 +43,12 @@ void		ft_key_group_dir(char *buf)
 		ft_shift_dir_left();
 	if (buf[1] == 91 && (buf[2] == 70 || buf[2] == 72) && g_curs.chain)
 		ft_key_home(buf);
-	//if (buf[1] == 0)
-	//{
-		//ft_term_reset();
-		//exit(0);
-	//}
 }
 
 void		ft_key(char *buf)
 {
 	if (buf[0] == 4 && buf[1] == 0)
-		exit(0);
+		ft_key_ctrl_d();
 	if (g_curs.select && (buf[0] != -30 && buf[0] != -61 && buf[3] != 59))
 		ft_reset_select();
 	if (g_curs.hist == 1 && (buf[0] != 27 || buf[1] != 91 ||

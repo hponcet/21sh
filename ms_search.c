@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/19 12:37:38 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/19 15:14:28 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ char		**ms_search_builtin_env(char *cmd, char **env)
 {
 	if (ft_strcmp(g_cmd[0], "env") == 0)
 	{
-		if (g_moddedenv == 0)
-		{
-			env = ms_get_env(g_curs.env);
-		}
 		g_moddedenv += 1;
 		ms_builtin_env(cmd, env);
 	}
