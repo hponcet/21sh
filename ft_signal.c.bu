@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 14:04:35 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/29 00:46:12 by hponcet          ###   ########.fr       */
+/*   Created: 2016/04/23 19:48:20 by hponcet           #+#    #+#             */
+/*   Updated: 2016/09/16 15:42:17 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-int		main(int ac, char **av, char **env)
+static void	ft_catch_signal(int signo)
 {
-	ac = 0;
-	av = NULL;
-	g_curs.env = ms_get_env(env);
-	ft_load();
-	ft_display();
+	if (signo == SIGWINCH)
+		ft_init_window();
+	if (signo == SIGINT)
+		ft_init_prompt();
+}
+
+void		ft_signal(void)
+{
+	signal(SIGWINCH, ft_catch_signal);
+	signal(SIGINT, ft_catch_signal);
 }

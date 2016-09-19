@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 01:27:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/18 13:52:08 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,20 @@ typedef struct		s_curs
 	struct s_chain	*ls;
 	struct s_chain	*next;
 	struct s_chain	*prev;
+	t_hd			*hd;
+	int				fd;
+	char			**env;
+	int				*initpos;
+	t_term			term;
+	t_chain			*chain;
+	char			*tmpchain;
+	char			*copy;
+	t_hist			*history;
+	char			*retval;
+	int				error;
 }					t_curs;
 
-t_hd				*g_hd;
-int					g_fd;
-char				**g_env;
-int					*g_initpos;
 t_curs				g_curs;
-t_term				g_term;
-t_chain				*g_chain;
-char				*g_tmpchain;
-char				*g_copy;
-t_hist				*g_hist;
-char				*g_retval;
-int					g_error;
 
 /*
 ** ft_redir_heredoc.c

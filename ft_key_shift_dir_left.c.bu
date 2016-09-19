@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_key_shift_dir_left.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/11 14:04:35 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/29 00:46:12 by hponcet          ###   ########.fr       */
+/*   Created: 2016/05/22 13:52:45 by hponcet           #+#    #+#             */
+/*   Updated: 2016/05/22 14:14:17 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-int		main(int ac, char **av, char **env)
+void		ft_shift_dir_left(void) 
 {
-	ac = 0;
-	av = NULL;
-	g_curs.env = ms_get_env(env);
-	ft_load();
-	ft_display();
+	return ;
 }
