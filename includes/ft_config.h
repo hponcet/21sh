@@ -6,14 +6,14 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 12:48:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/19 17:58:29 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/20 20:20:31 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MS_CONFIG_H
 # define MS_CONFIG_H
 # include "../libft/includes/ft_colors.h"
-# define __BUFLEN__ 6
+# define __BUFLEN__ 1024
 
 /*
 ** ***************************

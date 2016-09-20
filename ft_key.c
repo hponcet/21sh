@@ -6,18 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/19 17:58:14 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 00:47:53 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
-
-static void ft_key_ctrl_d(void)
-{
-	ft_putendl("exit");
-	ft_term_reset();
-	exit(0);
-}
 
 static void	ft_reinit_hist(void)
 {
@@ -47,23 +40,25 @@ void		ft_key_group_dir(char *buf)
 
 void		ft_key(char *buf)
 {
-	if (buf[0] == 4 && buf[1] == 0)
-		ft_key_ctrl_d();
-	if (g_curs.select && (buf[0] != -30 && buf[0] != -61 && buf[3] != 59))
-		ft_reset_select();
 	if (g_curs.hist == 1 && (buf[0] != 27 || buf[1] != 91 ||
 				(buf[2] != 65 && buf[2] != 66)))
 		ft_reinit_hist();
-	if (buf[0] == -30 || buf[0] == -61)
+	if (g_curs.select && (buf[0] != -30 && buf[0] != -61 && buf[3] != 59))
+		ft_reset_select();
+	if (buf[0] == 10)								/// Enter
+		ft_key_enter();
+	else if (buf[0] == 4 && buf[1] == 0)
+		exit(0);
+	else if (buf[0] == -30 || buf[0] == -61)
 		ft_func_copy(buf);
-	if (ft_isprint(buf[0]) == 1 && buf[1] == 0)			/// alpha
+	else if (ft_isprint(buf[0]) == 1 && buf[1] == 0)			/// alpha
 		ft_chain_addchar(buf[0]);
 	else if (buf[0] == 127 && buf[1] == 0 && g_curs.chain)	/// bs
 		ft_key_bs();
 	else if (buf[0] == 27)					/// directional
 		ft_key_group_dir(buf);
-	else if (buf[0] == 10)								/// Enter
-		ft_key_enter();
+	else
+		ft_cmd_v(buf);
 	if (__DEBUG__ == "Y")
 		ft_debug();
 	ft_cursor_pos();

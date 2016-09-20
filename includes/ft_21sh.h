@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/18 13:52:08 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/20 20:30:29 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,10 @@ void				ft_heredoc_proc(void);
 int					ft_heredoc_exec(char *str);
 int					ft_heredoc_addcontent(char *str);
 
+/*
+** ft_bquote.c
+*/
+void				ft_cmd_v(char *buf);
 /*
 ** ft_bquote.c
 */
