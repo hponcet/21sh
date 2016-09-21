@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:19:59 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 10:26:30 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int				ft_heredoc_addcontent(char *str)
 	fd = open("/tmp/.__21sh_tmp_hd", O_CREAT | O_WRONLY);
 	if (fd < 0)
 		return (0);
-	write(fd, &str, ft_strlen(str));
+	write(fd, str, ft_strlen(str));
 	close(fd);
 	ft_strdel(&g_curs.retval);
 	return (1);

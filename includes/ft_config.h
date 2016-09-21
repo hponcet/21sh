@@ -6,14 +6,25 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 12:48:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/20 20:20:31 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 10:10:47 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MS_CONFIG_H
 # define MS_CONFIG_H
 # include "../libft/includes/ft_colors.h"
-# define __BUFLEN__ 1024
+
+
+
+/*
+** ***************************
+** Buffer length of read loop
+** ***************************
+** This buffer catch all keys entered on the
+** keyboard and the the pasteboard if the Cmd-V
+** is entered.
+*/
+# define __BUFLEN__ 2048
 
 /*
 ** ***************************
@@ -59,16 +70,9 @@
 
 /*
 ** *********************************
-** Activate Graphic Debug Mode [Y/N]
+** Activate graphic Debug Mode [Y/N]
 ** *********************************
 */
-# define __DEBUG__ "Y"
-
-/*
-** ********************************
-** Way to temporary directory
-** ********************************
-*/
-# define __TMP_PATH__ "/tmp"
+# define __DEBUG__ "N"
 
 #endif
