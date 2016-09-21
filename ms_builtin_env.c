@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/11 12:38:07 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/07 20:01:14 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 12:57:36 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ms_builtin_env(char *cmd, char **env)
 {
+	char		**nenv;
+	nenv = NULL;
 	cmd = NULL;
 	ms_del_cmd(0);
 	while (g_cmd && ft_strcmp(g_cmd[0], "env") == 0)
@@ -30,15 +32,31 @@ void	ms_builtin_env(char *cmd, char **env)
 		{
 			if (g_cmd[0][0] == '-')
 				g_cmd[0] = ft_strcut(g_cmd[0], 1);
-			env = ms_builtin_env_opt(env);
+			nenv = ms_get_env(env);
+			nenv = ms_builtin_env_opt(nenv);
 		}
 		if (g_cmd && ft_cindex(g_cmd[0], '=') > -1)
-			env = ms_builtin_setenv(env);
+		{
+			nenv = ms_get_env(env);
+			nenv = ms_builtin_setenv(nenv);
+		}
 	}
-	if (g_cmd)
+	if (g_cmd && (nenv || g_i == 1))
+	{
+		g_i = 0;
+		ms_exec_fork(cmd, nenv);
+	}
+	else if (g_cmd && !nenv)
 		ms_exec_fork(cmd, env);
-	else
+	else if (!g_cmd && (nenv || g_i == 1))
+	{
+		g_i = 0;
+		ms_print_env(nenv);
+	}
+	else if (!g_cmd && !nenv)
 		ms_print_env(env);
+	if (nenv)
+		ft_tabdel(nenv);
 }
 
 char	**ms_builtin_env_opt(char **env)
@@ -53,8 +71,8 @@ char	**ms_builtin_env_opt(char **env)
 				g_cmd = ms_free_tab(g_cmd);
 			else
 				ms_del_cmd(0);
+			env = ms_free_tab(env);
 		}
-		env = ms_free_tab(env);
 		g_i = 1;
 	}
 	else if (g_cmd[0][0] == 'u')

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/19 10:22:12 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:24:41 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		ms_exec_fork(char *cmd, char **env)
 		wait(&pid);
 	else
 	{
-		if (ft_cindex(cmd, '>') > 0 || ft_cindex(cmd, '<') > 0)
+		if (cmd && (ft_cindex(cmd, '>') > 0 || ft_cindex(cmd, '<') > 0))
 			ft_redir(cmd);
 		ms_exec_bin(ms_search_bin(env), env);
 		exit(0);

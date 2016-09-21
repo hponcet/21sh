@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 20:37:25 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/19 15:42:06 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:30:47 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	**ms_builtin_setenv(char **env)
 		if (!env || ms_builtin_srchnrep(ft_strdup(g_cmd[0]), env) > 0)
 			env = ms_builtin_addenv(g_cmd[0], env);
 	ms_del_cmd(0);
-	ft_tabdel(g_curs.env);
+	if (env)
+		ft_tabdel(env);
 	return (env);
 }
 

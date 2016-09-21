@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 13:36:08 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/06 10:47:37 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 12:33:20 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ms_builtin_cd(char **env)
 	}
 	else
 		env = ms_builtin_cd_absolute_path(env);
-	g_cmd = ms_free_tab(g_cmd);
+	//g_cmd = ms_free_tab(g_cmd);
 	return (env);
 }
 
