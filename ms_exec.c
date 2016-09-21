@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/21 11:24:41 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 15:55:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void		ms_exec(char *cmd, char **env)
 		if (g_cmd && g_cmd[0][0] == '.')
 			if (ms_get_point() < 1)
 				return ;
-		ms_exec_fork(cmd, env);
+		if (g_i == 0)
+			ms_exec_fork(cmd, env);
+		g_i = 0;
 	}
 	else
 	{
@@ -64,11 +66,4 @@ void		ms_exec_bin(char *pathbin, char **env)
 		exit(0);
 	execve(pathbin, g_cmd, env);
 	g_cmd = ms_free_tab(g_cmd);
-	if (g_moddedenv > 0)
-	{
-		if (g_i == 0)
-			env = ms_free_tab(env);
-		g_i = 0;
-		g_moddedenv = 0;
-	}
 }

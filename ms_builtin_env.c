@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/11 12:38:07 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/21 12:57:36 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/21 16:11:05 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ void	ms_builtin_env(char *cmd, char **env)
 			nenv = ms_builtin_setenv(nenv);
 		}
 	}
-	if (g_cmd && (nenv || g_i == 1))
+	if (g_cmd && (nenv || g_curs.error == 1))
 	{
-		g_i = 0;
+		g_curs.error = 0;
 		ms_exec_fork(cmd, nenv);
 	}
 	else if (g_cmd && !nenv)
 		ms_exec_fork(cmd, env);
-	else if (!g_cmd && (nenv || g_i == 1))
+	else if (!g_cmd && (nenv || g_curs.error == 1))
 	{
-		g_i = 0;
+		g_curs.error = 0;
 		ms_print_env(nenv);
 	}
 	else if (!g_cmd && !nenv)
@@ -74,6 +74,7 @@ char	**ms_builtin_env_opt(char **env)
 			env = ms_free_tab(env);
 		}
 		g_i = 1;
+		g_curs.error = 1;
 	}
 	else if (g_cmd[0][0] == 'u')
 		env = ms_builtin_env_opt_u(env);
