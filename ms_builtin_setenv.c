@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/09 20:37:25 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/21 16:34:48 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/22 13:43:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ char	**ms_builtin_setenv(char **env)
 {
 	char		*cmd;
 
-	cmd = ft_strdup(g_cmd[0]);
 	if (ft_strcmp(g_cmd[0], "setenv") == 0)
 		ms_del_cmd(0);
+	cmd = ft_strdup(g_cmd[0]);
 	if (!g_cmd || g_cmd[0][0] == '=')
 	{
 		ft_printf("env: setenv : Specify a value [NAME=VALUE]\n");
@@ -45,7 +45,7 @@ int		ms_builtin_srchnrep(char *cmd, char **env)
 		if (ft_strncmp(cmd, env[i], index) == 0)
 		{
 			free(env[i]);
-			env[i] = cmd;
+			env[i] = ft_strdup(cmd);
 			return (0);
 		}
 		i++;

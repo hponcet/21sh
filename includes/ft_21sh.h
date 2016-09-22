@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/20 20:30:29 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/22 15:35:50 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,14 @@ typedef struct		s_curs
 }					t_curs;
 
 t_curs				g_curs;
+
+/*
+** ft_dollar.c
+*/
+char				*ft_get_env_value(char *cmd);
+char				*ft_get_var_value(char *str);
+char				*ft_replace_cmd_var(char *cmd, char *var, char *value);
+char				*ft_dollar(char *str);
 
 /*
 ** ft_redir_heredoc.c
