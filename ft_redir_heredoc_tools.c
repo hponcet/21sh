@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/16 15:18:30 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:20:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 12:52:13 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void			ft_heredoc_del(void)
 	fd = open("/tmp/.__21sh_tmp_hd", O_WRONLY | O_TRUNC);
 	close(fd);
 	ft_strdel(&(g_curs.hd->cmd));
+	ft_strdel(&(g_curs.hd->init_cmd));
 	ft_strdel(&(g_curs.hd->trigger));
 	free(g_curs.hd);
 	g_curs.hd = NULL;

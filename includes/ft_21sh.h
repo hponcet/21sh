@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/22 15:35:50 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 12:54:50 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 typedef struct		s_hd
 {
+	char			*init_cmd;
 	char			*cmd;
 	char			*trigger;
 }					t_hd;
@@ -100,6 +101,10 @@ void				ft_heredoc_del(void);
 void				ft_heredoc_proc(void);
 int					ft_heredoc_exec(char *str);
 int					ft_heredoc_addcontent(char *str);
+int					ft_heredoc_endtrig(char *str);
+char				*ft_heredoc_initcmd(char *str);
+char				*ft_heredoc_cmd(char *str);
+void				ft_heredoc_err(int i);
 
 /*
 ** ft_bquote.c

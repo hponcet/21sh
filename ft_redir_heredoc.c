@@ -6,13 +6,13 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/21 10:26:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 12:54:21 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_minishell.h"
 
-static void		ft_heredoc_err(int i)
+void			ft_heredoc_err(int i)
 {
 	if (i == 0)
 		ft_putendl_fd("heredoc: Bad command.", g_curs.fd);
@@ -28,35 +28,6 @@ static void		ft_heredoc_err(int i)
 	}
 	free(g_curs.hd);
 	g_curs.hd = NULL;
-}
-
-int				ft_heredoc_new(void)
-{
-	int		i;
-
-	g_curs.hd = (t_hd*)malloc(sizeof(t_hd));
-	i = ft_heredoc_check();
-	while ((g_curs.retval[i] == ' ' || g_curs.retval[i] == '	' || g_curs.retval[i] == '<')
-			&& i >= 0)
-		i--;
-	if (i == 0)
-	{
-		ft_heredoc_err(0);
-		return (0);
-	}
-	g_curs.hd->cmd = ft_strsub(g_curs.retval, 0, i + 1);
-	i = ft_heredoc_check();
-	while (g_curs.retval[i] == ' ' || g_curs.retval[i] == '	' || g_curs.retval[i] == '<')
-		i++;
-	if (g_curs.retval[i] == '\0')
-	{
-		ft_heredoc_err(1);
-		return (0);
-	}
-	g_curs.hd->trigger = ft_strsub(g_curs.retval, i, ft_strlen(g_curs.retval) - i);
-	ft_hist_addtohist(g_curs.retval);
-	ft_strdel(&g_curs.retval);
-	return (1);
 }
 
 int				ft_heredoc_addcontent(char *str)
