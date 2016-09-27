@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 02:46:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/08 17:10:13 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:01:17 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,15 @@ void			ft_init_hist(void)
 void			ft_hist_addtohist(char *ncmd)
 {
 	t_hist	*tmp;
+	int		i;
 
+	i = 0;
+	while (ncmd[i])
+	{
+		if (ncmd[i] == '\n')
+			ncmd[i] = ' ';
+		i++;
+	}
 	if (g_curs.history && ft_strcmp(ncmd, g_curs.history->cmd) == 0)
 		return ;
 	tmp = (t_hist*)malloc(sizeof(t_hist));

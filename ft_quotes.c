@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/19 15:05:16 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:28:01 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 18:53:39 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int				ft_quote(void)
 	if (g_curs.tmpchain)
 	{
 		ret = (!g_curs.retval) ? ft_strdup(g_curs.tmpchain) :
-			ft_joinf("%s %s", g_curs.tmpchain, g_curs.retval);
+		ft_joinf("%s\n%s", g_curs.tmpchain, g_curs.retval);
 		ft_strdel(&g_curs.tmpchain);
 	}
 	else

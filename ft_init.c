@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:22:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:39:36 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	ft_init(void)
 	g_curs.initpos[0] = g_curs.curs_pos[0];
 	g_curs.initpos[1] = g_curs.curs_pos[1];
 	ft_signal();
-	ft_strdel(&g_curs.retval);
 }
 
 void	ft_init_window(void)
@@ -67,8 +66,12 @@ void	ft_init_window(void)
 void		ft_init_prompt(void)
 {
 	ft_heredoc_del();
+	g_curs.qt = 0;
+	g_curs.hist = 0;
 	ft_putendl("");
 	ft_put_name();
+	ft_del_chain();
+	ft_strdel(&g_curs.retval);
 	ft_init();
 }
 
