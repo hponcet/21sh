@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 20:08:37 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:43:44 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 15:13:35 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void			ft_redir_double_right(char *cmd)
 	}
 	dup2(t[2], t[3]);
 	t[0] = ft_cindex(cmd, '>') - 1;
-	while (cmd[t[0]] >= 48 && cmd[t[0]] <= 57)
+	while (cmd[t[0]] >= '0' && cmd[t[0]] >= '9')
 		t[0]--;
 	tmp = ft_strsub(cmd, 0, t[0]);
 	g_cmd = ms_get_cmd(tmp);

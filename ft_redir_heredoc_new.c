@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 12:31:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/27 12:55:41 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 13:38:24 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int				ft_heredoc_endtrig(char *str)
 {
-	int		ret;
 	int		i;
 
 	i = ft_heredoc_check();
@@ -26,13 +25,9 @@ int				ft_heredoc_endtrig(char *str)
 		ft_heredoc_err(1);
 		return (0);
 	}
-	ret = 0;
 	while (str[i] && str[i] != ' ' && str[i] != '	')
-	{
 		i++;
-		ret++;
-	}
-	return (ret);
+	return (i);
 }
 
 char			*ft_heredoc_initcmd(char *str)
@@ -73,6 +68,7 @@ int				ft_heredoc_new(void)
 	g_curs.hd = (t_hd*)malloc(sizeof(t_hd));
 	g_curs.hd->init_cmd = ft_heredoc_initcmd(g_curs.retval);
 	g_curs.hd->cmd = ft_heredoc_cmd(g_curs.retval);
+	i = ft_heredoc_check();
 	while (g_curs.retval[i] == ' ' || g_curs.retval[i] == '	'
 			|| g_curs.retval[i] == '<')
 		i++;
@@ -81,7 +77,7 @@ int				ft_heredoc_new(void)
 		ft_heredoc_err(1);
 		return (0);
 	}
-	g_curs.hd->trigger = ft_strsub(g_curs.retval, i, ft_heredoc_endtrig(g_curs.retval));
+	g_curs.hd->trigger = ft_strsub(g_curs.retval, i, ft_heredoc_endtrig(g_curs.retval) - i);
 	ft_hist_addtohist(g_curs.retval);
 	ft_strdel(&g_curs.retval);
 	return (1);

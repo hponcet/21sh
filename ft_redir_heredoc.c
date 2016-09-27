@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/27 12:54:21 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/27 14:04:06 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int				ft_heredoc_addcontent(char *str)
 	if (fd < 0)
 		return (0);
 	write(fd, str, ft_strlen(str));
+	write(fd, &ret, 1);
 	close(fd);
 	ft_strdel(&g_curs.retval);
 	return (1);
@@ -61,24 +62,14 @@ int				ft_heredoc_addcontent(char *str)
 
 int				ft_heredoc_exec(char *str)
 {
-	int		fd;
-	pid_t	pid;
+	char	*cmd;
 
-	fd = -1;
+	cmd = NULL;
 	if (ft_strcmp(str, g_curs.hd->trigger) == 0)
 	{
-		pid = fork();
-		if (pid > 0)
-			wait(&pid);
-		else
-		{
-			if ((fd = open("/tmp/.__21sh_tmp_hd", O_RDONLY)) == -1)
-				ft_heredoc_err(2);
-			dup2(fd, STDIN_FILENO);
-			ms_exec(g_curs.hd->cmd, g_curs.env);
-			close(fd);
-			exit(0);
-		}
+		cmd = ft_joinf("cat /tmp/.__21sh_tmp_hd | %s %s", g_curs.hd->cmd, g_curs.hd->init_cmd);
+		ms_exec(cmd, g_curs.env);
+		ft_strdel(&cmd);
 		return (1);
 	}
 	else
