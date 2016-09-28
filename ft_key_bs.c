@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 01:25:28 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/03 20:51:41 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/28 14:56:22 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static void		ft_key_bs_cursmove(void)
 			ft_str_tc(g_curs.next);
 		else if (g_curs.id == 2 && g_curs.chain)
 			ft_str_tc(g_curs.prev);
+		if (!g_curs.next)
+			tputs(tgoto(tgetstr("cd", 0), 1, 0), 1, ft_char);
 		tputs(tgoto(tgetstr("rc", 0), 0, 0), 1, ft_char);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 09:20:53 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/26 17:30:57 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/28 14:52:07 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void ft_key_del_cursormove(void)
 	{
 		tputs(tgoto(tgetstr("sc", 0), 1, 0), 1, ft_char);
 		tputs(tgoto(tgetstr("dc", 0), 1, 0), 1, ft_char);
+		tputs(tgoto(tgetstr("cd", 0), 1, 0), 1, ft_char);
 		tputs(tgoto(tgetstr("rc", 0), 1, 0), 1, ft_char);
 	}
 }
