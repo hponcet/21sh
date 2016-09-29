@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 12:31:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/27 13:38:24 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/29 16:19:46 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ char			*ft_heredoc_cmd(char *str)
 int				ft_heredoc_new(void)
 {
 	int		i;
+	//int		fd;
 
+	//fd = open("/tmp/.__21sh_tmp_hd", O_CREAT | S_IRWXU);
+	//close(fd);
 	g_curs.hd = (t_hd*)malloc(sizeof(t_hd));
 	g_curs.hd->init_cmd = ft_heredoc_initcmd(g_curs.retval);
 	g_curs.hd->cmd = ft_heredoc_cmd(g_curs.retval);

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/27 14:04:06 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/29 16:22:58 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 void			ft_heredoc_err(int i)
 {
 	if (i == 0)
-		ft_putendl_fd("heredoc: Bad command.", g_curs.fd);
+		ft_putendl_fd("21sh: heredoc: Bad command.", g_curs.fd);
 	if (i == 1)
-	{
-		ft_putendl_fd("heredoc: Bad trigger.", g_curs.fd);
-		ft_strdel(&(g_curs.hd->cmd));
-	}
+		ft_putendl_fd("21sh: heredoc: Bad trigger.", g_curs.fd);
 	if (i == 2)
 	{
-		ft_putstr_fd("21sh: heredoc: Can't acces to tmp directory.\n", g_curs.fd);
+		ft_putendl_fd("21sh: heredoc: Can't acces to /tmp dir.", g_curs.fd);
 		exit(0);
 	}
+	if (i == 3)
+		ft_putendl_fd("21sh: heredoc: Can't access to /tmp dir.", g_curs.fd);
+	ft_strdel(&(g_curs.hd->cmd));
+	ft_strdel(&(g_curs.hd->init_cmd));
 	free(g_curs.hd);
 	g_curs.hd = NULL;
 }
@@ -67,7 +68,10 @@ int				ft_heredoc_exec(char *str)
 	cmd = NULL;
 	if (ft_strcmp(str, g_curs.hd->trigger) == 0)
 	{
-		cmd = ft_joinf("cat /tmp/.__21sh_tmp_hd | %s %s", g_curs.hd->cmd, g_curs.hd->init_cmd);
+		if (g_curs.hd->init_cmd)
+			cmd = ft_joinf("cat /tmp/.__21sh_tmp_hd | %s %s", g_curs.hd->cmd, g_curs.hd->init_cmd);
+		else
+			cmd = ft_joinf("cat /tmp/.__21sh_tmp_hd | %s", g_curs.hd->cmd);
 		ms_exec(cmd, g_curs.env);
 		ft_strdel(&cmd);
 		return (1);
@@ -88,7 +92,8 @@ void			ft_heredoc_proc(void)
 		return ;
 	if ((g_curs.hd && !g_curs.retval) || ft_heredoc_exec(g_curs.retval) == 0)
 	{
-		ft_heredoc_addcontent(g_curs.retval);
+		if (ft_heredoc_addcontent(g_curs.retval) == 0)
+			return ;
 		ft_putstr_fd("heredoc> ", g_curs.fd);
 		ft_strdel(&g_curs.retval);
 		return ;
