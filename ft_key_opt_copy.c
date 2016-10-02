@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 15:47:01 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/18 15:10:06 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/02 17:48:59 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void		ft_func_copy(char *buf)
 {
 
-	if (buf[0] == -30 && buf[1] == -119 && buf[2] == -92 && buf[3] == 0)
+	if (g_curs.select && buf[0] == -30 && buf[1] == -119 &&
+			buf[2] == -92 && buf[3] == 0)
 	{
 		ft_copy();
 		ft_reset_select();
@@ -57,7 +58,7 @@ void		ft_paste(void)
 {
 	int		i;
 
-	if(!g_curs.copy)
+	if (!g_curs.copy)
 		return ;
 	i = 0;
 	if (!g_curs.copy)

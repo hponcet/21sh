@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/20 20:13:10 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/28 13:37:04 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/02 18:38:22 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_cmd_v(char *buf)
 	int		i;
 
 	i = 0;
-	if (buf[5] != 0 && !g_curs.next)
+	if (buf[5] != 0)
 	{
 		while (buf[i] != 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/21 20:50:56 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/22 17:56:52 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/02 18:48:37 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void		ft_shift_dir_right(void)
 {
 	if (!g_curs.chain || !g_curs.next || g_curs.id > g_curs.nb_chr)
 		return ;
+	ft_init_pos();
 	if (g_curs.id == 2)
 	{
 		g_curs.next->sel = (g_curs.next->sel == 0) ? 1 : 0;
@@ -39,9 +40,11 @@ void		ft_shift_dir_right(void)
 		if (g_curs.select == NULL)
 			g_curs.select = g_curs.prev;
 	}
-	tputs(tgoto(tgetstr("cm", 0), g_curs.select->cp[0] - 1, g_curs.select->cp[1] - 1), 1, ft_char);
+	tputs(tgoto(tgetstr("cm", 0), g_curs.select->cp[0] - 1,
+				g_curs.select->cp[1] - 1), 1, ft_char);
 	ft_str_tc(g_curs.select);
-	tputs(tgoto(tgetstr("cm", 0), g_curs.prev->cp[0] - 1, g_curs.prev->cp[1]) - 1, 1, ft_char);
+	tputs(tgoto(tgetstr("cm", 0), g_curs.prev->cp[0] - 1,
+				g_curs.prev->cp[1]) - 1, 1, ft_char);
 	if (g_curs.id > g_curs.nb_chr)
 		g_curs.next = NULL;
 }
@@ -50,6 +53,7 @@ void		ft_reset_select(void)
 {
 	t_chain		*tmp;
 
+	ft_init_pos();
 	tmp = g_curs.chain;
 	while (tmp)
 	{
