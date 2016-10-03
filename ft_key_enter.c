@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 09:09:32 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/15 16:31:26 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/03 15:49:02 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_key_enter(void)
 {
+	g_curs.error = 0;
 	tcsetattr(3, TCSANOW, &(g_curs.term.init));
 	ft_putendl_fd("", g_curs.fd);
 	if (!g_curs.retval && g_curs.qt == 0 && g_curs.hd == NULL)

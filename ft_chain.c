@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 06:13:38 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/28 14:42:49 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/03 18:34:41 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void			ft_chain_firstchar(int c)
 	g_curs.chain = new;
 	g_curs.id += 1;
 	ft_count_chain();
-	ft_str_tc(new);
+	ft_char_tc(new);
 	ft_str_tc(g_curs.next);
 	ft_count_chain();
 }

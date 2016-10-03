@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:04:19 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/15 19:20:35 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/03 16:12:32 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_put_name(void)
 	prompt = ms_shell_name();
 	ft_putstr_fd(prompt, g_curs.fd);
 	free(prompt);
+	tputs(tgoto(tgetstr("cd", 0), 1, 0), 1, ft_char);
 }
 
 char	*ms_shell_name(void)

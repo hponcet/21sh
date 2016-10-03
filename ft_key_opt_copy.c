@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/22 15:47:01 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/02 17:48:59 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/03 15:38:37 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void		ft_paste(void)
 	if (!g_curs.copy)
 		return ;
 	i = 0;
-	if (!g_curs.copy)
-		return ;
 	while (g_curs.copy[i])
 	{
 		ft_chain_addchar(g_curs.copy[i]);

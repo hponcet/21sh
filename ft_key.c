@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/29 15:19:11 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/03 15:39:52 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void		ft_key(char *buf)
 		ft_cmd_v(buf);
 	if (__DEBUG__ == "Y")
 		ft_debug();
+	if (!g_curs.chain)
+		ft_strdel(&g_curs.retval);
 	ft_cursor_pos();
 	ft_count_chain();
 	ft_init_pos();

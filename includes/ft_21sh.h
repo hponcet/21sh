@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/02 18:38:44 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/03 17:58:19 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct		s_curs
 	size_t			nb_chr;
 	size_t			id;
 	struct s_chain	*select;
-	struct s_chain	*ls;
+	struct s_chain	*ls;	// LAST CHAR
 	struct s_chain	*next;
 	struct s_chain	*prev;
 	t_hd			*hd;
