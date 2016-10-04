@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 09:20:53 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/28 14:52:07 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 13:25:35 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_key_del_firstchar(void)
 	g_curs.prev = g_curs.chain;
 }
 
-static void ft_key_del_cursormove(void)
+static void	ft_key_del_cursormove(void)
 {
 	if (g_curs.next && g_curs.id != 1)
 	{

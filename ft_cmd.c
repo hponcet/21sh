@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 10:55:44 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/22 17:50:10 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 14:02:58 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_cmd(char *enter)
 
 	if (ft_cindex(enter, '$') >= 0)
 		enter = ft_dollar(enter);
-	enter = ft_bquote(enter);
 	cmd = ft_cmd_split(enter);
 	i = 0;
 	while (cmd[i])

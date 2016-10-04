@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 17:12:16 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/18 08:51:49 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 13:26:17 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_key_directional(const char *buf)
 {
-	if (buf[2] == 65)		/// Up
+	if (buf[2] == 65)
 		ft_key_up();
-	else if (buf[2] == 66)	/// down
+	else if (buf[2] == 66)
 		ft_key_down();
-	else if (buf[2] == 67)	/// Right
+	else if (buf[2] == 67)
 		ft_key_right();
-	else if (buf[2] == 68)	/// Left
+	else if (buf[2] == 68)
 		ft_key_left();
 }
 
@@ -34,7 +34,8 @@ void	ft_key_left(void)
 		g_curs.next = g_curs.prev->next;
 		g_curs.id -= 1;
 		if (g_curs.curs_pos[0] == 1)
-			tputs(tgoto(tgetstr("cm", 0), g_curs.ws[0], g_curs.curs_pos[1] - 2), 1, ft_char);
+			tputs(tgoto(tgetstr("cm", 0), g_curs.ws[0],
+						g_curs.curs_pos[1] - 2), 1, ft_char);
 		else
 			tputs(tgoto(tgetstr("le", 0), 1, 0), 1, ft_char);
 	}
@@ -62,4 +63,3 @@ void	ft_key_right(void)
 	}
 	ft_cursor_pos();
 }
-

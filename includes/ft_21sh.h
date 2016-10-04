@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/03 17:58:19 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 14:02:28 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,13 @@ char				*ft_heredoc_cmd(char *str);
 void				ft_heredoc_err(int i);
 
 /*
-** ft_bquote.c
+** ft_getfd.c.c
+*/
+void				get_fd(void);
+/*
+** ft_cmd_v.c
 */
 void				ft_cmd_v(char *buf);
-/*
-** ft_bquote.c
-*/
-char				*ft_bquote(char *cmd);
 
 /*
 ** ft_redir_fd.c
@@ -271,7 +271,7 @@ void				ft_shift_dir_left(void);
 /*
 ** ft_key_enter.c
 */
-void				ft_key_enter(void);
+int					ft_key_enter(void);
 
 /*
 ** ft_key_bs.c
@@ -305,6 +305,7 @@ void				ft_cut(void);
 ** ft_debug.c
 */
 void				ft_debug(void);
+void				ft_debug_head(void);
 
 #endif
 

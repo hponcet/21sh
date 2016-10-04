@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/29 16:22:58 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 12:38:55 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int				ft_heredoc_addcontent(char *str)
 		write(fd, str, ft_strlen(str));
 		write(fd, &ret, 1);
 		close(fd);
-		ft_strdel(&g_curs.retval);
 		return (1);
 	}
 	fd = open("/tmp/.__21sh_tmp_hd", O_CREAT | O_WRONLY);
@@ -57,7 +56,6 @@ int				ft_heredoc_addcontent(char *str)
 	write(fd, str, ft_strlen(str));
 	write(fd, &ret, 1);
 	close(fd);
-	ft_strdel(&g_curs.retval);
 	return (1);
 }
 
@@ -69,7 +67,8 @@ int				ft_heredoc_exec(char *str)
 	if (ft_strcmp(str, g_curs.hd->trigger) == 0)
 	{
 		if (g_curs.hd->init_cmd)
-			cmd = ft_joinf("cat /tmp/.__21sh_tmp_hd | %s %s", g_curs.hd->cmd, g_curs.hd->init_cmd);
+			cmd = ft_joinf("cat /tmp/.__21sh_tmp_hd | %s %s",
+					g_curs.hd->cmd, g_curs.hd->init_cmd);
 		else
 			cmd = ft_joinf("cat /tmp/.__21sh_tmp_hd | %s", g_curs.hd->cmd);
 		ms_exec(cmd, g_curs.env);

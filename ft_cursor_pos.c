@@ -6,30 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 18:07:36 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/06 12:31:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 13:43:25 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
-
-void		get_fd(void)
-{
-	char	*ttypath;
-
-	ttypath = ttyname(3);
-	if (!ttypath)
-		ttypath = ttyname(1);
-	if (!ttypath)
-		ttypath = ttyname(0);
-	if (!ttypath)
-		ttypath = ttyname(2);
-	if (!ttypath)
-		return ;
-	g_curs.fd = open(ttypath, O_RDWR | O_NOCTTY);
-	free(ttypath);
-	if (g_curs.fd == -1)
-		return ;
-}
 
 static int				write_data(const char *data, const size_t len)
 {
@@ -91,7 +72,7 @@ static int				ft_curs_pos_parse(unsigned char *result)
 	if (result[++i] != '[')
 		return (0);
 	g_curs.curs_pos[1] = 0;
-	while (result[++i] >= '0' && result[i] <= '9') 
+	while (result[++i] >= '0' && result[i] <= '9')
 		g_curs.curs_pos[1] = 10 * g_curs.curs_pos[1] + result[i] - '0';
 	if (result[i] != ';')
 		return (0);

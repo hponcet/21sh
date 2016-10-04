@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 01:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/02 20:27:40 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 14:05:46 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void		ft_ast(char *cmd)
 
 void		ft_pipe(char *cmd1, char *cmd2)
 {
-	int pipefd[2];
-	pid_t pid;
+	int		pipefd[2];
+	pid_t	pid;
 
 	pipe(pipefd);
 	pid = fork();

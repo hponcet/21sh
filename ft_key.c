@@ -6,13 +6,13 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/03 15:39:52 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 13:37:19 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-static void ft_key_ctrl_d(void)
+static void	ft_key_ctrl_d(void)
 {
 	if (g_curs.hd)
 	{
@@ -41,18 +41,33 @@ static void	ft_reinit_hist(void)
 
 void		ft_key_group_dir(char *buf)
 {
-	if (buf[1] == 91 && buf[2] == 51 && buf[3] == 126 && buf[4] == 0 && g_curs.chain)
+	if (buf[1] == 91 && buf[2] == 51 && buf[3] == 126 &&
+			buf[4] == 0 && g_curs.chain)
 		ft_key_del();
 	if (buf[1] == 91 && buf[2] >= 65 && buf[2] <= 68 && buf[3] == 0)
 		ft_key_directional(buf);
-	if (buf[1] == 27 && buf[2] == 91 && buf[3] >= 65 && buf[3] <= 68 && g_curs.chain)
+	if (buf[1] == 27 && buf[2] == 91 && buf[3] >= 65 &&
+			buf[3] <= 68 && g_curs.chain)
 		ft_key_opt_directional(buf);
-	if (buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[5] == 67 && g_curs.chain)
+	if (buf[1] == 91 && buf[2] == 49 && buf[3] == 59 &&
+			buf[5] == 67 && g_curs.chain)
 		ft_shift_dir_right();
-	if (buf[1] == 91 && buf[2] == 49 && buf[3] == 59 && buf[5] == 68 && g_curs.chain)
+	if (buf[1] == 91 && buf[2] == 49 && buf[3] == 59 &&
+			buf[5] == 68 && g_curs.chain)
 		ft_shift_dir_left();
 	if (buf[1] == 91 && (buf[2] == 70 || buf[2] == 72) && g_curs.chain)
 		ft_key_home(buf);
+}
+
+static void	ft_key_norm(void)
+{
+	if (__DEBUG__ == "Y")
+		ft_debug();
+	if (!g_curs.chain)
+		ft_strdel(&g_curs.retval);
+	ft_cursor_pos();
+	ft_count_chain();
+	ft_init_pos();
 }
 
 void		ft_key(char *buf)
@@ -62,25 +77,23 @@ void		ft_key(char *buf)
 		ft_reinit_hist();
 	if (g_curs.select && (buf[0] != -30 && buf[0] != -61 && buf[3] != 59))
 		ft_reset_select();
-	if (buf[0] == 10)								/// Enter
-		ft_key_enter();
+	if (buf[0] == 10)
+	{
+		if (ft_key_enter() == 1)
+			ft_put_name();
+		ft_init();
+	}
 	else if (buf[0] == 4 && buf[1] == 0)
 		ft_key_ctrl_d();
 	else if (buf[0] == -30 || buf[0] == -61)
 		ft_func_copy(buf);
-	else if (ft_isprint(buf[0]) == 1 && buf[1] == 0)			/// alpha
+	else if (ft_isprint(buf[0]) == 1 && buf[1] == 0)
 		ft_chain_addchar(buf[0]);
-	else if (buf[0] == 127 && buf[1] == 0 && g_curs.chain)	/// bs
+	else if (buf[0] == 127 && buf[1] == 0 && g_curs.chain)
 		ft_key_bs();
-	else if (buf[0] == 27)					/// directional
+	else if (buf[0] == 27)
 		ft_key_group_dir(buf);
 	else
 		ft_cmd_v(buf);
-	if (__DEBUG__ == "Y")
-		ft_debug();
-	if (!g_curs.chain)
-		ft_strdel(&g_curs.retval);
-	ft_cursor_pos();
-	ft_count_chain();
-	ft_init_pos();
+	ft_key_norm();
 }

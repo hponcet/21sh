@@ -6,18 +6,18 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 18:18:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/02 18:38:40 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 14:04:24 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-int		ft_char(int i)
+int			ft_char(int i)
 {
 	return (write(g_curs.fd, &i, 1));
 }
 
-int		ft_char_tc(t_chain *chr)
+int			ft_char_tc(t_chain *chr)
 {
 	int			v;
 
@@ -27,7 +27,8 @@ int		ft_char_tc(t_chain *chr)
 	{
 		g_curs.error = 1;
 		tputs(tgoto(tgetstr("sf", 0), 0, v + 1), 1, ft_char);
-		if (g_curs.curs_pos[0] == g_curs.ws[0] && g_curs.curs_pos[1] == g_curs.ws[1])
+		if (g_curs.curs_pos[0] == g_curs.ws[0] &&
+				g_curs.curs_pos[1] == g_curs.ws[1])
 		{
 			g_curs.initpos[1] -= 1;
 			g_curs.curs_pos[1] -= 1;
@@ -57,7 +58,7 @@ static void	ft_cursor_replace(void)
 		tputs(tgoto(tgetstr("cm", 0), h, v - 1), 1, ft_char);
 }
 
-int		ft_str_tc(t_chain *chr)
+int			ft_str_tc(t_chain *chr)
 {
 	t_chain		*tmp;
 

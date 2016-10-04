@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 07:52:25 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/15 17:40:32 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 14:05:10 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void			ft_init_pos(void)
 		if (tmp->next)
 			tmp = tmp->next;
 		else
-			break;
+			break ;
 	}
 	g_curs.ls = tmp;
 }
@@ -72,7 +72,7 @@ void			ft_find_word(void)
 	while (tmp)
 	{
 		if (tmp->next && (tmp->c == ' ' || tmp->c == '	') &&
-				tmp->next->c != ' ' && tmp->next->c != '	' )
+				tmp->next->c != ' ' && tmp->next->c != '	')
 			tmp->next->word = 1;
 		tmp = tmp->next;
 	}

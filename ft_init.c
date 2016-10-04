@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/29 15:42:13 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 13:40:57 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_init_window(void)
 	ft_window_size();
 }
 
-void		ft_init_prompt(void)
+void	ft_init_prompt(void)
 {
 	ft_heredoc_del();
 	g_curs.qt = 0;
@@ -75,5 +75,3 @@ void		ft_init_prompt(void)
 	ft_strdel(&g_curs.retval);
 	ft_init();
 }
-
-

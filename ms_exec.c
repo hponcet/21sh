@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/21 15:55:16 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 12:34:50 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ void		ms_exec(char *cmd, char **env)
 		env = ms_builtin_cd(env);
 		if (g_cmd)
 			env = ms_search_builtin_env(cmd, env);
-		if (g_cmd && g_cmd[0][0] == '.')
-			if (ms_get_point() < 1)
-				return ;
+		if (g_cmd && g_cmd[0][0] == '.' && ms_get_point() < 1)
+			return ;
 		if (g_i == 0)
 			ms_exec_fork(cmd, env);
 		g_i = 0;

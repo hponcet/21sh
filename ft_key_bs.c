@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 01:25:28 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/28 14:56:22 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 13:38:11 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ static void		ft_key_bs_cursmove(void)
 {
 	if (g_curs.curs_pos[0] == 1)
 	{
-		tputs(tgoto(tgetstr("cm", 0), g_curs.ws[0], g_curs.curs_pos[1] - 2), 1, ft_char);
+		tputs(tgoto(tgetstr("cm", 0), g_curs.ws[0],
+					g_curs.curs_pos[1] - 2), 1, ft_char);
 		tputs(tgoto(tgetstr("dc", 0), 1, 0), 1, ft_char);
 		if (g_curs.next)
 			ft_str_tc(g_curs.next);
-		tputs(tgoto(tgetstr("cm", 0), g_curs.ws[0], g_curs.curs_pos[1] - 2), 1, ft_char);
+		tputs(tgoto(tgetstr("cm", 0), g_curs.ws[0],
+					g_curs.curs_pos[1] - 2), 1, ft_char);
 	}
 	else
 	{

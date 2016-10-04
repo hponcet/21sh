@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/18 08:52:16 by hponcet           #+#    #+#             */
-/*   Updated: 2016/06/08 16:27:25 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 13:35:23 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_key_down(void)
 {
 	if (!g_curs.history || g_curs.hist == 0)
 		return ;
-	tputs(tgoto(tgetstr("cm", 0), g_curs.initpos[0] - 1, 
+	tputs(tgoto(tgetstr("cm", 0), g_curs.initpos[0] - 1,
 				g_curs.initpos[1] - 1), 1, ft_char);
 	tputs(tgoto(tgetstr("cd", 0), 1, 0), 1, ft_char);
 	if (g_curs.hist == 1 && !g_curs.history->next)

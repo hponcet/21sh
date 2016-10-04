@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/03 20:08:37 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/27 15:13:35 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 12:48:27 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			ft_redir_recurs_double_right(char *cmd)
 	char	*ncmd;
 	char	*tmp;
 	char	*join;
-	
+
 	i = ft_cindex(cmd, '>');
 	j = ft_cindex_rev(cmd, '>') - 1;
 	while (i != j)
@@ -62,13 +62,11 @@ void			ft_redir_double_right(char *cmd)
 {
 	int		t[4];
 	char	*filename;
-	char	*tmp;
 
 	t[1] = 0;
 	t[0] = ft_cindex(cmd, '>');
 	t[3] = ft_redir_fdout(cmd);
-	filename = (char*)malloc(sizeof(char) * (ft_strlen(cmd) - t[0]));
-	ft_bzero(filename, ft_strlen(cmd) - t[0]);
+	filename = ft_strnew(ft_strlen(cmd) - t[0]);
 	while (cmd[++t[0]])
 	{
 		if (cmd[t[0]] == ' ' || cmd[t[0]] == '	' || cmd[t[0]] == '>')
@@ -77,14 +75,12 @@ void			ft_redir_double_right(char *cmd)
 		t[1]++;
 	}
 	if ((t[2] = open(filename, O_CREAT | O_WRONLY | O_APPEND, 0644)) == -1)
-	{
-		ft_putendl("21sh: File creation has fails.");
-		return ;
-	}
+		return (ft_putendl("21sh: File creation has fails."));
 	dup2(t[2], t[3]);
 	t[0] = ft_cindex(cmd, '>') - 1;
 	while (cmd[t[0]] >= '0' && cmd[t[0]] >= '9')
 		t[0]--;
-	tmp = ft_strsub(cmd, 0, t[0]);
-	g_cmd = ms_get_cmd(tmp);
+	ft_strdel(&filename);
+	filename = ft_strsub(cmd, 0, t[0]);
+	g_cmd = ms_get_cmd(filename);
 }

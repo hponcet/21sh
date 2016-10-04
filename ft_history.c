@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 02:46:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/27 19:01:17 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 13:39:03 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void		ft_hist_makechain(char *homepath)
 	while (get_next_line(fd, &buf) > 0)
 	{
 		new = (t_hist*)malloc(sizeof(t_hist));
-		new->next = tmp;;
+		new->next = tmp;
 		if (tmp)
 			tmp->prev = new;
 		new->prev = NULL;
@@ -111,7 +111,8 @@ void			ft_histtochain(void)
 	i = 0;
 	if (g_curs.chain)
 		ft_del_chain();
-	tputs(tgoto(tgetstr("cm", 0), g_curs.initpos[0] - 1, g_curs.initpos[1] - 1), 1, ft_char);
+	tputs(tgoto(tgetstr("cm", 0), g_curs.initpos[0] - 1,
+				g_curs.initpos[1] - 1), 1, ft_char);
 	tputs(tgoto(tgetstr("cd", 0), 1, 0), 1, ft_char);
 	g_curs.id = 1;
 	g_curs.prev = NULL;

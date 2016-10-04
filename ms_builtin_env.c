@@ -6,17 +6,50 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/11 12:38:07 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/26 16:56:29 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 12:32:54 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ms_minishell.h"
 
-void	ms_builtin_env(char *cmd, char **env)
+static char	**ret_nenv(char **env)
+{
+	char	**nenv;
+
+	nenv = ms_get_env(env);
+	if (g_cmd[0][0] == '-')
+		g_cmd[0] = ft_strcut(g_cmd[0], 1);
+	while (g_cmd && (ft_cindex(g_cmd[0], '=') > -1 ||
+				g_cmd[0][0] == 'i' || g_cmd[0][0] == 'u'))
+	{
+		if (g_cmd[0][0] == 'i' || g_cmd[0][0] == 'u')
+			nenv = ms_builtin_env_opt(nenv);
+		if (g_cmd && ft_cindex(g_cmd[0], '=') > -1)
+			nenv = ms_builtin_setenv(nenv);
+	}
+	return (nenv);
+}
+
+static char	**exec_nenv(char *cmd, char **nenv)
+{
+	g_curs.error = 0;
+	if (ft_strncmp(g_cmd[0], "env", 3) == 0 ||
+			ft_strncmp(g_cmd[0], "cd", 2) == 0)
+		nenv = ms_search_builtin_env(cmd, nenv);
+	else if (g_cmd && nenv)
+	{
+		ms_exec_fork(NULL, nenv);
+		ms_del_cmd(0);
+	}
+	return (nenv);
+}
+
+void		ms_builtin_env(char *cmd, char **env)
 {
 	char		**nenv;
-	nenv = NULL;
+
 	cmd = NULL;
+	nenv = NULL;
 	ms_del_cmd(0);
 	while (g_cmd && ft_strcmp(g_cmd[0], "env") == 0)
 		ms_del_cmd(0);
@@ -25,31 +58,10 @@ void	ms_builtin_env(char *cmd, char **env)
 		ms_print_env(env);
 		return ;
 	}
-	nenv = ms_get_env(env);
 	if (g_cmd[0][0] == '-' || ft_cindex(g_cmd[0], '=') > -1)
-	{
-		if (g_cmd[0][0] == '-')
-			g_cmd[0] = ft_strcut(g_cmd[0], 1);
-		while (g_cmd && (ft_cindex(g_cmd[0], '=') > -1 ||
-				g_cmd[0][0] == 'i' || g_cmd[0][0] == 'u'))
-		{
-			if (g_cmd[0][0] == 'i' || g_cmd[0][0] == 'u')
-				nenv = ms_builtin_env_opt(nenv);
-			if (g_cmd && ft_cindex(g_cmd[0], '=') > -1)
-				nenv = ms_builtin_setenv(nenv);
-		}
-	}
+		nenv = ret_nenv(env);
 	if (g_cmd && (nenv || g_curs.error == 1))
-	{
-		g_curs.error = 0;
-		if (ft_strncmp(g_cmd[0], "env", 3) == 0 || ft_strncmp(g_cmd[0], "cd", 2) == 0)
-			nenv = ms_search_builtin_env(cmd, nenv);
-		else if (g_cmd && nenv)
-		{
-			ms_exec_fork(cmd, nenv);
-			ms_del_cmd(0);
-		}
-	}
+		nenv = exec_nenv(cmd, nenv);
 	else if (!g_cmd && (nenv || g_curs.error == 1))
 	{
 		g_curs.error = 0;
@@ -61,7 +73,7 @@ void	ms_builtin_env(char *cmd, char **env)
 		ft_tabdel(nenv);
 }
 
-char	**ms_builtin_env_opt(char **env)
+char		**ms_builtin_env_opt(char **env)
 {
 	if (g_cmd[0][0] == 'i')
 	{
@@ -78,7 +90,7 @@ char	**ms_builtin_env_opt(char **env)
 		g_i = 1;
 		g_curs.error = 1;
 	}
-	else if (g_cmd[0][0] == 'u')
+	else if (env && g_cmd[0][0] == 'u')
 		env = ms_builtin_env_opt_u(env);
 	else
 	{
@@ -90,8 +102,10 @@ char	**ms_builtin_env_opt(char **env)
 	return (env);
 }
 
-char	**ms_builtin_env_opt_u(char **env)
+char		**ms_builtin_env_opt_u(char **env)
 {
+	if (!env)
+		return (NULL);
 	if (g_cmd[0][1] != '\0')
 	{
 		g_cmd[0] = ft_strcut(g_cmd[0], 1);
