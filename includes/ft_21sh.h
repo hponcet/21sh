@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 14:02:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 15:44:32 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct		s_curs
 	size_t			nb_chr;
 	size_t			id;
 	struct s_chain	*select;
-	struct s_chain	*ls;	// LAST CHAR
+	struct s_chain	*ls;
 	struct s_chain	*next;
 	struct s_chain	*prev;
 	t_hd			*hd;
@@ -309,22 +309,21 @@ void				ft_debug_head(void);
 
 #endif
 
-
 /*
-   me      Fin de tous les modes tels que so, us, mb, md et mr
-   us      Début de soulignement
-   md      Début de mode gras
-   mr      Début de mode inverse
-   sc		save pos curs
-   rc		restor pos curs
-   cm		cursor move
-   up		^
-   do		v
-   nd		>
-   le		<
-   cb      Effacer depuis le début de la ligne jusqu'au curseur
-   dc      Effacer 1 caractères
-   ce	   Effacer jusqu'a la fin de la ligne
-   do      Descendre le curseur d'une ligne
-   ll	   Déplacer le curseur au coin inférieur gauche
+**   me    Fin de tous les modes tels que so, us, mb, md et mr
+**   us    Début de soulignement
+**   md    Début de mode gras
+**   mr    Début de mode inverse
+**   sc	   save pos curs
+**   rc    restor pos curs
+**   cm	   cursor move
+**   up	   ^
+**   do	   v
+**   nd	   >
+**   le	   <
+**   cb    Effacer depuis le début de la ligne jusqu'au curseur
+**   dc    Effacer 1 caractères
+**   ce	   Effacer jusqu'a la fin de la ligne
+**   do    Descendre le curseur d'une ligne
+**   ll	   Déplacer le curseur au coin inférieur gauche
 */

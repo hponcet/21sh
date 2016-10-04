@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_config.h                                        :+:      :+:    :+:   */
+/*   ft_config.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 12:48:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/02 17:57:03 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 15:47:55 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MS_CONFIG_H
-# define MS_CONFIG_H
+#ifndef FT_CONFIG_H
+# define FT_CONFIG_H
 # include "../libft/includes/ft_colors.h"
-
-
 
 /*
 ** ***************************
@@ -73,6 +71,6 @@
 ** Activate graphic Debug Mode [Y/N]
 ** *********************************
 */
-# define __DEBUG__ "Y"
+# define __DEBUG__ "N"
 
 #endif
