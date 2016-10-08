@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cmd.c                                           :+:      :+:    :+:   */
+/*   ft_strsub_quote.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/30 10:55:44 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/08 01:50:53 by hponcet          ###   ########.fr       */
+/*   Created: 2016/10/08 00:52:16 by hponcet           #+#    #+#             */
+/*   Updated: 2016/10/08 01:12:25 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_minishell.h"
+#include "ft_21sh.h"
 
-void	ft_cmd(char *enter)
+char	*ft_join_tab(char **tb)
 {
-	char	**cmd;
+	char	*ret;
 	int		i;
+	int		j;
+	int		totlen;
 
-	if (ft_cindex(enter, '$') >= 0)
-		enter = ft_dollar(enter);
-	cmd = ft_cmd_split(enter);
 	i = 0;
-	while (cmd[i])
+	j = 0;
+	totlen = 0;
+	while (tb[i])
+		totlen += ft_strlen(tb[i++]);
+	ret = ft_strnew(totlen + i);
+	i = 0;
+	totlen = 0;
+	while (tb[i])
 	{
-		g_cmd = ms_parse_cmd(cmd[i]);
-		ms_exec(cmd[i], g_curs.env);
-		g_moddedenv = 0;
+		while (tb[i][j])
+			ret[totlen++] = tb[i][j++];
+		if (tb[i + 1])
+			ret[totlen++] = ' ';
 		i++;
+		j = 0;
 	}
-	ms_free_tab(cmd);
+	return (ret);
 }

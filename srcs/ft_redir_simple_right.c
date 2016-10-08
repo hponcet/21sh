@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 17:56:46 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/27 15:21:46 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/08 02:03:47 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*ft_redir_right_getfilename(char *cmd)
 	int		i;
 	int		j;
 
-	i = ft_cindex(cmd, '>');
+	i = ft_cindex_noquote(cmd, '>');
 	j = 0;
 	filename = ft_strnew(ft_strlen(cmd) - i);
 	ft_bzero(filename, ft_strlen(cmd) - i);
@@ -39,7 +39,7 @@ static int	ft_redir_right_getfd(char *cmd)
 	char	fd[256];
 
 	ft_bzero(fd, 256);
-	i = ft_cindex(cmd, '>') - 1;
+	i = ft_cindex_noquote(cmd, '>') - 1;
 	j = 0;
 	while (ft_isdigit(cmd[i]) == 1)
 	{
@@ -59,8 +59,8 @@ void		ft_redir_recurs_right(char *cmd)
 	char	*tmp;
 	char	*join;
 
-	i = ft_cindex(cmd, '>');
-	j = ft_cindex_rev(cmd, '>');
+	i = ft_cindex_noquote(cmd, '>');
+	j = ft_cindex_noquote_rev(cmd, '>');
 	while (i != j)
 	{
 		ncmd = ft_strsub(cmd, 0, i + 1);
@@ -74,8 +74,8 @@ void		ft_redir_recurs_right(char *cmd)
 		tmp = cmd;
 		cmd = ft_strsub(cmd, 0, j);
 		ft_strdel(&tmp);
-		i = ft_cindex(cmd, '>');
-		j = ft_cindex_rev(cmd, '>');
+		i = ft_cindex_noquote(cmd, '>');
+		j = ft_cindex_noquote_rev(cmd, '>');
 	}
 	ft_redir_right(cmd);
 }
@@ -89,7 +89,7 @@ void		ft_redir_right(char *cmd)
 	int		i;
 
 	fdout = 1;
-	i = ft_cindex(cmd, '>') - 1;
+	i = ft_cindex_noquote(cmd, '>') - 1;
 	filename = ft_redir_right_getfilename(cmd);
 	if ((fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0644)) == -1)
 	{
@@ -99,10 +99,10 @@ void		ft_redir_right(char *cmd)
 	if (i > 0 && cmd[i] >= '0' && cmd[i] <= '9')
 		fdout = ft_redir_right_getfd(cmd);
 	dup2(fd, fdout);
-	i = ft_cindex(cmd, '>') - 1;
+	i = ft_cindex_noquote(cmd, '>') - 1;
 	while (cmd[i] >= '0' && cmd[i] <= '9')
 		i--;
 	tmpcmd = ft_strsub(cmd, 0, i + 1);
-	g_cmd = ms_get_cmd(tmpcmd);
+	g_cmd = ms_parse_cmd(tmpcmd);
 	ft_strdel(&tmpcmd);
 }

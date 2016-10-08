@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 21:27:35 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/22 17:12:20 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/08 01:41:07 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ int					ft_cmd_count_quote(char *s, int i, char c)
 	while (s[i] != c && s[i])
 	{
 		i++;
+		j++;
+	}
+	return (j);
+}
+
+int					ft_cmd_count_quote_rev(char *s, int i, char c)
+{
+	int		j;
+
+	j = 1;
+	i--;
+	while (s[i] != c && s[i])
+	{
+		i--;
 		j++;
 	}
 	return (j);

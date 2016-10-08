@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 18:17:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:24:17 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/08 02:03:21 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		ft_redir_fdout(char *cmd)
 	char	*fdout;
 
 	j = 0;
-	i = ft_cindex(cmd, '>') + 1;
+	i = ft_cindex_noquote(cmd, '>') + 1;
 	if (cmd[i + 1] == '-')
 		return (-1);
 	if (cmd[i + 1] < 48 || cmd[i + 1] > 57)
@@ -32,7 +32,7 @@ static int		ft_redir_fdout(char *cmd)
 		i++;
 		j++;
 	}
-	fdout = ft_strsub(cmd, ft_cindex(cmd, '>') + 2, j);
+	fdout = ft_strsub(cmd, ft_cindex_noquote(cmd, '>') + 2, j);
 	return (ft_atoi(fdout));
 }
 
@@ -49,7 +49,7 @@ static int		ft_redir_fdin(char *cmd)
 	char	*fdin;
 
 	j = 0;
-	i = ft_cindex(cmd, '>');
+	i = ft_cindex_noquote(cmd, '>');
 	if (cmd[i - 1] < 48 || cmd[i - 1] > 57)
 		return (1);
 	while (cmd[i - 1] >= 48 && cmd[i - 1] <= 57)
@@ -73,7 +73,7 @@ void			ft_redir_fd(char *cmd)
 	if ((fdout = ft_redir_fdout(cmd)) == -1)
 	{
 		close(fdin);
-		i = ft_cindex(cmd, '>') - 1;
+		i = ft_cindex_noquote(cmd, '>') - 1;
 		while (cmd[i] >= 48 && cmd[i] <= 57)
 			i--;
 		tmp = ft_strsub(cmd, 0, i);
@@ -82,9 +82,9 @@ void			ft_redir_fd(char *cmd)
 	}
 	if (dup2(fdout, fdin) == -1)
 		ft_redir_exit(fdout);
-	i = ft_cindex(cmd, '>') - 1;
+	i = ft_cindex_noquote(cmd, '>') - 1;
 	while (cmd[i] >= 48 && cmd[i] <= 57)
 		i--;
 	tmp = ft_strsub(cmd, 0, i);
-	g_cmd = ms_get_cmd(tmp);
+	g_cmd = ms_parse_cmd(tmp);
 }

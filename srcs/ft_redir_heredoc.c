@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/29 22:44:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 12:38:55 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/08 05:21:21 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int				ft_heredoc_exec(char *str)
 					g_curs.hd->cmd, g_curs.hd->init_cmd);
 		else
 			cmd = ft_joinf("cat /tmp/.__21sh_tmp_hd | %s", g_curs.hd->cmd);
+		g_cmd = ms_parse_cmd(cmd);
 		ms_exec(cmd, g_curs.env);
 		ft_strdel(&cmd);
 		return (1);

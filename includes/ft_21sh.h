@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 15:44:32 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/08 01:46:07 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,10 @@ int					ft_heredoc_endtrig(char *str);
 char				*ft_heredoc_initcmd(char *str);
 char				*ft_heredoc_cmd(char *str);
 void				ft_heredoc_err(int i);
+/*
+** ft_strsub_quote.c
+*/
+char				*ft_join_tab(char **tb);
 
 /*
 ** ft_getfd.c.c
@@ -133,6 +137,10 @@ void				ft_redir_fd_right(char *cmd);
 /*
 ** ft_redir.c
 */
+
+int					ft_cindex_noquote(char *str, char c);
+int					ft_cindex_noquote_rev(char *str, char c);
+int					ft_cmd_count_quote_rev(char *s, int i, char c);
 void				ft_redir(char *cmd);
 void				ft_redir_left(char *cmd);
 
