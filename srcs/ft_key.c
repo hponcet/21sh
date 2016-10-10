@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 13:37:19 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/11 01:03:12 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	ft_key_ctrl_d(void)
 	if (g_curs.hd)
 	{
 		ft_putendl("");
-		ft_heredoc_addcontent(g_curs.retval);
 		ft_heredoc_exec(g_curs.hd->trigger);
 		ft_heredoc_del();
 		ft_put_name();

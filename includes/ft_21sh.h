@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/08 01:46:07 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/10 22:22:29 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,39 +122,42 @@ void				ft_cmd_v(char *buf);
 /*
 ** ft_redir_fd.c
 */
-void				ft_redir_fd(char *cmd);
-
-/*
-** ft_redir_fd_left.c
-*/
-void				ft_redir_fd_left(char *cmd);
+void				ft_redir_fd(char **cmd);
 
 /*
 ** ft_redir_fd_right.c
 */
-void				ft_redir_fd_right(char *cmd);
+void				ft_redir_fd_right(char **cmd);
+
+/*
+** ft_cindex_noquote.c
+*/
+int					ft_cindex_noquote(char *str, char c);
+int					ft_cindex_noquote_rev(char *str, char c);
+int					ft_cindexfrom_noquote_rev(char *str, int index, char c);
+int					ft_cmd_count_quote_rev(char *s, int i, char c);
+/*
+** ft_redir_tools.c
+*/
+int					ft_redir_isgoodchar(char i);
+char				*ft_redir_getfilename(char *cmd, char c);
 
 /*
 ** ft_redir.c
 */
-
-int					ft_cindex_noquote(char *str, char c);
-int					ft_cindex_noquote_rev(char *str, char c);
-int					ft_cmd_count_quote_rev(char *s, int i, char c);
-void				ft_redir(char *cmd);
-void				ft_redir_left(char *cmd);
+void				ft_redir(char **cmd);
+void				ft_redir_exec(char *cmd);
+void				ft_redir_left(char **cmd);
 
 /*
 ** ft_redir_right.c
 */
-void				ft_redir_right(char *cmd);
-void				ft_redir_recurs_right(char *cmd);
+void				ft_redir_right(char **cmd);
 
 /*
 ** ft_redir_right.c
 */
-void				ft_redir_double_right(char *cmd);
-void				ft_redir_recurs_double_right(char *cmd);
+void				ft_redir_double_right(char **cmd);
 
 /*
 ** ft_ast.c

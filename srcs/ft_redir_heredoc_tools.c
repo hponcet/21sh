@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/16 15:18:30 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/29 16:11:12 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/10 22:22:56 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ int				ft_heredoc_check(void)
 {
 	int		i;
 
-	i = ft_cindex_rev(g_curs.retval, '<');
-	if (i > 1 && g_curs.retval[i - 1] == '<')
-		return (i);
-	else
-		return (-1);
+	i = ft_strlen(g_curs.retval);
+	while (i > -1)
+	{
+		i = ft_cindexfrom_noquote_rev(g_curs.retval, i, '<');
+		if (i > 0 && g_curs.retval[i - 1] == '<')
+			return (i);
+		i--;
+	}
+	return (-1);
 }
 
 void			ft_heredoc_del(void)
