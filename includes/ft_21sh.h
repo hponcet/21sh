@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/13 15:56:55 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/13 17:45:53 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <term.h>
 # include <sys/ioctl.h>
 # include <sys/param.h>
+# include <dirent.h>
 
 typedef struct		s_compl
 {
@@ -92,16 +93,22 @@ typedef struct		s_curs
 t_curs				g_curs;
 
 /*
-** ft_dollar.c
-*/
+ ** ft_compl.c
+ */
+t_compl				*ft_compl_makechain(char *path);
+void				ft_compl_sortchain(t_compl **list, t_compl *file);
+
+/*
+ ** ft_dollar.c
+ */
 char				*ft_get_env_value(char *cmd);
 char				*ft_get_var_value(char *str);
 char				*ft_replace_cmd_var(char *cmd, char *var, char *value);
 char				*ft_dollar(char *str);
 
 /*
-** ft_redir_heredoc.c
-*/
+ ** ft_redir_heredoc.c
+ */
 int					ft_heredoc_check(void);
 int					ft_heredoc_new(void);
 void				ft_heredoc_del(void);
@@ -114,118 +121,118 @@ char				*ft_heredoc_cmd(char *str);
 void				ft_heredoc_err(int i);
 
 /*
-** ft_getfd.c.c
-*/
+ ** ft_getfd.c.c
+ */
 void				get_fd(void);
 /*
-** ft_cmd_v.c
-*/
+ ** ft_cmd_v.c
+ */
 void				ft_cmd_v(char *buf);
 
 /*
-** ft_redir_fd.c
-*/
+ ** ft_redir_fd.c
+ */
 void				ft_redir_fd(char *cmd);
 
 /*
-** ft_redir_fd_left.c
-*/
+ ** ft_redir_fd_left.c
+ */
 void				ft_redir_fd_left(char *cmd);
 
 /*
-** ft_redir_fd_right.c
-*/
+ ** ft_redir_fd_right.c
+ */
 void				ft_redir_fd_right(char *cmd);
 
 /*
-** ft_redir.c
-*/
+ ** ft_redir.c
+ */
 void				ft_redir(char *cmd);
 void				ft_redir_left(char *cmd);
 
 /*
-** ft_redir_right.c
-*/
+ ** ft_redir_right.c
+ */
 void				ft_redir_right(char *cmd);
 void				ft_redir_recurs_right(char *cmd);
 
 /*
-** ft_redir_right.c
-*/
+ ** ft_redir_right.c
+ */
 void				ft_redir_double_right(char *cmd);
 void				ft_redir_recurs_double_right(char *cmd);
 
 /*
-** ft_ast.c
-*/
+ ** ft_ast.c
+ */
 void				ft_ast(char *cmd);
 void				ft_pipe(char *cmd1, char *cmd2);
 
 /*
-** ft_cursor_pos.c
-*/
+ ** ft_cursor_pos.c
+ */
 void				get_fd(void);
 void				ft_cursor_pos(void);
 int					ft_term_init(void);
 int					ft_term_reset(void);
 
 /*
-** ft_sh_name.c
-*/
+ ** ft_sh_name.c
+ */
 char				*ms_shell_name(void);
 char				*ms_shell_name_getdir(void);
 void				ft_put_name(void);
 
 /*
-** ft_signal.c
-*/
+ ** ft_signal.c
+ */
 void				ft_signal(void);
 void				ft_signal_onexec(void);
 void				ft_init_prompt(void);
 
 /*
-** ft_window_size.c
-*/
+ ** ft_window_size.c
+ */
 void				ft_window_size(void);
 
 /*
-** ft_history.c
-*/
+ ** ft_history.c
+ */
 void				ft_history(char *cmd);
 
 /*
-** ft_display.c
-*/
+ ** ft_display.c
+ */
 void				ft_display(void);
 
 /*
-** ft_init.c
-*/
+ ** ft_init.c
+ */
 void				ft_load(void);
 void				ft_init(void);
 void				ft_init_window(void);
 /*
-** ft_history.c
-*/
+ ** ft_history.c
+ */
 void				ft_init_hist(void);
 void				ft_hist_addtohist(char *ncmd);
 void				ft_histtochain(void);
 
 /*
-** ft_quote.c
-*/
+ ** ft_quote.c
+ */
 int					ft_quote(void);
 int					*ft_quote_initteub(void);
 
 /*
-** ft_key.c
-*/
+ ** ft_key.c
+ */
 void				ft_key(char *buf);
 void				ft_key_group_dir(char *buf);
 
 /*
-** ft_chain.c
-*/
+ ** ft_chain.c
+ */
 void				ft_chain_addchar(int c);
 void				ft_chain_firstchar(int c);
 void				ft_chain_midchar(int c);
@@ -233,8 +240,8 @@ void				ft_chain_lastchar(int c);
 t_chain				*ft_new_chr(int c);
 
 /*
-** ft_chain_tools.c
-*/
+ ** ft_chain_tools.c
+ */
 void				ft_init_pos(void);
 int					ft_count_chain(void);
 void				ft_find_word(void);
@@ -242,95 +249,95 @@ void				ft_make_retval(void);
 void				ft_del_chain(void);
 
 /*
-** ft_char.c
-*/
+ ** ft_char.c
+ */
 int					ft_char(int i);
 int					ft_char_tc(t_chain *chr);
 int					ft_str_tc(t_chain *chr);
 
 /*
-** ft_key_directional.c
-*/
+ ** ft_key_directional.c
+ */
 void				ft_key_directional(const char *buf);
 void				ft_key_left(void);
 void				ft_key_right(void);
 
 /*
-** ft_key_up.c
-*/
+ ** ft_key_up.c
+ */
 void				ft_key_up(void);
 
 /*
-** ft_key_down.c
-*/
+ ** ft_key_down.c
+ */
 void				ft_key_down(void);
 
 /*
-** ft_key_shift_dir_right.c
-*/
+ ** ft_key_shift_dir_right.c
+ */
 void				ft_shift_dir_right(void);
 void				ft_reset_select(void);
 
 /*
-** ft_key_shift_dir_left.c
-*/
+ ** ft_key_shift_dir_left.c
+ */
 void				ft_shift_dir_left(void);
 /*
-** ft_key_enter.c
-*/
+ ** ft_key_enter.c
+ */
 int					ft_key_enter(void);
 
 /*
-** ft_key_bs.c
-*/
+ ** ft_key_bs.c
+ */
 void				ft_key_bs(void);
 
 /*
-** ft_key_del.c
-*/
+ ** ft_key_del.c
+ */
 void				ft_key_del(void);
 
 /*
-** ft_key_del.c
-*/
+ ** ft_key_del.c
+ */
 void				ft_key_home(char *buf);
 
 /*
-** ft_key_opt_directional.c
-*/
+ ** ft_key_opt_directional.c
+ */
 void				ft_key_opt_directional(char *buf);
 
 /*
-** ft_key_opt_copy.c
-*/
+ ** ft_key_opt_copy.c
+ */
 void				ft_func_copy(char *buf);
 void				ft_copy(void);
 void				ft_paste(void);
 void				ft_cut(void);
 
 /*
-** ft_debug.c
-*/
+ ** ft_debug.c
+ */
 void				ft_debug(void);
 void				ft_debug_head(void);
 
 #endif
 
 /*
-**   me    Fin de tous les modes tels que so, us, mb, md et mr
-**   us    Début de soulignement
-**   md    Début de mode gras
-**   mr    Début de mode inverse
-**   sc	   save pos curs
-**   rc    restor pos curs
-**   cm	   cursor move
-**   up	   ^
-**   do	   v
-**   nd	   >
-**   le	   <
-**   cb    Effacer depuis le début de la ligne jusqu'au curseur
-**   dc    Effacer 1 caractères
-**   ce	   Effacer jusqu'a la fin de la ligne
-**   do    Descendre le curseur d'une ligne
-**   ll	   Déplacer le curseur au coin inférieur gauche
-*/
+ **   me    Fin de tous les modes tels que so, us, mb, md et mr
+ **   us    Début de soulignement
+ **   md    Début de mode gras
+ **   mr    Début de mode inverse
+ **   sc	   save pos curs
+ **   rc    restor pos curs
+ **   cm	   cursor move
+ **   up	   ^
+ **   do	   v
+ **   nd	   >
+ **   le	   <
+ **   cb    Effacer depuis le début de la ligne jusqu'au curseur
+ **   dc    Effacer 1 caractères
+ **   ce	   Effacer jusqu'a la fin de la ligne
+ **   do    Descendre le curseur d'une ligne
+ **   ll	   Déplacer le curseur au coin inférieur gauche
+ */

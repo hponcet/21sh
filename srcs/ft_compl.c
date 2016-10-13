@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 15:36:51 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/13 17:11:34 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/13 23:31:00 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,44 @@ void		ft_compl_sortchain(t_compl **list, t_compl *file)
 		tmp = tmp->next;
 	file->next = tmp->next;
 	tmp->next = file;
+}
+
+int			ft_compl_wis(char *str)
+{
+	int		i;
+	int		j;
+
+	i = ft_strlen(str) - 1;
+	j = 0;
+	while (str[j] && (str[j] == ' ' || str[j] == '	'))
+		j++;
+	while (i >= j)
+	{
+		if (str[i] == ' ' && i > 0 && str[i - 1] != ' ' && str[i - 1] != ';'
+				&& str[i - 1] != '`')
+			return (1);
+		if (str[i] == ';' || str[i] == '`')
+			return (0);
+		i--;
+	}
+	return (0);
+}
+
+void		ft_compl_file(char *str)
+{
+	char	*path;
+	char	*pwd;
+	int		i;
+
+	i = ft_cindex_rev(str, '/');
+	pwd = getcwd(pwd, MAXPATHLEN);
+	path = ft_joinf
+}
+
+char		*ft_compl(char *str)
+{
+	if (ft_compl_wis(str) == 1)
+		ft_compl_file(str);
+	else
+		ft_compl_bin(str);
 }
