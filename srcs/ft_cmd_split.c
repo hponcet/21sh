@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 21:27:35 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/08 16:58:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/09/22 17:12:20 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ static unsigned int	ft_count_word(char const *s)
 	if (s[i] != ';')
 		count++;
 	return (count);
+}
+
+int					ft_cmd_count_quote(char *s, int i, char c)
+{
+	int		j;
+
+	j = 1;
+	i++;
+	while (s[i] != c && s[i])
+	{
+		i++;
+		j++;
+	}
+	return (j);
 }
 
 static char			**ft_cmd_parse(char **teub, char *s)

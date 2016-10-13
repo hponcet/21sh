@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/10/10 19:31:39 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/04 18:00:43 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -14,18 +14,16 @@ NAME = 21sh
 
 CC = gcc
 
-CFLAGS = -Wall -Wall -Wextra
+CFLAGS = -Wall -Wall -Wextra -g
 
 SRC =	ft_ast.c \
 		ft_chain.c \
 		ft_chain_tools.c \
-		ft_cmd.c \
 		ft_char.c \
-		ft_strsub_quote.c \
+		ft_cmd.c \
 		ft_cmd_split.c \
 		ft_cmd_v.c \
 		ft_cursor_pos.c \
-		ft_cindex.c \
 		ft_debug.c \
 		ft_debug_2.c \
 		ft_display.c \
@@ -48,9 +46,9 @@ SRC =	ft_ast.c \
 		ft_quotes.c \
 		ft_redir.c \
 		ft_redir_double_right.c \
+		ft_redir_fd_left.c \
 		ft_redir_fd_right.c \
 		ft_redir_heredoc.c \
-		ft_redir_tools.c \
 		ft_redir_heredoc_new.c \
 		ft_redir_heredoc_tools.c \
 		ft_redir_simple_right.c \

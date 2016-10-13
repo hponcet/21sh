@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 13:36:08 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/26 15:43:15 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 18:10:05 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,11 @@ char	**ms_builtin_cd_absolute_path(char **env)
 {
 	char	*pwd;
 	char	*oldpwd;
+	char	*tmp;
 	char	*tmp2;
 
 	tmp2 = NULL;
+	tmp = NULL;
 	tmp2 = getcwd(tmp2, MAXPATHLEN);
 	oldpwd = ft_strjoin("OLDPWD=", tmp2);
 	free(tmp2);
@@ -126,10 +128,13 @@ char	**ms_builtin_cd_absolute_path(char **env)
 		free(oldpwd);
 		return (env);
 	}
-	pwd = ft_strjoin("PWD=", g_cmd[0]);
+	tmp = getcwd(tmp, MAXPATHLEN);
+	pwd = ft_strjoin("PWD=", tmp);
 	if (ms_builtin_srchnrep(pwd, env) > 0)
 		env = ms_builtin_addenv(pwd, env);
 	if (ms_builtin_srchnrep(oldpwd, env) > 0)
 		env = ms_builtin_addenv(oldpwd, env);
+	g_curs.env = env;
+	free(tmp);
 	return (env);
 }

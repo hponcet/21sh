@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 02:46:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 13:39:03 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 17:48:24 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void		ft_hist_addtofile(char *homepath)
 	t_hist	*tmp;
 
 	ret = '\n';
+	if (!homepath)
+		return ;
 	fd = open(homepath, O_CREAT | O_WRONLY, 0644);
 	if (fd == -1)
 		return ;
@@ -76,6 +78,8 @@ void			ft_init_hist(void)
 	if (g_curs.history)
 		while (g_curs.history->next)
 			g_curs.history = g_curs.history->next;
+	if (!homepath)
+		return ;
 	ft_hist_addtofile(homepath);
 	ft_hist_makechain(homepath);
 	free(homepath);

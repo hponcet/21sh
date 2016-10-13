@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 10:55:44 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/10 22:47:36 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/04 14:02:58 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_cmd(char *enter)
 	i = 0;
 	while (cmd[i])
 	{
-		g_cmd = ms_parse_cmd(cmd[i]);
 		ms_exec(cmd[i], g_curs.env);
 		g_moddedenv = 0;
 		i++;

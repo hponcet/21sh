@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_redir_fd.c                                      :+:      :+:    :+:   */
+/*   ft_redi_fd_left.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/29 18:17:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:24:17 by hponcet          ###   ########.fr       */
+/*   Created: 2016/06/01 13:55:56 by hponcet           #+#    #+#             */
+/*   Updated: 2016/09/16 15:30:59 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		ft_redir_fdout(char *cmd)
 	char	*fdout;
 
 	j = 0;
-	i = ft_cindex(cmd, '>') + 1;
+	i = ft_cindex(cmd, '<') + 1;
 	if (cmd[i + 1] == '-')
 		return (-1);
 	if (cmd[i + 1] < 48 || cmd[i + 1] > 57)
@@ -49,7 +49,7 @@ static int		ft_redir_fdin(char *cmd)
 	char	*fdin;
 
 	j = 0;
-	i = ft_cindex(cmd, '>');
+	i = ft_cindex(cmd, '<');
 	if (cmd[i - 1] < 48 || cmd[i - 1] > 57)
 		return (1);
 	while (cmd[i - 1] >= 48 && cmd[i - 1] <= 57)
@@ -61,7 +61,7 @@ static int		ft_redir_fdin(char *cmd)
 	return (ft_atoi(fdin));
 }
 
-void			ft_redir_fd(char *cmd)
+void			ft_redir_fd_left(char *cmd)
 {
 	int		fdin;
 	int		fdout;
@@ -73,7 +73,7 @@ void			ft_redir_fd(char *cmd)
 	if ((fdout = ft_redir_fdout(cmd)) == -1)
 	{
 		close(fdin);
-		i = ft_cindex(cmd, '>') - 1;
+		i = ft_cindex(cmd, '<') - 1;
 		while (cmd[i] >= 48 && cmd[i] <= 57)
 			i--;
 		tmp = ft_strsub(cmd, 0, i);
@@ -82,7 +82,7 @@ void			ft_redir_fd(char *cmd)
 	}
 	if (dup2(fdout, fdin) == -1)
 		ft_redir_exit(fdout);
-	i = ft_cindex(cmd, '>') - 1;
+	i = ft_cindex(cmd, '<') - 1;
 	while (cmd[i] >= 48 && cmd[i] <= 57)
 		i--;
 	tmp = ft_strsub(cmd, 0, i);
