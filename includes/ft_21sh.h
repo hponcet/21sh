@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/14 13:10:27 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/14 15:00:31 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct		s_curs
 	int				*curs_pos;
 	int				*ws;
 	int				hist;
+	int				tb;
 	int				qt;
 	size_t			nb_chr;
 	size_t			id;
@@ -106,9 +107,6 @@ char				*ft_compl_getfind(char *str);
 /*
 ** ft_compl_display.c
 */
-size_t				ft_compl_maxlen(t_compl *print);
-int					ft_compl_countfile(t_compl *print);
-void				ft_compl_initdisplay(int maxline);
 void				ft_compl_display(t_compl *print);
 
 /*

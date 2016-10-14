@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 01:01:19 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/14 13:15:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/14 15:24:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_compl		*ft_compl_makechain(char *path, t_compl *ret)
 		return (NULL);
 	while ((s_dir = readdir(dirp)) != NULL)
 	{
+		if (ft_strcmp(s_dir->d_name, "..") == 0 || ft_strcmp(s_dir->d_name, ".") == 0)
+			continue ;
 		file = (t_compl*)malloc(sizeof(t_compl));
 		if (!file)
 			return (NULL);
