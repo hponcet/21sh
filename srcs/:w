@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 15:36:51 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/14 13:11:09 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/14 12:05:26 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,4 @@ char		*ft_compl(char *str)
 		ft_compl_file(str);
 //	else
 //		ft_compl_bin(str);
-	return (str);
 }

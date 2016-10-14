@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/13 17:45:53 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/14 13:10:27 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@
 typedef struct		s_compl
 {
 	int				type;
+	size_t			len;
+	int				x;
+	int				y;
 	char			*name;
 	struct s_compl	*next;
 }					t_compl;
@@ -93,14 +96,39 @@ typedef struct		s_curs
 t_curs				g_curs;
 
 /*
- ** ft_compl.c
- */
-t_compl				*ft_compl_makechain(char *path);
+** ft_compl_makechain.c.c
+*/
+t_compl				*ft_compl_makechain(char *path, t_compl *ret);
 void				ft_compl_sortchain(t_compl **list, t_compl *file);
+char				*ft_compl_getpath(char *str);
+char				*ft_compl_getfind(char *str);
 
 /*
- ** ft_dollar.c
- */
+** ft_compl_display.c
+*/
+size_t				ft_compl_maxlen(t_compl *print);
+int					ft_compl_countfile(t_compl *print);
+void				ft_compl_initdisplay(int maxline);
+void				ft_compl_display(t_compl *print);
+
+/*
+** ft_compl.c
+*/
+char				*ft_compl(char *str);
+void				ft_compl_file(char *str);
+void				ft_compl_proc(t_compl *dir, char *find);
+void				ft_compl_delchain(t_compl *chain);
+int					ft_compl_wis(char *str);
+
+/*
+** ft_compl_makefindchain.c
+*/
+void				ft_compl_copyfile(t_compl *findlist, t_compl *orig);
+t_compl				*ft_compl_makefindchain(t_compl *dir, char *find);
+
+/*
+** ft_dollar.c
+*/
 char				*ft_get_env_value(char *cmd);
 char				*ft_get_var_value(char *str);
 char				*ft_replace_cmd_var(char *cmd, char *var, char *value);

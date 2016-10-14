@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 13:37:19 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/14 12:59:18 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void		ft_key(char *buf)
 	}
 	else if (buf[0] == 4 && buf[1] == 0)
 		ft_key_ctrl_d();
-	else if (buf[0] == -30 || buf[0] == -61)
-		ft_func_copy(buf);
+	else if (buf[0] == 9 && buf[1] == 0)
+		ft_compl(g_curs.retval);
 	else if (ft_isprint(buf[0]) == 1 && buf[1] == 0)
 		ft_chain_addchar(buf[0]);
 	else if (buf[0] == 127 && buf[1] == 0 && g_curs.chain)
