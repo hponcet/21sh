@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 15:36:51 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/14 15:21:58 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/15 02:44:03 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int			ft_compl_wis(char *str)
 	int		i;
 	int		j;
 
+	if (!str)
+		return (0);
 	i = ft_strlen(str) - 1;
 	j = 0;
 	while (str[j] && (str[j] == ' ' || str[j] == '	'))
@@ -39,26 +41,19 @@ void		ft_compl_delchain(t_compl *chain)
 {
 	t_compl	*tmp;
 
+	if (chain == chain->next)
+	{
+		ft_strdel(&(chain->name));
+		free(chain);
+		return ;
+	}
 	while (chain)
 	{
 		tmp = chain;
 		ft_strdel(&(chain->name));
 		chain = chain->next;
-		free(tmp);
+		tmp = NULL;
 	}
-}
-
-void		ft_compl_proc(t_compl *dir, char *find)
-{
-	t_compl		*print;
-
-	print = dir;
-	if (find)
-		print = ft_compl_makefindchain(dir, find);
-	else
-		print = dir;
-	if (print)
-		ft_compl_display(print);
 }
 
 void		ft_compl_file(char *str)
@@ -66,13 +61,24 @@ void		ft_compl_file(char *str)
 	char	*path;
 	char	*find;
 	t_compl	*dir;
+	int		i;
 
 	dir = NULL;
-	path = ft_compl_getpath(str);
+	path = ft_compl_getpath();
 	find = ft_compl_getfind(str);
-	dir = ft_compl_makechain(path, dir);
+	if (!find)
+		find = ft_strnew(0);
+	i = ft_strlen(find) - 1;
+	if (i >= 0 && find[i] == '/')
+	{
+		path = ft_joinf("%xs/%xs", path, find);
+		find = ft_strnew(0);
+	}
+	dir = ft_compl_makechain(path, dir, find);
+	if (dir)
+		ft_compl_display(dir, find);
 	ft_strdel(&path);
-	ft_compl_proc(dir, find);
+	ft_strdel(&find);
 }
 
 char		*ft_compl(char *str)

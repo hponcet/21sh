@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/10/14 13:05:47 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/14 20:42:09 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -33,9 +33,9 @@ SRC =	ft_ast.c \
 		ft_init.c \
 		ft_key.c \
 		ft_compl.c \
+		ft_compl_key.c \
 		ft_compl_display.c \
 		ft_compl_getinfo.c \
-		ft_compl_makefindchain.c \
 		ft_key_bs.c \
 		ft_key_del.c \
 		ft_key_directional.c \

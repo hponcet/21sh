@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/14 15:00:31 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/15 01:25:48 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@
 # include <sys/ioctl.h>
 # include <sys/param.h>
 # include <dirent.h>
+# include <sys/stat.h>
 
 typedef struct		s_compl
 {
 	int				type;
 	size_t			len;
-	int				x;
-	int				y;
 	char			*name;
 	struct s_compl	*next;
 }					t_compl;
@@ -73,7 +72,6 @@ typedef struct		s_curs
 	int				*curs_pos;
 	int				*ws;
 	int				hist;
-	int				tb;
 	int				qt;
 	size_t			nb_chr;
 	size_t			id;
@@ -99,30 +97,31 @@ t_curs				g_curs;
 /*
 ** ft_compl_makechain.c.c
 */
-t_compl				*ft_compl_makechain(char *path, t_compl *ret);
+t_compl				*ft_compl_makefile(struct dirent *s_dir, char *path);
+t_compl				*ft_compl_makechain(char *path, t_compl *ret, char *find);
 void				ft_compl_sortchain(t_compl **list, t_compl *file);
-char				*ft_compl_getpath(char *str);
+char				*ft_compl_getpath(void);
 char				*ft_compl_getfind(char *str);
 
 /*
 ** ft_compl_display.c
 */
-void				ft_compl_display(t_compl *print);
+int					ft_compl_countfile(t_compl *print);
+void				ft_compl_display(t_compl *print, char *find);
 
 /*
 ** ft_compl.c
 */
 char				*ft_compl(char *str);
 void				ft_compl_file(char *str);
-void				ft_compl_proc(t_compl *dir, char *find);
 void				ft_compl_delchain(t_compl *chain);
 int					ft_compl_wis(char *str);
-
 /*
-** ft_compl_makefindchain.c
+** ft_compl_key.c
 */
-void				ft_compl_copyfile(t_compl *findlist, t_compl *orig);
-t_compl				*ft_compl_makefindchain(t_compl *dir, char *find);
+void				ft_compl_addstr(char *str, int type);
+int					ft_compl_key(char *buf, t_compl **print, char *find,
+					int x, int y);
 
 /*
 ** ft_dollar.c

@@ -6,13 +6,34 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 01:01:19 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/14 15:24:16 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/15 01:47:40 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-t_compl		*ft_compl_makechain(char *path, t_compl *ret)
+t_compl		*ft_compl_makefile(struct dirent *s_dir, char *path)
+{
+	t_compl			*file;
+	struct stat     s_stat;
+	char			*tmp;
+
+	file = (t_compl*)malloc(sizeof(t_compl));
+	if (!file)
+		return (NULL);
+	file->name = ft_strdup(s_dir->d_name);
+	tmp = ft_joinf("%s/%s", path, file->name);
+	lstat(tmp, &s_stat);
+	if (S_ISDIR(s_stat.st_mode))
+		file->type = 1;
+	else
+		file->type = 0;
+	file->next = NULL;
+	ft_strdel(&tmp);
+	return (file);
+}
+
+t_compl		*ft_compl_makechain(char *path, t_compl *ret, char *find)
 {
 	DIR				*dirp;
 	struct dirent	*s_dir;
@@ -22,17 +43,19 @@ t_compl		*ft_compl_makechain(char *path, t_compl *ret)
 		return (NULL);
 	while ((s_dir = readdir(dirp)) != NULL)
 	{
-		if (ft_strcmp(s_dir->d_name, "..") == 0 || ft_strcmp(s_dir->d_name, ".") == 0)
+		if (ft_strcmp(s_dir->d_name, "..") == 0 || ft_strcmp(s_dir->d_name, ".")
+				== 0)
 			continue ;
-		file = (t_compl*)malloc(sizeof(t_compl));
-		if (!file)
-			return (NULL);
-		file->name = ft_strdup(s_dir->d_name);
-		file->type = 0;
-		file->x = 0;
-		file->y = 0;
-		file->next = NULL;
-		ft_compl_sortchain(&ret, file);
+		if (!find)
+		{
+			file = ft_compl_makefile(s_dir, path);
+			ft_compl_sortchain(&ret, file);
+		}
+		else if (ft_strncmp(s_dir->d_name, find, ft_strlen(find)) == 0)
+		{
+			file = ft_compl_makefile(s_dir, path);
+			ft_compl_sortchain(&ret, file);
+		}
 	}
 	closedir(dirp);
 	return (ret);
@@ -60,32 +83,13 @@ void		ft_compl_sortchain(t_compl **list, t_compl *file)
 	tmp->next = file;
 }
 
-char		*ft_compl_getpath(char *str)
+char		*ft_compl_getpath(void)
 {
-	int		i;
-	int		j;
-	char	*path;
-	char	*tmp;
 	char	*pwd;
 
 	pwd = NULL;
 	pwd = getcwd(pwd, MAXPATHLEN);
-	path = NULL;
-	i = ft_strlen(str) - 1;
-	j = 0;
-	if (str[i] == ' ')
-		return (pwd);
-	while (i >= 0 && str[i] != ' ' && str[i] != ';' && str[i] != '/')
-		i--;
-	if (i == 0 || str[i] == ' ' || str[i] == ';')
-		return (pwd);
-	if (str[i] == '/')
-	{
-		j = ft_cindex_rev(str, ' ');
-		tmp = ft_strsub(str, j, i - j + 1);
-		path = ft_joinf("%xs/%xs/", pwd, tmp);
-	}
-	return (path);
+	return (pwd);
 }
 
 char		*ft_compl_getfind(char *str)
@@ -99,10 +103,10 @@ char		*ft_compl_getfind(char *str)
 	j = i;
 	if (str[i] == ' ')
 		return (NULL);
-	while (i >= 0 && str[i] != ' ' && str[i] != '/')
+	while (i >= 0 && str[i] != ' ')
 		i--;
 	i++;
-	if (str[i - 1] == '/' || str[i - 1] == ' ')
+	if (str[i - 1] == ' ')
 		find = ft_strsub(str, i, j - i + 1);
 	return (find);
 }
