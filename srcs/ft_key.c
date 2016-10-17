@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 02:38:16 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 00:29:02 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_key_ctrl_d(void)
 	else if (g_curs.qt == 1)
 		;
 	else if (!g_curs.retval)
-		exit(0);
+		ms_search_exit();
 }
 
 static void	ft_reinit_hist(void)

@@ -6,7 +6,7 @@
 #    By: hponcet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 19:57:28 by hponcet           #+#    #+#              #
-#*   Updated: 2016/09/15 16:26:33 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/17 22:06:34 by hponcet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ LIBFT_DIR = srcs/
 
 EXEC =	srcs/ft_atoi.c \
 		srcs/ft_bzero.c \
+		srcs/ft_hash.c \
+		srcs/ft_hash_new.c \
+		srcs/ft_wchar_conv_bit.c \
 		srcs/ft_isalnum.c \
 		srcs/ft_isalpha.c \
 		srcs/ft_isascii.c \

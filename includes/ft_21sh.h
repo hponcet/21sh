@@ -6,13 +6,14 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 02:13:35 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/17 22:51:36 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_21SH_H
 # define FT_21SH_H
 # include "../libft/includes/libft.h"
+# include "../libft/includes/ft_hash.h"
 # include "../libft/includes/ft_colors.h"
 # include "ms_minishell.h"
 # include "ft_config.h"
@@ -83,6 +84,7 @@ typedef struct		s_curs
 	struct s_chain	*prev;
 	t_hd			*hd;
 	int				fd;
+	t_hash			**hash_bin;
 	char			**env;
 	int				*initpos;
 	t_term			term;
@@ -97,7 +99,12 @@ typedef struct		s_curs
 t_curs				g_curs;
 
 /*
-** ft_compl_makechain.c.c
+** ft_hash_bin.c
+*/
+t_hash				**ft_hash_bin(void);
+
+/*
+** ft_compl_makechain.c
 */
 t_compl				*ft_compl_makefile(struct dirent *s_dir, char *path);
 t_compl				*ft_compl_makechain(char *path, t_compl *ret, char *find);

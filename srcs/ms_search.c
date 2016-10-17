@@ -6,15 +6,17 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 02:14:33 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 01:31:32 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_minishell.h"
 
-static void	ms_search_exit(void)
+void		ms_search_exit(void)
 {
 	ft_term_reset();
+	ft_hash_delhtbl(g_curs.hash_bin, __HTBL_LEN__);
+	ft_putstr("exit");
 	exit(0);
 }
 
@@ -65,7 +67,8 @@ char		*ms_search_bin(char **env)
 	char	*joinpath;
 	char	*pathbin;
 
-	pathbin = NULL;
+	if ((pathbin = ft_hash_search(g_curs.hash_bin, g_cmd[0], __HTBL_LEN__)))
+		return (pathbin);
 	path = NULL;
 	if (g_cmd && g_cmd[0] && g_cmd[0][0] == '/')
 		return (g_cmd[0]);

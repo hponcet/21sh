@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 12:48:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/15 18:59:47 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/17 23:02:54 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,18 @@
 # define __PROMPT_DIR__ "Y"
 # define __DIR_COLOR__ __BLD __WHT
 # define __DIR_COLOR_END__ " "__CLR_END__
+/*
+** *********************************
+** Activate graphic Debug Mode [Y/N]
+** *********************************
+*/
+# define __HTBL_LEN__ 5000
 
 /*
 ** *********************************
 ** Activate graphic Debug Mode [Y/N]
 ** *********************************
 */
-# define __DEBUG__ "Y"
+# define __DEBUG__ "N"
 
 #endif
