@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 03:11:59 by hponcet           #+#    #+#             */
-/*   Updated: 2016/03/19 05:03:00 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/15 18:51:01 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void		ft_print_list_arg_u(t_print *list, va_list ap)
 	if (list->prec == 0 && ln == 0)
 		buf[0] = 0;
 	ft_print_list_arg_d_flags(list, buf);
+	free(buf);
 }

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 18:13:14 by hponcet           #+#    #+#             */
-/*   Updated: 2016/03/20 20:57:44 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/15 18:54:33 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ void		ft_print_list_arg_c(t_print *list, va_list ap)
 		wchar = (wchar_t)va_arg(ap, int);
 		buf = ft_wchar(wchar);
 		ft_print_list_arg_mins(list, buf);
-		if (wchar == 0)
-		{
+		if (wchar == 0 && g_null++)
 			ft_lst_addend_nchar();
-			g_null += 1;
-		}
 	}
+	free(buf);
 }

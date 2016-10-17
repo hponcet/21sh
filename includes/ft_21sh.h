@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/15 01:25:48 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/17 02:13:35 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ typedef struct		s_compl
 {
 	int				type;
 	size_t			len;
+	size_t			id;
 	char			*name;
 	struct s_compl	*next;
+	struct s_compl	*prev;
 }					t_compl;
 
 typedef struct		s_hd
@@ -100,8 +102,12 @@ t_curs				g_curs;
 t_compl				*ft_compl_makefile(struct dirent *s_dir, char *path);
 t_compl				*ft_compl_makechain(char *path, t_compl *ret, char *find);
 void				ft_compl_sortchain(t_compl **list, t_compl *file);
-char				*ft_compl_getpath(void);
 char				*ft_compl_getfind(char *str);
+
+/*
+** ft_compl_getpath.c
+*/
+void				ft_compl_getpath(char **ret);
 
 /*
 ** ft_compl_display.c
@@ -113,13 +119,13 @@ void				ft_compl_display(t_compl *print, char *find);
 ** ft_compl.c
 */
 char				*ft_compl(char *str);
+void				ft_compl_bin(char *str);
 void				ft_compl_file(char *str);
 void				ft_compl_delchain(t_compl *chain);
 int					ft_compl_wis(char *str);
 /*
 ** ft_compl_key.c
 */
-void				ft_compl_addstr(char *str, int type);
 int					ft_compl_key(char *buf, t_compl **print, char *find,
 					int x, int y);
 
@@ -172,6 +178,7 @@ void				ft_redir_fd_right(char *cmd);
 /*
  ** ft_redir.c
  */
+int					ft_cindex_noquote_rev(char *str, char c);
 void				ft_redir(char *cmd);
 void				ft_redir_left(char *cmd);
 
@@ -326,7 +333,7 @@ void				ft_key_del(void);
  ** ft_key_del.c
  */
 void				ft_key_home(char *buf);
-
+int					ft_printf(const char *format, ...);
 /*
  ** ft_key_opt_directional.c
  */

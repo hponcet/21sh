@@ -6,13 +6,14 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 01:13:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/04/15 00:01:54 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/16 21:16:06 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include "ft_colors.h"
+# include "libft.h" 
 # include <stdarg.h>
 # include <string.h>
 # include <stdlib.h>
@@ -234,29 +235,6 @@ void				ft_print_print(t_print *tmp);
 */
 int					ft_cnindex(char *str, char c, int i);
 int					ft_check_next_perc(const char *format);
-
-/*
-** ft_lib_1.c
-*/
-void				ft_bzero(void *s, size_t n);
-void				ft_putchar(char c);
-void				ft_putnbr(int n);
-void				ft_putstr(char const *s);
-char				*ft_strcat(char *restrict dest, const char *restrict src);
-
-/*
-** ft_lib_2.c
-*/
-void				ft_putendl(char const *s);
-char				*ft_strdup(const char *s1);
-char				*ft_strjoin(char const *s1, char const *s2);
-size_t				ft_strlen(const char *s);
-char				*ft_strnew(size_t size);
-
-/*
-** ft_lib_3.c
-*/
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
 
 /*
 ** MOD***

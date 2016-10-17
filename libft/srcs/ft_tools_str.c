@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 05:31:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/03/20 20:56:55 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/16 21:43:25 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ char		*ft_str_tools_wflags_char(char *buf, char *str, t_print *list)
 		buf[b] = str[s];
 		b--;
 		s--;
-		if ((list->conv == 'd' || list->conv == 'D' || list->conv == 'i')
-			&& (str[s] == '-' || str[s] == '+' || str[s] == ' ') &&
-			(list->flags[3] == '0') && buf[b] == '0')
+		if (s > 0 && (list->conv == 'd' || list->conv == 'D' ||
+					list->conv == 'i') && (str[s] == '-' ||
+					str[s] == '+' || str[s] == ' ') && (list->flags[3] ==
+					'0') && buf[b] == '0')
 			s--;
 	}
 	return (buf);
@@ -86,4 +87,5 @@ void		ft_arg_s_ret_null(void)
 
 	buf = ft_strdup("(null)");
 	ft_str_buf_to_bufret(buf);
+	free(buf);
 }

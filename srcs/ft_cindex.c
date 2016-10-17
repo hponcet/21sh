@@ -6,25 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:56:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/10 22:18:33 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/16 21:22:15 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_minishell.h"
-
-int		ft_cmd_count_quote(char *s, int i, char c)
-{
-	int		j;
-
-	j = 1;
-	i++;
-	while (s[i] != c && s[i])
-	{
-		i++;
-		j++;
-	}
-	return (j);
-}
 
 int		ft_cmd_count_quote_rev(char *s, int i, char c)
 {

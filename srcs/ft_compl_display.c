@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:20:47 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/15 02:30:20 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/17 02:19:38 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ void		ft_compl_display(t_compl *print, char *find)
 
 	x = g_curs.curs_pos[0];
 	y = g_curs.curs_pos[1];
-	if (!find)
-		find = ft_strnew(0);
-	tmp = print;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = print;
 	tmp = print;
 	tputs(tgoto(tgetstr("cm", 0), x - 1, y - 1), 1, ft_char);
 	ft_putstr(print->name + ft_strlen(find));
@@ -54,4 +48,6 @@ void		ft_compl_display(t_compl *print, char *find)
 		ft_bzero(buf, 4);
 		read(g_curs.fd, buf, 4);
 	}
+	ft_compl_delchain(print);
+	ft_strdel(&buf);
 }

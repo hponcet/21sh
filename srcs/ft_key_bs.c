@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 01:25:28 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 13:38:11 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/16 22:49:49 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void			ft_key_bs(void)
 	tmp->next = NULL;
 	tmp->prev = NULL;
 	if (!g_curs.chain && g_curs.retval)
-		g_curs.retval = NULL;
+		ft_strdel(&g_curs.retval);
 	free(tmp);
 }

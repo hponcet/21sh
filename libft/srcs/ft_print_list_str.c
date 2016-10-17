@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 03:07:29 by hponcet           #+#    #+#             */
-/*   Updated: 2016/03/20 20:52:00 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/15 18:32:41 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		ft_print_list_str(t_print *list)
 		j++;
 	}
 	ft_str_buf_to_bufret(buf);
+	free(buf);
 }
 
 char		ft_print_list_str_escseq(char c)

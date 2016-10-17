@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 01:01:19 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/15 01:47:40 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/17 01:35:00 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ t_compl		*ft_compl_makefile(struct dirent *s_dir, char *path)
 		file->type = 1;
 	else
 		file->type = 0;
-	file->next = NULL;
+	file->prev = file;
+	file->next = file;
+	file->id = 0;
 	ft_strdel(&tmp);
 	return (file);
 }
@@ -46,12 +48,7 @@ t_compl		*ft_compl_makechain(char *path, t_compl *ret, char *find)
 		if (ft_strcmp(s_dir->d_name, "..") == 0 || ft_strcmp(s_dir->d_name, ".")
 				== 0)
 			continue ;
-		if (!find)
-		{
-			file = ft_compl_makefile(s_dir, path);
-			ft_compl_sortchain(&ret, file);
-		}
-		else if (ft_strncmp(s_dir->d_name, find, ft_strlen(find)) == 0)
+		if (!find || ft_strncmp(s_dir->d_name, find, ft_strlen(find)) == 0)
 		{
 			file = ft_compl_makefile(s_dir, path);
 			ft_compl_sortchain(&ret, file);
@@ -65,31 +62,29 @@ void		ft_compl_sortchain(t_compl **list, t_compl *file)
 {
 	t_compl	*tmp;
 
-	tmp = *list;
+	tmp = list[0];
 	if (!tmp)
 	{
 		*list = file;
+		file->id = 1;
 		return ;
 	}
-	if (ft_strcmp(tmp->name, file->name) > 0)
+	if (tmp == tmp->next)
 	{
 		file->next = tmp;
-		*list = file;
+		file->prev = tmp;
+		tmp->prev = file;
+		tmp->next = file;
+		file->id = 2;
 		return ;
 	}
-	while (tmp->next && ft_strcmp(tmp->name, file->name) < 0)
+	while (tmp->id < tmp->next->id)
 		tmp = tmp->next;
+	tmp->next->prev = file;
 	file->next = tmp->next;
 	tmp->next = file;
-}
-
-char		*ft_compl_getpath(void)
-{
-	char	*pwd;
-
-	pwd = NULL;
-	pwd = getcwd(pwd, MAXPATHLEN);
-	return (pwd);
+	file->prev = tmp;
+	file->id = tmp->id + 1;
 }
 
 char		*ft_compl_getfind(char *str)

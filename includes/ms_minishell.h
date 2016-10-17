@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 00:16:02 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/22 17:12:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/17 02:04:40 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void				ms_del_cmd(int l);
 void				ms_exec(char *cmd, char **env);
 void				ms_exec_bin(char *path, char **env);
 char				*ms_search_bin(char **env);
+char				**ms_search_paths(void);
 char				*ms_search_pathbin(char **path, char **env);
 char				**ms_search_builtin_env(char *cmd, char **env);
 void				ms_exec_fork(char *cmd, char **env);

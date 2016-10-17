@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 04:59:48 by hponcet           #+#    #+#             */
-/*   Updated: 2016/03/19 04:54:03 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/15 18:49:01 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		ft_print_list_arg_d(t_print *list, va_list ap)
 	if (list->prec == 0 && i == 0)
 		buf[0] = 0;
 	ft_print_list_arg_d_flags(list, buf);
+	free(buf);
 }
 
 void		ft_print_list_arg_d_flags(t_print *list, char *str)
@@ -48,6 +49,7 @@ void		ft_print_list_arg_d_flags(t_print *list, char *str)
 		buf = ft_str_tools_wflags_char(buf, str, list);
 	}
 	ft_str_buf_to_bufret(buf);
+	free(buf);
 }
 
 char		*ft_nbr_prec(t_print *list, char *str)

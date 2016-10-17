@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 13:36:08 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 18:10:05 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/16 22:30:09 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**ms_builtin_cd(char **env)
 	else if (g_cmd[0][0] == '-')
 	{
 		if (g_cmd[0][1] != '\0')
-			ft_putendl("cd: option not implemented.");
+			ft_putendl("21sh: cd: option not implemented.");
 		else
 			env = ms_builtin_cd_minus(env);
 	}
@@ -45,19 +45,19 @@ char	**ms_builtin_cd_minus(char **env)
 	if (!tmp || tmp[0] == '\0')
 		ft_putendl("21sh: cd: Environnement variable OLDPWD not set.");
 	else if (chdir(tmp) < 0)
-		ft_printf("cd: no such directory: %s\n", tmp);
+		ft_printf("21sh: cd: no such directory: %s\n", tmp);
 	else
 	{
 		pwd = ft_strjoin("PWD=", tmp);
 		free(tmp);
 		tmp = ms_get_value(env, "PWD");
-		if (!tmp)
-			tmp = ft_strdup("");
 		oldpwd = ft_strjoin("OLDPWD=", tmp);
 		if (ms_builtin_srchnrep(pwd, env) > 0)
 			env = ms_builtin_addenv(pwd, env);
 		if (ms_builtin_srchnrep(oldpwd, env) > 0)
 			env = ms_builtin_addenv(oldpwd, env);
+		ft_strdel(&pwd);
+		ft_strdel(&oldpwd);
 	}
 	free(tmp);
 	return (env);
@@ -92,19 +92,19 @@ char	**ms_builtin_cd_home(char **env)
 	if (!tmp)
 		ft_putendl("21sh: cd: Environnement variable HOME not set.");
 	else if (chdir(tmp) < 0)
-		ft_printf("cd: no such directory: %s\n", tmp);
+		ft_printf("21sh: cd: no such directory: %s\n", tmp);
 	else
 	{
 		pwd = ft_strjoin("PWD=", tmp);
 		free(tmp);
 		tmp = ms_get_value(env, "PWD");
-		if (!tmp)
-			tmp = ft_strdup("");
 		oldpwd = ft_strjoin("OLDPWD=", tmp);
 		if (ms_builtin_srchnrep(pwd, env) > 0)
 			env = ms_builtin_addenv(pwd, env);
 		if (ms_builtin_srchnrep(oldpwd, env) > 0)
 			env = ms_builtin_addenv(oldpwd, env);
+		ft_strdel(&oldpwd);
+		ft_strdel(&pwd);
 	}
 	free(tmp);
 	return (env);
@@ -115,16 +115,14 @@ char	**ms_builtin_cd_absolute_path(char **env)
 	char	*pwd;
 	char	*oldpwd;
 	char	*tmp;
-	char	*tmp2;
 
-	tmp2 = NULL;
 	tmp = NULL;
-	tmp2 = getcwd(tmp2, MAXPATHLEN);
-	oldpwd = ft_strjoin("OLDPWD=", tmp2);
-	free(tmp2);
+	tmp = getcwd(tmp, MAXPATHLEN);
+	oldpwd = ft_strjoin("OLDPWD=", tmp);
+	ft_strdel(&tmp);
 	if (chdir(g_cmd[0]) < 0)
 	{
-		ft_printf("cd: no such directory: %s\n", g_cmd[0]);
+		ft_printf("21sh: cd: no such directory: %s\n", g_cmd[0]);
 		free(oldpwd);
 		return (env);
 	}
@@ -135,6 +133,8 @@ char	**ms_builtin_cd_absolute_path(char **env)
 	if (ms_builtin_srchnrep(oldpwd, env) > 0)
 		env = ms_builtin_addenv(oldpwd, env);
 	g_curs.env = env;
-	free(tmp);
+	ft_strdel(&tmp);
+	ft_strdel(&oldpwd);
+	ft_strdel(&pwd);
 	return (env);
 }

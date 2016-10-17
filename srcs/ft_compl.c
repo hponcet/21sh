@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 15:36:51 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/15 02:44:03 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/17 02:30:58 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,43 +41,65 @@ void		ft_compl_delchain(t_compl *chain)
 {
 	t_compl	*tmp;
 
-	if (chain == chain->next)
-	{
-		ft_strdel(&(chain->name));
-		free(chain);
-		return ;
-	}
-	while (chain)
+	chain = chain->prev;
+	while (chain && chain->id != 1)
 	{
 		tmp = chain;
-		ft_strdel(&(chain->name));
-		chain = chain->next;
-		tmp = NULL;
+		chain->type = 0;
+		chain->len = 0;
+		chain->id = 0;
+		ft_strdel(&chain->name);
+		chain->next = NULL;
+		chain = chain->prev;
+		free(tmp);
 	}
+	if (!chain)
+		return ;
+	chain->type = 0;
+	chain->len = 0;
+	chain->id = 0;
+	ft_strdel(&(chain->name));
+	chain->next = NULL;
+	free(chain);
 }
 
 void		ft_compl_file(char *str)
 {
-	char	*path;
+	char	**ret;
+	t_compl	*dir;
+
+	dir = NULL;
+	ret = (char**)malloc(sizeof(char*) * 3);
+	ret[2] = NULL;
+	ret[1] = ft_compl_getfind(str);
+	ft_compl_getpath(ret);
+	dir = ft_compl_makechain(ret[0], dir, ret[1]);
+	if (dir)
+		ft_compl_display(dir, ret[1]);
+	ft_strdel(&ret[0]);
+	ft_strdel(&ret[1]);
+	free(ret);
+}
+
+void		ft_compl_bin(char *str)
+{
+	char	**path;
 	char	*find;
 	t_compl	*dir;
 	int		i;
 
 	dir = NULL;
-	path = ft_compl_getpath();
-	find = ft_compl_getfind(str);
-	if (!find)
-		find = ft_strnew(0);
-	i = ft_strlen(find) - 1;
-	if (i >= 0 && find[i] == '/')
+	find = ft_strdup(str);
+	i = 0;
+	path = ms_search_paths();
+	while (path[i])
 	{
-		path = ft_joinf("%xs/%xs", path, find);
-		find = ft_strnew(0);
+		dir = ft_compl_makechain(path[i], dir, find);
+		i++;
 	}
-	dir = ft_compl_makechain(path, dir, find);
+	ft_tabdel(path);
 	if (dir)
 		ft_compl_display(dir, find);
-	ft_strdel(&path);
 	ft_strdel(&find);
 }
 
@@ -85,7 +107,12 @@ char		*ft_compl(char *str)
 {
 	if (ft_compl_wis(str) == 1)
 		ft_compl_file(str);
-//	else
-//		ft_compl_bin(str);
+	else
+	{
+		if (!str)
+			return (str);
+		else
+			ft_compl_bin(str);
+	}
 	return (str);
 }

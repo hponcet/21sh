@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/19 15:14:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/17 02:14:33 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,21 @@ char		**ms_search_builtin_env(char *cmd, char **env)
 	else if (ft_strcmp(g_cmd[0], "exit") == 0)
 		ms_search_exit();
 	return (env);
+}
+
+char		**ms_search_paths(void)
+{
+	char	**path;
+	char	*joinpath;
+
+	path = NULL;
+	joinpath = NULL;
+	if ((joinpath = ms_get_value(g_curs.env, "PATH")))
+		path = ft_strsplit(joinpath, ':');
+	else
+		path = ft_strsplit(__DEFAULT_PATH__, ':');
+	ft_strdel(&joinpath);
+	return (path);
 }
 
 char		*ms_search_bin(char **env)

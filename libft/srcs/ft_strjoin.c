@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 11:46:29 by hponcet           #+#    #+#             */
-/*   Updated: 2016/01/18 16:45:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/16 21:57:20 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 	char	*buf;
 
-	i = -1;
-	j = -1;
-	if (s1 == NULL || s2 == NULL)
+	i = 0;
+	j = 0;
+	buf = NULL;
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	if (!s2 && s1)
+		return (ft_strdup(s1));
+	if (!s1 && !s2)
 		return (NULL);
 	buf = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	if (buf == NULL)
-		return (NULL);
-	while (s1[++i] != '\0' && s1 != NULL)
-		buf[++j] = s1[i];
-	i = -1;
-	while (s2[++i] != '\0' && s2 != NULL)
-		buf[++j] = s2[i];
+	while (s1[i])
+		buf[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		buf[j++] = s2[i++];
 	return (buf);
 }
