@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 21:41:56 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 17:03:12 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ms_exec(char *cmd, char **env)
 	{
 		pid = fork();
 		if (pid > 0)
-			wait(&pid);
+			waitpid(pid, NULL, 0);
 		else
 			ft_ast(cmd);
 	}
@@ -51,7 +51,7 @@ void		ms_exec_fork(char *cmd, char **env)
 		return ;
 	pid = fork();
 	if (pid > 0)
-		wait(&pid);
+		waitpid(pid, NULL, 0);
 	else
 	{
 		if (cmd && (ft_cindex(cmd, '>') > 0 || ft_cindex(cmd, '<') > 0))
