@@ -6,11 +6,29 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 21:54:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 18:07:03 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
+
+char	**ft_change_shlvl(char	**env)
+{
+	char	*shlvl;
+	char	*ret;
+	int		i;
+
+	shlvl = ms_get_value("SHLVL", env);
+	i = ft_atoi(shlvl);
+	i++;
+	free(shlvl);
+	shlvl = ft_itoa(i);
+	ret = ft_strjoin("SHLVL=", shlvl);
+	env = ms_builtin_addenv(ret, env);
+	ft_strdel(ret);
+	ft_strdel(shlvl);
+	return (env);
+}
 
 void	ft_load(void)
 {
