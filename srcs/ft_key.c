@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 12:16:19 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 14:17:06 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		ft_key_group_dir(char *buf)
 		ft_key_home(buf);
 }
 
-static void	ft_key_norm(void)
+void		ft_key_norm(void)
 {
 	if (g_curs.opt->dbg)
 		ft_debug();
@@ -65,6 +65,9 @@ static void	ft_key_norm(void)
 
 void		ft_key(char *buf)
 {
+	///////////////////
+	//ft_printf("%i\n", buf[0]);
+	///////////////////
 	if (g_curs.hist == 1 && (buf[0] != 27 || buf[1] != 91 ||
 				(buf[2] != 65 && buf[2] != 66)))
 		ft_reinit_hist();
@@ -84,6 +87,8 @@ void		ft_key(char *buf)
 		ft_chain_addchar(buf[0]);
 	else if (buf[0] == 127 && buf[1] == 0 && g_curs.chain)
 		ft_key_bs();
+	else if (buf[0] == 18 && buf[1] == 0 && !g_curs.chain)
+		ft_hsearch();
 	else if (buf[0] == 27)
 		ft_key_group_dir(buf);
 	else

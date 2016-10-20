@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/10/20 02:08:17 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/20 17:59:10 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -19,6 +19,7 @@ CFLAGS = -Wall -Wall -Wextra -g
 SRC =	ft_ast.c \
 		ft_chain.c \
 		ft_chain_tools.c \
+		ft_chain_add.c \
 		ft_char.c \
 		ft_cmd.c \
 		ft_cmd_split.c \
@@ -31,6 +32,7 @@ SRC =	ft_ast.c \
 		ft_dollar.c \
 		ft_getfd.c \
 		ft_history.c \
+		ft_hsearch.c \
 		ft_init.c \
 		ft_key.c \
 		ft_glob.c \

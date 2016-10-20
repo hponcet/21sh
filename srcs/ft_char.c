@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/23 18:18:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/14 12:05:47 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 17:29:42 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,19 @@ int			ft_str_tc(t_chain *chr)
 	ft_count_chain();
 	tputs(tgoto(tgetstr("ve", 0), 1, 0), 1, ft_char);
 	return (1);
+}
+
+int			ft_char_count_sf(int len)
+{
+	int		i;
+	int		line_asked;
+	int		line_dispo;
+
+	line_asked = len / g_curs.ws[0] + 1;
+	line_dispo = g_curs.ws[1] - g_curs.initpos[1];
+	i = line_asked - line_dispo;
+	if (i > 0)
+		return (i);
+	else
+		return (0);
 }

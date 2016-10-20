@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 03:41:31 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 17:58:49 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,17 @@ typedef struct		s_curs
 	t_hist			*history;
 	char			*retval;
 	int				error;
+	int				sig;
 }					t_curs;
 
 t_curs				g_curs;
 
+/*
+ ** ft_hsearch.c
+ */
+void				ft_hsearch(void);
+int					ft_hsearch_key(char *buf);
+void				ft_hsearch_display(char *cmd);
 /*
  ** ft_hash_bin.c
  */
@@ -281,6 +288,7 @@ void				ft_put_name(void);
  ** ft_signal.c
  */
 void				ft_signal(void);
+void				ft_catch_signal(int signo);
 void				ft_signal_onexec(void);
 void				ft_init_prompt(void);
 
@@ -323,16 +331,22 @@ int					*ft_quote_initteub(void);
  ** ft_key.c
  */
 void				ft_key(char *buf);
+void				ft_key_norm(void);
 void				ft_key_group_dir(char *buf);
 
 /*
  ** ft_chain.c
  */
-void				ft_chain_addchar(int c);
 void				ft_chain_firstchar(int c);
 void				ft_chain_midchar(int c);
 void				ft_chain_lastchar(int c);
 t_chain				*ft_new_chr(int c);
+
+/*
+ ** ft_chain.c
+ */
+void				ft_chain_addstr(char *str);
+void				ft_chain_addchar(int c);
 
 /*
  ** ft_chain_tools.c
@@ -349,6 +363,7 @@ void				ft_del_chain(void);
 int					ft_char(int i);
 int					ft_char_tc(t_chain *chr);
 int					ft_str_tc(t_chain *chr);
+int					ft_char_count_sf(int len);
 
 /*
  ** ft_key_directional.c

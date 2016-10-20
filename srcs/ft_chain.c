@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 06:13:38 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/03 18:34:41 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 17:57:23 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,27 +75,4 @@ void			ft_chain_lastchar(int c)
 	g_curs.id = new->id + 1;
 	ft_count_chain();
 	ft_char_tc(new);
-}
-
-void			ft_chain_addchar(int c)
-{
-	int		i;
-
-	i = -1;
-	if (!g_curs.chain)
-	{
-		g_curs.chain = ft_new_chr(c);
-		g_curs.prev = g_curs.chain;
-		g_curs.id = 2;
-		g_curs.chain->word = 1;
-		ft_char_tc(g_curs.chain);
-		return ;
-	}
-	if (!g_curs.next && g_curs.id != 1)
-		ft_chain_lastchar(c);
-	else if (g_curs.next && g_curs.id != 1)
-		ft_chain_midchar(c);
-	else if (g_curs.id == 1)
-		ft_chain_firstchar(c);
-	ft_count_chain();
 }
