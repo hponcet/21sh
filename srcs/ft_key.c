@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 00:29:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 22:51:59 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		ft_key_group_dir(char *buf)
 
 static void	ft_key_norm(void)
 {
-	if (__DEBUG__ == "Y")
+	if (g_curs.opt->dbg)
 		ft_debug();
 	if (!g_curs.chain)
 		ft_strdel(&g_curs.retval);

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/11 14:04:35 by hponcet           #+#    #+#             */
-/*   Updated: 2016/05/29 00:46:12 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/19 00:16:22 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int		main(int ac, char **av, char **env)
 {
-	ac = 0;
-	av = NULL;
-	g_curs.env = ms_get_env(env);
-	ft_load();
+	g_curs.env = ft_change_shlvl(ms_get_env(env));
+	ft_load(ac, av);
 	ft_display();
 }

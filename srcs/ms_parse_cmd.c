@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/09 14:26:12 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/22 17:12:26 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 02:14:30 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static char		*ft_strsub_quote(char const *s, unsigned int start, size_t len)
 	return (buf);
 }
 
-char			**ms_parse_cmd(char *buf)
+static char		**ms_parse_cmd_core(char *buf)
 {
 	char	**cmd;
 	int		t[4];
@@ -94,4 +94,23 @@ char			**ms_parse_cmd(char *buf)
 		cmd[t[1]++] = ft_strsub_quote(buf, t[2], (t[0] - t[2]));
 	}
 	return (cmd);
+}
+
+char			**ms_parse_cmd(char *buf)
+{
+	char	**ret;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	ret = ms_parse_cmd_core(buf);
+	while (ret[i])
+	{
+		j = ft_strlen(ret[i]) - 1;
+		if (ret[i][j] == ' ')
+			ret[i][j] = '\0';
+		i++;
+	}
+	return(ret);
 }

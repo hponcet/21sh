@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 22:51:36 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 02:10:53 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@
 # include <sys/param.h>
 # include <dirent.h>
 # include <sys/stat.h>
+
+typedef struct		s_glob
+{
+	char			*name;
+	char			*path;
+	struct s_glob	*next;
+}					t_glob;
+
+typedef struct		s_shopt
+{
+	int				dbg;
+	int				htbl;
+	int				prptdir;
+	int				prptnm;
+	int				envpath;
+}					t_shopt;
 
 typedef struct		s_compl
 {
@@ -84,6 +100,7 @@ typedef struct		s_curs
 	struct s_chain	*prev;
 	t_hd			*hd;
 	int				fd;
+	t_shopt			*opt;
 	t_hash			**hash_bin;
 	char			**env;
 	int				*initpos;
@@ -99,50 +116,77 @@ typedef struct		s_curs
 t_curs				g_curs;
 
 /*
-** ft_hash_bin.c
-*/
+ ** ft_hash_bin.c
+ */
+void				ft_sh_check_opt(int ac, char **av);
+
+/*
+ ** ft_hash_bin.c
+ */
 t_hash				**ft_hash_bin(void);
 
 /*
-** ft_compl_makechain.c
-*/
+ ** ft_glob.c
+ */
+char				**ft_glob(char **cmd);
+char				*ft_glob_replace(char *cmd);
+t_glob				*ft_glob_makefile(struct dirent *s_dir, char *path);
+char				*ft_glob_tglobtostr(t_glob *lst);
+void				ft_glob_sortchain(t_glob **ret, t_glob *file);
+char				*ft_glob_makestr(char *path, char *find, char *absolute);
+int					ft_glob_compare(char *s1, char *s2);
+int					ft_glob_check(char *str);
+void				ft_glob_path(char **ret);
+
+/*
+ ** ft_compl_makechain.c
+ */
 t_compl				*ft_compl_makefile(struct dirent *s_dir, char *path);
 t_compl				*ft_compl_makechain(char *path, t_compl *ret, char *find);
 void				ft_compl_sortchain(t_compl **list, t_compl *file);
 char				*ft_compl_getfind(char *str);
 
 /*
-** ft_compl_getpath.c
-*/
+ ** ft_compl_getpath.c
+ */
 void				ft_compl_getpath(char **ret);
 
 /*
-** ft_compl_display.c
-*/
+ ** ft_compl_display.c
+ */
 int					ft_compl_countfile(t_compl *print);
 void				ft_compl_display(t_compl *print, char *find);
 
 /*
-** ft_compl.c
-*/
+ ** ft_compl.c
+ */
 char				*ft_compl(char *str);
 void				ft_compl_bin(char *str);
 void				ft_compl_file(char *str);
 void				ft_compl_delchain(t_compl *chain);
 int					ft_compl_wis(char *str);
 /*
-** ft_compl_key.c
-*/
+ ** ft_compl_key.c
+ */
 int					ft_compl_key(char *buf, t_compl **print, char *find,
-					int x, int y);
+		int x, int y);
 
 /*
-** ft_dollar.c
-*/
+ ** ft_dollar.c
+ */
 char				*ft_get_env_value(char *cmd);
 char				*ft_get_var_value(char *str);
 char				*ft_replace_cmd_var(char *cmd, char *var, char *value);
 char				*ft_dollar(char *str);
+
+/*
+ ** ft_cindex.c
+ */
+int					ft_cindex_count_quote(char *s, int i, char c);
+int					ft_cindex_count_quote_rev(char *s, int i, char c);
+int					ft_cindex_noquote(char *str, char c);
+int					ft_cindexfrom_noquote_rev(char *str, int index, char c);
+int					ft_cindex_noquote_rev(char *str, char c);
 
 /*
  ** ft_redir_heredoc.c
@@ -159,6 +203,11 @@ char				*ft_heredoc_cmd(char *str);
 void				ft_heredoc_err(int i);
 
 /*
+ ** ft_strsub_quote.c
+ */
+char				*ft_join_tab(char **tb);
+
+/*
  ** ft_getfd.c.c
  */
 void				get_fd(void);
@@ -170,36 +219,42 @@ void				ft_cmd_v(char *buf);
 /*
  ** ft_redir_fd.c
  */
-void				ft_redir_fd(char *cmd);
-
-/*
- ** ft_redir_fd_left.c
- */
-void				ft_redir_fd_left(char *cmd);
+void				ft_redir_fd(char **cmd);
 
 /*
  ** ft_redir_fd_right.c
  */
-void				ft_redir_fd_right(char *cmd);
+void				ft_redir_fd_right(char **cmd);
+
+/*
+ ** ft_cindex_noquote.c
+ */
+int					ft_cindex_noquote(char *str, char c);
+int					ft_cindex_noquote_rev(char *str, char c);
+int					ft_cindexfrom_noquote_rev(char *str, int index, char c);
+int					ft_cmd_count_quote_rev(char *s, int i, char c);
+/*
+ ** ft_redir_tools.c
+ */
+int					ft_redir_isgoodchar(char i);
+char				*ft_redir_getfilename(char *cmd, char c);
 
 /*
  ** ft_redir.c
  */
-int					ft_cindex_noquote_rev(char *str, char c);
-void				ft_redir(char *cmd);
-void				ft_redir_left(char *cmd);
+void				ft_redir(char **cmd);
+void				ft_redir_exec(char *cmd);
+void				ft_redir_left(char **cmd);
 
 /*
  ** ft_redir_right.c
  */
-void				ft_redir_right(char *cmd);
-void				ft_redir_recurs_right(char *cmd);
+void				ft_redir_right(char **cmd);
 
 /*
  ** ft_redir_right.c
  */
-void				ft_redir_double_right(char *cmd);
-void				ft_redir_recurs_double_right(char *cmd);
+void				ft_redir_double_right(char **cmd);
 
 /*
  ** ft_ast.c
@@ -247,7 +302,8 @@ void				ft_display(void);
 /*
  ** ft_init.c
  */
-void				ft_load(void);
+char				**ft_change_shlvl(char  **env);
+void				ft_load(int ac, char **av);
 void				ft_init(void);
 void				ft_init_window(void);
 /*

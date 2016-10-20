@@ -6,7 +6,7 @@
 #    By: hponcet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 19:57:28 by hponcet           #+#    #+#              #
-#*   Updated: 2016/10/17 22:06:34 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/18 22:01:40 by hponcet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ EXEC =	srcs/ft_atoi.c \
 		srcs/ft_memdel.c \
 		srcs/ft_memmove.c \
 		srcs/ft_memset.c \
+		srcs/ft_match.c \
+		srcs/ft_nmatch.c \
 		srcs/ft_putchar.c \
 		srcs/ft_putchar_fd.c \
 		srcs/ft_putendl.c \

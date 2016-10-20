@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 18:07:03 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/19 00:16:06 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ char	**ft_change_shlvl(char	**env)
 	char	*ret;
 	int		i;
 
-	shlvl = ms_get_value("SHLVL", env);
+	shlvl = ms_get_value(env, "SHLVL");
 	i = ft_atoi(shlvl);
 	i++;
 	free(shlvl);
 	shlvl = ft_itoa(i);
 	ret = ft_strjoin("SHLVL=", shlvl);
-	env = ms_builtin_addenv(ret, env);
-	ft_strdel(ret);
-	ft_strdel(shlvl);
+	ms_builtin_srchnrep(ret, env);
+	ft_strdel(&ret);
+	ft_strdel(&shlvl);
 	return (env);
 }
 
-void	ft_load(void)
+void	ft_load(int ac, char **av)
 {
 	get_fd();
 	ft_term_init();
-	ft_put_name();
+	ft_sh_check_opt(ac, av);
 	g_curs.curs_pos = (int*)malloc(sizeof(int) * 2);
 	g_curs.initpos = (int*)malloc(sizeof(int) * 2);
 	g_curs.ws = (int*)malloc(sizeof(int) * 2);
@@ -42,6 +42,7 @@ void	ft_load(void)
 	g_curs.select = NULL;
 	g_curs.qt = 0;
 	ft_cursor_pos();
+	ft_put_name();
 	g_curs.initpos[0] = g_curs.curs_pos[0];
 	g_curs.initpos[1] = g_curs.curs_pos[1];
 	g_curs.chain = NULL;
@@ -82,8 +83,6 @@ void	ft_init_window(void)
 	ft_window_size();
 	tputs(tgoto(tgetstr("cl", 0), 1, 0), 1, ft_char);
 	ft_put_name();
-	if (g_curs.retval)
-		ft_putstr_fd(g_curs.retval, g_curs.fd);
 	ft_cursor_pos();
 	ft_count_chain();
 	ft_init_pos();
@@ -95,6 +94,8 @@ void	ft_init_prompt(void)
 	g_curs.qt = 0;
 	ft_strdel(&g_curs.tmpchain);
 	g_curs.hist = 0;
+	if (g_curs.curs_pos[0] > 1)
+		ft_printf(__BWHT"%"__CLR_END__);
 	ft_putendl("");
 	ft_put_name();
 	ft_del_chain();

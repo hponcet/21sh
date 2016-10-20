@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:04:19 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/16 22:43:59 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 22:47:46 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@ void	ft_put_name(void)
 {
 	char	*prompt;
 
+	ft_cursor_pos();
+	if (g_curs.curs_pos[0] > 1)
+		ft_putstr(__BPERC__);
 	prompt = ms_shell_name();
 	ft_putstr_fd(prompt, g_curs.fd);
 	free(prompt);
 	tputs(tgoto(tgetstr("cd", 0), 1, 0), 1, ft_char);
+	ft_cursor_pos();
 }
 
 char	*ms_shell_name(void)
@@ -28,8 +32,11 @@ char	*ms_shell_name(void)
 	char	*dir;
 	char	*tmp;
 
-	name = ft_strdup(__PROMPT_NAME__);
-	if (__PROMPT_DIR__ == "Y")
+	if (g_curs.opt->prptnm)
+		name = ft_strdup(__PROMPT_NAME__);
+	else
+		name = ft_strdup("");
+	if (g_curs.opt->prptdir)
 	{
 		dir = ms_shell_name_getdir();
 		tmp = ft_strjoin(__DIR_COLOR__, dir);

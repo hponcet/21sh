@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 01:25:28 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/16 22:49:49 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 02:33:12 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void		ft_key_bs_firstchar(void)
 		g_curs.chain = g_curs.chain->next;
 		g_curs.next->prev = g_curs.next;
 		g_curs.next = g_curs.chain->next;
+		if (g_curs.chain->c != ' ')
+			g_curs.chain->word = 1;
 	}
 	else
 	{

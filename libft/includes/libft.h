@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 14:56:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 21:29:40 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 22:04:45 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char				*ft_strnstr(const char *big, const char *little,
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strtrim(char const *s);
+int					ft_printf(const char *format, ...);
 /*
 *************** Fonctions de gestion de tableaux ****************
 */
@@ -102,6 +103,8 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					match(char *str1, char *str2);
+int					nmatch(char *str1, char *str2);
 /*
 ************** Structure basique *******************
 */
@@ -127,7 +130,5 @@ int					ft_lstlen(t_list *list);
 */
 int					ft_abs(int i);
 int					ft_rootsquare(int n);
-
-int					ft_printf(const char *format, ...);
 
 #endif

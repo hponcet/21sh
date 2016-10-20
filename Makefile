@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/10/17 22:17:15 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/20 02:08:17 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -27,11 +27,15 @@ SRC =	ft_ast.c \
 		ft_debug.c \
 		ft_debug_2.c \
 		ft_display.c \
+		ft_cindex.c \
 		ft_dollar.c \
 		ft_getfd.c \
 		ft_history.c \
 		ft_init.c \
 		ft_key.c \
+		ft_glob.c \
+		ft_glob_make.c \
+		ft_glob_path.c \
 		ft_hash_bin.c \
 		ft_compl.c \
 		ft_compl_key.c \
@@ -51,6 +55,7 @@ SRC =	ft_ast.c \
 		ft_key_up.c \
 		ft_quotes.c \
 		ft_redir.c \
+		ft_redir_tools.c \
 		ft_redir_double_right.c \
 		ft_redir_fd_left.c \
 		ft_redir_fd_right.c \
@@ -59,6 +64,7 @@ SRC =	ft_ast.c \
 		ft_redir_heredoc_tools.c \
 		ft_redir_simple_right.c \
 		ft_sh_name.c \
+		ft_sh_check_opt.c \
 		ft_signal.c \
 		ft_signal_onexec.c \
 		ft_term.c \

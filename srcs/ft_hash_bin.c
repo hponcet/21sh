@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 21:45:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 00:00:29 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 22:50:15 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_hash		**ft_hash_bin(void)
 	char	**paths;
 	int		i;
 
+	if (g_curs.opt->htbl == 0)
+		return (NULL);
 	i = 0;
 	htbl = ft_hash_newtbl(__HTBL_LEN__);
 	paths = ms_search_paths();

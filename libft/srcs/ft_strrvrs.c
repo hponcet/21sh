@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 17:36:32 by hponcet           #+#    #+#             */
-/*   Updated: 2015/12/17 19:14:20 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 20:12:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char		*ft_strrvrs(char *str)
 
 	j = 0;
 	i = ft_strlen(str) - 1;
-	ret = ft_strnew(i);
+	ret = ft_strnew(i + 1);
 	while (i > -1)
 	{
 		ret[j] = str[i];

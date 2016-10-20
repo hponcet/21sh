@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 01:31:32 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/19 01:32:58 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 void		ms_search_exit(void)
 {
+	int		e;
+
+	e = 0;
 	ft_term_reset();
-	ft_hash_delhtbl(g_curs.hash_bin, __HTBL_LEN__);
-	ft_putstr("exit");
-	exit(0);
+	if (g_curs.opt->htbl == 1)
+		ft_hash_delhtbl(g_curs.hash_bin, __HTBL_LEN__);
+	if (g_cmd && g_cmd[0] && ft_strcmp(g_cmd[0], "exit") == 0 && g_cmd[1])
+		e = atoi(g_cmd[1]);
+	if (e >= 0 && e <= 255)
+		exit(e);
+	else
+		exit(0);
 }
 
 char		**ms_search_builtin_env(char *cmd, char **env)
@@ -55,7 +63,7 @@ char		**ms_search_paths(void)
 	joinpath = NULL;
 	if ((joinpath = ms_get_value(g_curs.env, "PATH")))
 		path = ft_strsplit(joinpath, ':');
-	else
+	else if (g_curs.opt->envpath == 1)
 		path = ft_strsplit(__DEFAULT_PATH__, ':');
 	ft_strdel(&joinpath);
 	return (path);
@@ -67,14 +75,16 @@ char		*ms_search_bin(char **env)
 	char	*joinpath;
 	char	*pathbin;
 
-	if ((pathbin = ft_hash_search(g_curs.hash_bin, g_cmd[0], __HTBL_LEN__)))
-		return (pathbin);
 	path = NULL;
+	pathbin = NULL;
 	if (g_cmd && g_cmd[0] && g_cmd[0][0] == '/')
 		return (g_cmd[0]);
+	if ((g_curs.opt->htbl) && (pathbin = ft_hash_search(g_curs.hash_bin,
+					g_cmd[0], __HTBL_LEN__)))
+		return (pathbin);
 	if ((joinpath = ms_get_value(env, "PATH")))
 		path = ft_strsplit(joinpath, ':');
-	else
+	else if ((g_curs.opt->envpath))
 		path = ft_strsplit(__DEFAULT_PATH__, ':');
 	pathbin = ms_search_pathbin(path, env);
 	if (!pathbin)
@@ -95,9 +105,11 @@ char		*ms_search_pathbin(char **path, char **env)
 	int		i;
 
 	i = 0;
-	pathbin = NULL;
-	if (!path)
+	if (!path && !g_curs.opt->envpath)
+		return (NULL);
+	else if (!path)
 		path = ms_get_path(env);
+	pathbin = NULL;
 	while (path && path[i])
 	{
 		tmp = path[i];
@@ -109,7 +121,7 @@ char		*ms_search_pathbin(char **path, char **env)
 		if (access(pathbin, X_OK) > -1)
 			return (pathbin);
 		i++;
-		free(pathbin);
+		ft_strdel(&pathbin);
 	}
 	return (NULL);
 }

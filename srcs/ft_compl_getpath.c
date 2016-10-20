@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 14:37:08 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/15 15:51:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/19 16:22:34 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void		ft_compl_getpath(char **ret)
 		return ;
 	}
 	i = ft_cindex_rev(ret[1], '/');
-	if (i == 0)							// SI racine
+	if (i == 0)
 		getroot(ret);
-	else if (ret[1][0] == '/' && i > 0)		// SI racine + path
+	else if (ret[1][0] == '/' && i > 0)
 		getpathroot(ret);
 	else if (ret[1][0] != '/' && i > 0)
 		getpath(ret, pwd);

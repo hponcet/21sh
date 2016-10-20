@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 17:55:27 by hponcet           #+#    #+#             */
-/*   Updated: 2015/12/18 17:39:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/18 20:20:02 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,29 @@ static int			ft_countnbr(int nb)
 
 char				*ft_itoa(int n)
 {
-	int				i;
-	int				sign;
+	int				i[2];
 	char			*buf;
+	char			*tmp;
 
 	if (n == (-2147483648))
 		return (ft_strdup("-2147483648"));
 	buf = ft_strnew(ft_countnbr(n));
 	if (!buf)
 		return (NULL);
-	sign = n;
+	i[1] = n;
 	n *= (n < 0) ? -1 : 1;
-	i = 0;
+	i[0] = 0;
 	if (n == 0)
-		buf[i++] = '0';
+		buf[i[0]++] = '0';
 	while (n > 0)
 	{
-		buf[i++] = n % 10 + '0';
+		buf[i[0]++] = n % 10 + '0';
 		n /= 10;
 	}
-	if (sign < 0)
-		buf[i++] = '-';
-	buf[i] = '\0';
-	return (ft_strrvrs(buf));
+	if (i[1] < 0)
+		buf[i[0]++] = '-';
+	buf[i[0]] = '\0';
+	tmp = ft_strrvrs(buf);
+	ft_strdel(&buf);
+	return (tmp);
 }
