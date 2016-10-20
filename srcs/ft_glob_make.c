@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 22:12:13 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 00:30:38 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 03:54:56 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ char	*ft_glob_makestr(char *path, char *find, char *absolute)
 		}
 	}
 	closedir(dirp);
+	if (!ret)
+		return (NULL);
 	str = ft_glob_tglobtostr(ret);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 16:25:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 02:29:48 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 04:09:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			ft_glob_check(char *str)
 	while (len >= 0)
 	{
 		if (str[len] == '[' || str[len] == '?' || str[len] == '*'
-			|| str[len] == '{')
+				|| str[len] == '{')
 			return (1);
 		if (str[len] == '\"' || str[len] == '\'' || str[len] == 96)
 			len -= ft_glob_count_quote_rev(str, len, str[len]);
@@ -45,23 +45,36 @@ int			ft_glob_check(char *str)
 	return (0);
 }
 
-char		**ft_glob(char **cmd)
+static char	*ft_glob_nomatch(char **cmd, char *ret, char *nm)
+{
+	ft_printf("21sh: no matches found: %s\n", nm);
+	ft_tabdel(cmd);
+	ft_strdel(&ret);
+	ft_strdel(&nm);
+	return (NULL);
+}
+
+char		*ft_glob(char *tabl)
 {
 	int		i;
-	char	*ncmd;
-	char	**ret;
+	char	**cmd;
+	char	*tmp;
+	char	*ret;
 
 	i = 0;
-	ncmd = NULL;
+	ret = NULL;
+	cmd = ft_strsplit(tabl, ' ');
 	while (cmd[i])
 	{
-		if (ft_glob_check(cmd[i]))
-			cmd[i] = ft_glob_replace(cmd[i]);
-		ncmd = ft_joinf("%s %s", ncmd, cmd[i]);
+		tmp = ft_strdup(cmd[i]);
+		if (ft_glob_check(cmd[i]) && !(cmd[i] = ft_glob_replace(cmd[i])))
+			return (ft_glob_nomatch(cmd, ret, tmp));
+		ret = ft_joinf("%s %s", ret, cmd[i]);
+		ft_strdel(&tmp);
 		i++;
 	}
-	ret = ft_strsplit(ncmd, ' ');
 	ft_tabdel(cmd);
+	free(tabl);
 	return (ret);
 }
 

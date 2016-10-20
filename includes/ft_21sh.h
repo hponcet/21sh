@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 02:10:53 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 03:41:31 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ t_hash				**ft_hash_bin(void);
 /*
  ** ft_glob.c
  */
-char				**ft_glob(char **cmd);
+char				*ft_glob(char *cmd);
 char				*ft_glob_replace(char *cmd);
 t_glob				*ft_glob_makefile(struct dirent *s_dir, char *path);
 char				*ft_glob_tglobtostr(t_glob *lst);

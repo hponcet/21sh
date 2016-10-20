@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 01:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 01:52:16 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 03:12:34 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void		ft_ast(char *cmd)
 	}
 	cmd1 = ft_strsub(cmd, 0, j);
 	cmd2 = ft_strsub(cmd, j + 1, (ft_strlen(cmd) - j));
-	free(cmd);
+	ft_strdel(&cmd);
 	ft_pipe(cmd1, cmd2);
-	free(cmd1);
-	free(cmd2);
+	ft_strdel(&cmd1);
+	ft_strdel(&cmd2);
 }
 
 void		ft_pipe(char *cmd1, char *cmd2)
