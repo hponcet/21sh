@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 02:44:11 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 12:16:19 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,6 @@ void		ft_key_group_dir(char *buf)
 	if (buf[1] == 27 && buf[2] == 91 && buf[3] >= 65 &&
 			buf[3] <= 68 && g_curs.chain)
 		ft_key_opt_directional(buf);
-	if (buf[1] == 91 && buf[2] == 49 && buf[3] == 59 &&
-			buf[5] == 67 && g_curs.chain)
-		ft_shift_dir_right();
-	if (buf[1] == 91 && buf[2] == 49 && buf[3] == 59 &&
-			buf[5] == 68 && g_curs.chain)
-		ft_shift_dir_left();
 	if (buf[1] == 91 && (buf[2] == 70 || buf[2] == 72) && g_curs.chain)
 		ft_key_home(buf);
 }

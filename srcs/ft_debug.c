@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 08:48:57 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 13:24:13 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 12:14:33 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	ft_debug_trois(void)
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
 	if (g_curs.chain)
 	{
-		ft_putstr_fd("g_curs.chain : c = ", g_curs.fd);
+		ft_putstr_fd("chain : c = ", g_curs.fd);
 		ft_putchar_fd(g_curs.chain->c, g_curs.fd);
 		ft_putstr_fd(" id = ", g_curs.fd);
 		ft_putnbr_fd(g_curs.chain->id, g_curs.fd);
@@ -69,7 +69,7 @@ static void	ft_debug_quatre(void)
 	ft_putnbr_fd(g_curs.ws[0], g_curs.fd);
 	ft_putstr_fd("/", g_curs.fd);
 	ft_putnbr_fd(g_curs.ws[1], g_curs.fd);
-	ft_putstr_fd(" g_curs.initpos = ", g_curs.fd);
+	ft_putstr_fd(" initpos = ", g_curs.fd);
 	ft_putnbr_fd(g_curs.initpos[0], g_curs.fd);
 	ft_putstr_fd("/", g_curs.fd);
 	ft_putnbr_fd(g_curs.initpos[1], g_curs.fd);
@@ -79,23 +79,23 @@ static void	ft_debug_cinq(void)
 {
 	tputs(tgoto(tgetstr("do", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
-	ft_putstr_fd("g_curs.retval = ", g_curs.fd);
+	ft_putstr_fd("retval = ", g_curs.fd);
 	ft_printf("%s", g_curs.retval);
 	tputs(tgoto(tgetstr("do", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
-	ft_putstr_fd("g_curs.copy = ", g_curs.fd);
+	ft_putstr_fd("copy = ", g_curs.fd);
 	if (g_curs.history)
 		ft_printf("%s", g_curs.copy);
 	tputs(tgoto(tgetstr("do", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
-	ft_putstr_fd("g_moddedenv = ", g_curs.fd);
+	ft_putstr_fd("moddedenv = ", g_curs.fd);
 	ft_printf("%i", g_moddedenv);
 	tputs(tgoto(tgetstr("do", 0), 1, 0), 1, ft_char);
 	tputs(tgoto(tgetstr("ce", 0), 1, 0), 1, ft_char);
 	if (g_curs.hd)
 	{
-		ft_putstr_fd("g_curs.hd.trigger = ", g_curs.fd);
-		ft_printf("%s / g_curs.hd.cmd = %s|", g_curs.hd->trigger,
+		ft_putstr_fd("hd.trigger = ", g_curs.fd);
+		ft_printf("%s / hd.cmd = %s|", g_curs.hd->trigger,
 				g_curs.hd->cmd);
 	}
 }
