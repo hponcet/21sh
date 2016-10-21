@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 22:12:13 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 03:12:08 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 18:39:33 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*ft_glob_makestr(char *path, char *find, char *absolute)
 		return (NULL);
 	while ((s_dir = readdir(dirp)) != NULL)
 	{
-		if (ft_strcmp(s_dir->d_name, "..") == 0 
+		if (ft_strcmp(s_dir->d_name, "..") == 0
 				|| (ft_strncmp(s_dir->d_name, ".", 1) == 0 && find[0] != '.'))
 			continue ;
 		if (ft_glob_compare(find, s_dir->d_name) != 0)

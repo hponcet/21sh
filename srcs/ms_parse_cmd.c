@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/09 14:26:12 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 02:14:30 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 16:59:22 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,5 @@ char			**ms_parse_cmd(char *buf)
 			ret[i][j] = '\0';
 		i++;
 	}
-	return(ret);
+	return (ret);
 }

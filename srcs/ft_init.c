@@ -6,13 +6,13 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 16:12:08 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 17:18:15 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-char	**ft_change_shlvl(char	**env)
+char		**ft_change_shlvl(char **env)
 {
 	char	*shlvl;
 	char	*ret;
@@ -30,7 +30,22 @@ char	**ft_change_shlvl(char	**env)
 	return (env);
 }
 
-void	ft_load(int ac, char **av)
+static void	ft_load_2(void)
+{
+	g_curs.hd = NULL;
+	g_curs.tmpchain = NULL;
+	g_curs.copy = NULL;
+	g_curs.retval = NULL;
+	g_curs.history = NULL;
+	ft_init_hist();
+	ft_window_size();
+	g_curs.nb_chr = 0;
+	g_curs.id = 1;
+	g_curs.next = NULL;
+	g_curs.prev = NULL;
+}
+
+void		ft_load(int ac, char **av)
 {
 	get_fd();
 	ft_term_init();
@@ -47,20 +62,10 @@ void	ft_load(int ac, char **av)
 	g_curs.initpos[1] = g_curs.curs_pos[1];
 	g_curs.chain = NULL;
 	g_curs.hash_bin = ft_hash_bin();
-	g_curs.hd = NULL;
-	g_curs.tmpchain = NULL;
-	g_curs.copy = NULL;
-	g_curs.retval = NULL;
-	g_curs.history = NULL;
-	ft_init_hist();
-	ft_window_size();
-	g_curs.nb_chr = 0;
-	g_curs.id = 1;
-	g_curs.next = NULL;
-	g_curs.prev = NULL;
+	ft_load_2();
 }
 
-void	ft_init(void)
+void		ft_init(void)
 {
 	ft_del_chain();
 	g_curs.nb_chr = 0;
@@ -78,7 +83,7 @@ void	ft_init(void)
 	ft_signal();
 }
 
-void	ft_init_window(void)
+void		ft_init_window(void)
 {
 	ft_window_size();
 	tputs(tgoto(tgetstr("cl", 0), 1, 0), 1, ft_char);
@@ -87,19 +92,4 @@ void	ft_init_window(void)
 	ft_cursor_pos();
 	ft_count_chain();
 	ft_init_pos();
-}
-
-void	ft_init_prompt(void)
-{
-	ft_heredoc_del();
-	g_curs.qt = 0;
-	ft_strdel(&g_curs.tmpchain);
-	g_curs.hist = 0;
-	if (g_curs.curs_pos[0] > 1)
-		ft_printf(__BWHT"%"__CLR_END__);
-	ft_putendl("");
-	ft_put_name();
-	ft_del_chain();
-	ft_strdel(&g_curs.retval);
-	ft_init();
 }

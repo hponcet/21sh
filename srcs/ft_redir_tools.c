@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 17:38:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/10 20:56:26 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 17:00:11 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char		*ft_redir_getfilename(char *cmd, char c)
 
 	i = ft_cindex_noquote_rev(cmd, c) + 1;
 	while (cmd[i] && (cmd[i] == ' ' || cmd[i] == '	'))
-			i++;
+		i++;
 	j = i;
 	while (ft_redir_isgoodchar(cmd[j]) == 1)
 		j++;

@@ -6,27 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:58:21 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 14:17:06 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 17:13:36 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
-
-static void	ft_key_ctrl_d(void)
-{
-	if (g_curs.hd)
-	{
-		ft_putendl("");
-		ft_heredoc_exec(g_curs.hd->trigger);
-		ft_heredoc_del();
-		ft_put_name();
-		ft_init();
-	}
-	else if (g_curs.qt == 1)
-		;
-	else if (!g_curs.retval)
-		ms_search_exit();
-}
 
 static void	ft_reinit_hist(void)
 {
@@ -36,6 +20,13 @@ static void	ft_reinit_hist(void)
 	g_curs.hist = 0;
 	g_curs.next = NULL;
 	g_curs.prev = g_curs.ls;
+}
+
+static void	ft_enter(void)
+{
+	if (ft_key_enter() == 1)
+		ft_put_name();
+	ft_init();
 }
 
 void		ft_key_group_dir(char *buf)
@@ -65,20 +56,13 @@ void		ft_key_norm(void)
 
 void		ft_key(char *buf)
 {
-	///////////////////
-	//ft_printf("%i\n", buf[0]);
-	///////////////////
 	if (g_curs.hist == 1 && (buf[0] != 27 || buf[1] != 91 ||
 				(buf[2] != 65 && buf[2] != 66)))
 		ft_reinit_hist();
 	if (g_curs.select && (buf[0] != -30 && buf[0] != -61 && buf[3] != 59))
 		ft_reset_select();
 	if (buf[0] == 10)
-	{
-		if (ft_key_enter() == 1)
-			ft_put_name();
-		ft_init();
-	}
+		ft_enter();
 	else if (buf[0] == 4 && buf[1] == 0)
 		ft_key_ctrl_d();
 	else if (buf[0] == 9 && buf[1] == 0 && !g_curs.next)

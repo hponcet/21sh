@@ -6,14 +6,14 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 01:13:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/16 21:16:06 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 19:11:13 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include "ft_colors.h"
-# include "libft.h" 
+# include "libft.h"
 # include <stdarg.h>
 # include <string.h>
 # include <stdlib.h>

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:04:19 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 12:47:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 17:18:23 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,21 @@ void	ft_put_name(void)
 	free(prompt);
 	tputs(tgoto(tgetstr("cd", 0), 1, 0), 1, ft_char);
 	ft_cursor_pos();
+}
+
+void	ft_init_prompt(void)
+{
+	ft_heredoc_del();
+	g_curs.qt = 0;
+	ft_strdel(&g_curs.tmpchain);
+	g_curs.hist = 0;
+	if (g_curs.curs_pos[0] > 1)
+		ft_printf(__BWHT"%"__CLR_END__);
+	ft_putendl("");
+	ft_put_name();
+	ft_del_chain();
+	ft_strdel(&g_curs.retval);
+	ft_init();
 }
 
 char	*ms_shell_name(void)

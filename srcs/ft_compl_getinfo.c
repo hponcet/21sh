@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 01:01:19 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/19 16:40:32 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 18:54:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_compl		*ft_compl_makefile(struct dirent *s_dir, char *path)
 {
 	t_compl			*file;
-	struct stat     s_stat;
+	struct stat		s_stat;
 	char			*tmp;
 
 	file = (t_compl*)malloc(sizeof(t_compl));

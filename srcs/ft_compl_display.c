@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:20:47 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 02:19:38 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 18:43:43 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,18 @@ void		ft_compl_display(t_compl *print, char *find)
 {
 	char	*buf;
 	t_compl	*tmp;
-	int		x;
-	int		y;
+	int		pos[2];
 
-	x = g_curs.curs_pos[0];
-	y = g_curs.curs_pos[1];
+	pos[0] = g_curs.curs_pos[0];
+	pos[1] = g_curs.curs_pos[1];
 	tmp = print;
-	tputs(tgoto(tgetstr("cm", 0), x - 1, y - 1), 1, ft_char);
+	tputs(tgoto(tgetstr("cm", 0), pos[0] - 1, pos[1] - 1), 1, ft_char);
 	ft_putstr(print->name + ft_strlen(find));
 	tputs(tgetstr("ce", 0), 1, ft_char);
 	buf = ft_strnew(4);
 	while (42)
 	{
-		if (ft_compl_key(buf, &tmp, find, x, y) == 1)
+		if (ft_compl_key(buf, &tmp, find, pos) == 1)
 			break ;
 		ft_bzero(buf, 4);
 		read(g_curs.fd, buf, 4);

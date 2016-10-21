@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 21:21:28 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 00:24:08 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 19:10:36 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef struct			s_hash
 /*
 **	ft_hash.c
 */
-t_hash					**ft_hash_addpath(t_hash **htbl, char *path, int nb_case);
+t_hash					**ft_hash_addpath(t_hash **htbl, char *path,
+						int nb_case);
 int						ft_hash(char *name, int nb_case);
 t_hash					**ft_hash_add(t_hash **htbl, char *name,
 						char *value, int nb_case);

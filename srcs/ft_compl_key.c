@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 20:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/17 02:43:17 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 18:45:54 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	ft_compl_addstr(char *str)
 	}
 }
 
-static int	ft_compl_retstr(t_compl *tmp, char *find, int x, int y, int i)
+static int	ft_compl_retstr(t_compl *tmp, char *find, int *pos, int i)
 {
-	tputs(tgoto(tgetstr("cm", 0), x - 1, y - 1), 1, ft_char);
+	tputs(tgoto(tgetstr("cm", 0), pos[0] - 1, pos[1] - 1), 1, ft_char);
 	tputs(tgetstr("ce", 0), 1, ft_char);
 	if (i == 1)
 		ft_compl_addstrend(tmp->name + ft_strlen(find), tmp->type);
@@ -53,14 +53,14 @@ static int	ft_compl_retstr(t_compl *tmp, char *find, int x, int y, int i)
 	return (1);
 }
 
-static int	ft_compl_retstrchar(t_compl *tmp, char *find, int x, int y, char c)
+static int	ft_compl_retstrchar(t_compl *tmp, char *find, int *pos, char c)
 {
 	char	*str;
 	int		i;
 
 	i = 0;
 	str = tmp->name + ft_strlen(find);
-	tputs(tgoto(tgetstr("cm", 0), x - 1, y - 1), 1, ft_char);
+	tputs(tgoto(tgetstr("cm", 0), pos[0] - 1, pos[1] - 1), 1, ft_char);
 	tputs(tgetstr("ce", 0), 1, ft_char);
 	ft_compl_addstr(str);
 	ft_chain_addchar(c);
@@ -69,19 +69,19 @@ static int	ft_compl_retstrchar(t_compl *tmp, char *find, int x, int y, char c)
 	return (1);
 }
 
-int			ft_compl_key(char *buf, t_compl **print, char *find, int x, int y)
+int			ft_compl_key(char *buf, t_compl **print, char *find, int *pos)
 {
 	t_compl		*tmp;
 
 	tmp = print[0];
 	if (tmp->next == tmp)
-		return (ft_compl_retstr(tmp, find, x, y, 1));
+		return (ft_compl_retstr(tmp, find, pos, 1));
 	if (buf[0] == 10)
-		return (ft_compl_retstr(tmp, find, x, y, 1));
+		return (ft_compl_retstr(tmp, find, pos, 1));
 	else if (buf[0] == 9 && buf[1] == 0)
 	{
 		if (tmp == tmp->next)
-			return (ft_compl_retstr(tmp, find, x, y, 0));
+			return (ft_compl_retstr(tmp, find, pos, 0));
 		tmp = tmp->next;
 	}
 	else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 65)
@@ -89,12 +89,12 @@ int			ft_compl_key(char *buf, t_compl **print, char *find, int x, int y)
 	else if (buf[0] == 27 && buf[1] == 91 && buf[2] == 66)
 		tmp = tmp->next;
 	else if (ft_isprint(buf[0]) == 1 && buf[1] == 0)
-		return (ft_compl_retstrchar(tmp, find, x, y, buf[0]));
+		return (ft_compl_retstrchar(tmp, find, pos, buf[0]));
 	else if (buf[0] == 127 && buf[1] == 0)
-		return (ft_compl_retstr(tmp, find, x, y, 0));
+		return (ft_compl_retstr(tmp, find, pos, 0));
 	else if (buf[0] == 27 && buf[1] == 0)
-		return (ft_compl_retstr(tmp, find, x, y, 1));
-	tputs(tgoto(tgetstr("cm", 0), x - 1, y - 1), 1, ft_char);
+		return (ft_compl_retstr(tmp, find, pos, 1));
+	tputs(tgoto(tgetstr("cm", 0), pos[0] - 1, pos[1] - 1), 1, ft_char);
 	ft_putstr(tmp->name + ft_strlen(find));
 	tputs(tgetstr("ce", 0), 1, ft_char);
 	*print = tmp;

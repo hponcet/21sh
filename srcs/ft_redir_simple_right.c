@@ -6,12 +6,11 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 17:56:46 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 01:45:51 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 16:59:51 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_minishell.h"
-
 
 static int	ft_redir_fdout(char *cmd)
 {

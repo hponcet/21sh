@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/26 01:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 03:12:34 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 18:57:35 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		ft_pipe(char *cmd1, char *cmd2)
 		close(pipefd[1]);
 		dup2(pipefd[0], STDIN_FILENO);
 		ms_exec(cmd2, g_curs.env);
-		waitpid(-2 , &status, 0);
+		waitpid(-2, &status, 0);
 	}
 	else
 	{

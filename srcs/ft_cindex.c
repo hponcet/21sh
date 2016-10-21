@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 16:56:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 02:16:48 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 18:56:28 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		ft_cindex_count_quote_rev(char *s, int i, char c)
 	}
 	return (j);
 }
+
 int		ft_cindex_noquote(char *str, char c)
 {
 	int		i;

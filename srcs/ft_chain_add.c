@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 17:56:12 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 17:57:18 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 18:57:18 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		ft_chain_addstr(char *str)
 	}
 }
 
-void			ft_chain_addchar(int c)
+void		ft_chain_addchar(int c)
 {
 	int		i;
 

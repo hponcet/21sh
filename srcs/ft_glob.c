@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 16:25:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 03:13:14 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 18:36:28 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,21 @@ char		*ft_glob(char *tabl)
 
 int			ft_glob_compare(char *s1, char *s2)
 {
-	if ((!*s1 && !*s2))								// fin de chaine
+	if ((!*s1 && !*s2))
 		return (1);
-	else if (*s1 == '?' && *s2)						// ? : avance d'un char
+	else if (*s1 == '?' && *s2)
 		return (ft_glob_compare(s1 + 1, s2 + 1));
-	else if (*s1 == '*' && s1[1] == '*')			// * : multiple *
+	else if (*s1 == '*' && s1[1] == '*')
 		return (ft_glob_compare(s1 + 1, s2));
-	else if (*s1 == '*' && *s2 == s1[1])			// * : match
+	else if (*s1 == '*' && *s2 == s1[1])
 		return (ft_glob_compare(s1 + 1, s2) || ft_glob_compare(s1, s2 + 1));
-	else if (*s1 == '*' && *s2 != s1[1] && *s2)		// * : avance sur s2
+	else if (*s1 == '*' && *s2 != s1[1] && *s2)
 		return (ft_glob_compare(s1, s2 + 1));
-	else if (*s1 == '\\' && (s1[1] == '*'			// \ : echapement
+	else if (*s1 == '\\' && (s1[1] == '*'
 				|| s1[1] == '?' || s1[1] == '{'
 				|| s1[1] == '[') && *s2 == s1[1])
 		return (ft_glob_compare(s1 + 2, s2 + 1));
-	else if (*s1 == *s2)							// char identique
+	else if (*s1 == *s2)
 		return (ft_glob_compare(s1 + 1, s2 + 1));
 	return (0);
 }

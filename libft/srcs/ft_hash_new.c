@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 21:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 00:34:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 19:09:47 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_hash		**ft_hash_newtbl(int nb_case)
 	return (htbl);
 }
 
-t_hash	*ft_hash_newfile(char *name, char *value)
+t_hash		*ft_hash_newfile(char *name, char *value)
 {
 	t_hash	*file;
 
