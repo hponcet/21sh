@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 22:12:13 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 03:54:56 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 03:12:08 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ char	*ft_glob_replace(char *cmd)
 	pth_cmd[1] = ft_strdup(cmd);
 	ft_glob_path(pth_cmd);
 	ret = ft_glob_makestr(pth_cmd[0], pth_cmd[1], pth_cmd[2]);
-	ft_tabdel(pth_cmd);
+	ft_strdel(&pth_cmd[0]);
+	ft_strdel(&pth_cmd[1]);
+	ft_strdel(&pth_cmd[2]);
+	free(pth_cmd);
+	pth_cmd = NULL;
 	return (ret);
 }
 

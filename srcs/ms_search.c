@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/19 01:32:58 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 03:25:35 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ char		*ms_search_bin(char **env)
 
 	path = NULL;
 	pathbin = NULL;
-	if (g_cmd && g_cmd[0] && g_cmd[0][0] == '/')
-		return (g_cmd[0]);
+	if (g_cmd && g_cmd[0] && g_cmd[0][0] == '/' && access(g_cmd[0], X_OK) > -1)
+		return (ft_strdup(g_cmd[0]));
 	if ((g_curs.opt->htbl) && (pathbin = ft_hash_search(g_curs.hash_bin,
 					g_cmd[0], __HTBL_LEN__)))
 		return (pathbin);
@@ -89,9 +89,9 @@ char		*ms_search_bin(char **env)
 	pathbin = ms_search_pathbin(path, env);
 	if (!pathbin)
 	{
-		ft_putstr_fd("21sh: command not found: ", g_curs.fd);
-		ft_putendl_fd(g_cmd[0], g_curs.fd);
-		g_cmd = ms_free_tab(g_cmd);
+		ft_printf("21sh: Command not found: %s\n", g_cmd[0]);
+		ft_tabdel(g_cmd);
+		g_cmd = NULL;
 	}
 	ft_strdel(&joinpath);
 	free(path);

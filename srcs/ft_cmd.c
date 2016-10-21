@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 10:55:44 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 04:14:06 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 01:58:11 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,26 @@
 void	ft_cmd(char *enter)
 {
 	char	**cmd;
+	char	*tmp;
 	int		i;
 
 	if (ft_cindex(enter, '$') >= 0)
 		enter = ft_dollar(enter);
 	cmd = ft_cmd_split(enter);
 	i = 0;
+	tmp = NULL;
 	while (cmd[i])
 	{
-		if (!(cmd[i] = ft_glob(cmd[i])))
+		if (!(tmp = ft_glob(cmd[i])))
 		{
 			i++;
 			continue ;
 		}
-		g_cmd = ms_parse_cmd(cmd[i]);
-		ms_exec(cmd[i], g_curs.env);
+		g_cmd = ms_parse_cmd(tmp);
+		ms_exec(tmp, g_curs.env);
 		g_moddedenv = 0;
+		ft_strdel(&tmp);
 		i++;
 	}
-	ms_free_tab(cmd);
+	ft_tabdel(cmd);
 }

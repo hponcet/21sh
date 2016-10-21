@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 22:45:24 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 00:48:13 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/21 02:35:41 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	getpath(char **ret)
 	path = ft_strsub(ret[1], 0, i + 1);
 	ret[0] = ft_strdup(path);
 	ft_strdel(&path);
+	free(ret[1]);
 	ret[1] = find;
 }
 
@@ -81,6 +82,7 @@ static void	getpathhome(char **ret)
 	ret[0] = ft_strjoin(home, path);
 	ft_strdel(&path);
 	ft_strdel(&home);
+	free(ret[1]);
 	ret[1] = find;
 }
 

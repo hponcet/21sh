@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 03:19:48 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 22:01:20 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ void		ms_exec_fork(char *cmd, char **env)
 {
 	pid_t	pid;
 	int		status;
+	char	*pathbin;
 
+	pathbin = NULL;
 	status = 0;
 	if (!g_cmd)
 		return ;
@@ -43,7 +45,9 @@ void		ms_exec_fork(char *cmd, char **env)
 		if (ft_cindex_noquote(cmd, '|') > 1)
 			ft_ast(cmd);
 		ft_redir_exec(cmd);
-		ms_exec_bin(ms_search_bin(env), env);
+		pathbin = ms_search_bin(env);
+		ms_exec_bin(pathbin, env);
+		ft_strdel(&pathbin);
 		exit(0);
 	}
 }
@@ -57,6 +61,6 @@ void		ms_exec_bin(char *pathbin, char **env)
 		exit(0);
 	}
 	execve(pathbin, g_cmd, env);
-	g_cmd = ms_free_tab(g_cmd);
-	ft_strdel(&pathbin);
+	if (g_cmd)
+		ft_tabdel(g_cmd);
 }

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 06:14:59 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 18:08:03 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/20 18:29:38 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void		ft_hsearch_enter(void)
 	if (tmp)
 	{
 		ft_strdel(&g_curs.retval);
+		ft_del_chain();
 		tputs(tgoto(tgetstr("cm", 0), g_curs.initpos[0] - 1, g_curs.initpos[1] - 1), 1, ft_char);
 		tputs(tgetstr("cd", 0), 1, ft_char);
 		ft_chain_addstr(tmp->cmd);
