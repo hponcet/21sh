@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:20:47 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 18:43:43 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/23 15:51:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,16 @@ void		ft_compl_display(t_compl *print, char *find)
 	buf = ft_strnew(4);
 	while (42)
 	{
+		if (g_curs.sig && ft_init())
+			break ;
 		if (ft_compl_key(buf, &tmp, find, pos) == 1)
 			break ;
 		ft_bzero(buf, 4);
 		read(g_curs.fd, buf, 4);
+		if ((buf[0] == 27 || buf[0] == 4) && buf[1] == 0 && ft_init_pn(buf[0]))
+			break ;
 	}
+	g_curs.sig = 0;
 	ft_compl_delchain(print);
 	ft_strdel(&buf);
 }

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 15:36:51 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/19 16:58:32 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/23 15:45:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void		ft_compl_bin(char *str)
 	path = ms_search_paths();
 	while (path[i])
 	{
+		ft_signal();
 		dir = ft_compl_makechain(path[i], dir, find);
 		i++;
 	}

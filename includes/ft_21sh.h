@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 19:05:23 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/23 15:49:52 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ t_curs				g_curs;
 void				ft_hsearch(void);
 int					ft_hsearch_key(char *buf);
 void				ft_hsearch_display(char *cmd);
+int					ft_init_pn(int i);
 /*
 ** ft_hash_bin.c
 */
@@ -146,25 +147,6 @@ int					ft_glob_check(char *str);
 void				ft_glob_path(char **ret);
 
 /*
-** ft_compl_makechain.c
-*/
-t_compl				*ft_compl_makefile(struct dirent *s_dir, char *path);
-t_compl				*ft_compl_makechain(char *path, t_compl *ret, char *find);
-void				ft_compl_sortchain(t_compl **list, t_compl *file);
-char				*ft_compl_getfind(char *str);
-
-/*
-** ft_compl_getpath.c
-*/
-void				ft_compl_getpath(char **ret);
-
-/*
-** ft_compl_display.c
-*/
-int					ft_compl_countfile(t_compl *print);
-void				ft_compl_display(t_compl *print, char *find);
-
-/*
 ** ft_compl.c
 */
 char				*ft_compl(char *str);
@@ -172,11 +154,21 @@ void				ft_compl_bin(char *str);
 void				ft_compl_file(char *str);
 void				ft_compl_delchain(t_compl *chain);
 int					ft_compl_wis(char *str);
-/*
-** ft_compl_key.c
-*/
 int					ft_compl_key(char *buf, t_compl **print, char *find,
 					int *pos);
+int					ft_compl_countfile(t_compl *print);
+void				ft_compl_display(t_compl *print, char *find);
+void				ft_compl_getpath(char **ret);
+t_compl				*ft_compl_makefile(struct dirent *s_dir, char *path);
+t_compl				*ft_compl_makechain(char *path, t_compl *ret, char *find);
+void				ft_compl_sortchain(t_compl **list, t_compl *file);
+char				*ft_compl_getfind(char *str);
+int					ft_compl_key_dir(char *buf, t_compl **print,
+					char *find, int *pos);
+void				ft_compl_addstrend(char *str, int type);
+void				ft_compl_addstr(char *str);
+int					ft_compl_retstr(t_compl *tmp, char *find, int *pos, int i);
+int					ft_compl_retstrchar(t_compl *tmp, char *find, int *pos, char c);
 
 /*
 ** ft_dollar.c
@@ -312,7 +304,7 @@ void				ft_display(void);
 */
 char				**ft_change_shlvl(char **env);
 void				ft_load(int ac, char**av);
-void				ft_init(void);
+int					ft_init(void);
 void				ft_init_window(void);
 /*
 ** ft_history.c

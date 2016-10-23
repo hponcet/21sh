@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 17:18:15 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/23 15:52:54 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void		ft_load(int ac, char **av)
 	g_curs.ls = NULL;
 	g_curs.select = NULL;
 	g_curs.qt = 0;
+	g_curs.sig = 0;
 	ft_cursor_pos();
 	ft_put_name();
 	g_curs.initpos[0] = g_curs.curs_pos[0];
@@ -65,7 +66,7 @@ void		ft_load(int ac, char **av)
 	ft_load_2();
 }
 
-void		ft_init(void)
+int			ft_init(void)
 {
 	ft_del_chain();
 	g_curs.nb_chr = 0;
@@ -81,6 +82,7 @@ void		ft_init(void)
 	g_curs.initpos[0] = g_curs.curs_pos[0];
 	g_curs.initpos[1] = g_curs.curs_pos[1];
 	ft_signal();
+	return (1);
 }
 
 void		ft_init_window(void)

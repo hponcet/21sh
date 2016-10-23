@@ -6,13 +6,13 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/18 06:14:59 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 18:35:19 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/23 16:18:51 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_21sh.h"
 
-static int	ft_init_pn(int i)
+int			ft_init_pn(int i)
 {
 	char	*prompt;
 
@@ -48,11 +48,8 @@ void		ft_hsearch(void)
 		ft_signal();
 		ft_bzero(buf, 4);
 		read(0, buf, 4);
-		if (g_curs.sig == 1)
-		{
-			ft_init();
+		if (g_curs.sig && ft_init())
 			break ;
-		}
 		if ((buf[0] == 27 || buf[0] == 4) && buf[1] == 0 && ft_init_pn(buf[0]))
 			break ;
 		if (ft_hsearch_key(buf))
@@ -82,6 +79,7 @@ void		ft_hsearch_enter(void)
 	{
 		ft_strdel(&g_curs.retval);
 		ft_del_chain();
+		g_curs.initpos[0] -= 2;
 		tputs(tgoto(tgetstr("cm", 0), g_curs.initpos[0] - 1,
 					g_curs.initpos[1] - 1), 1, ft_char);
 		tputs(tgetstr("cd", 0), 1, ft_char);
