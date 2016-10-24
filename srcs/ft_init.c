@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/23 20:24:15 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/24 21:05:35 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ char		**ft_change_shlvl(char **env)
 	int		i;
 
 	shlvl = ms_get_value(env, "SHLVL");
+	if (!shlvl)
+	{
+		env = ms_builtin_addenv("SHLVL=1", env);
+		return (env);
+	}
 	i = ft_atoi(shlvl);
 	i++;
 	free(shlvl);
