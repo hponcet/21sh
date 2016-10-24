@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 19:04:59 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 01:03:26 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/24 18:55:38 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,16 @@ char	*ft_hash_search(t_hash **htbl, char *name, int nb_case)
 	char	*ret;
 	t_hash	*tmp;
 
+	if (!name)
+		return (NULL);
 	index = ft_hash(name, nb_case);
 	tmp = (t_hash*)htbl[index];
 	ret = NULL;
 	if (tmp)
 	{
-		while (tmp && ft_strcmp(tmp->name, name) < 0)
+		while (tmp && ft_strcmp(tmp->name, name) != 0)
 			tmp = tmp->next;
-		if (ft_strcmp(tmp->name, name) == 0)
+		if (tmp && ft_strcmp(tmp->name, name) == 0)
 			ret = ft_strdup(tmp->value);
 	}
 	return (ret);

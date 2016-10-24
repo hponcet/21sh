@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/23 15:52:54 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/23 20:24:15 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		ft_load(int ac, char **av)
 	g_curs.initpos[1] = g_curs.curs_pos[1];
 	g_curs.chain = NULL;
 	g_curs.hash_bin = ft_hash_bin();
+	ft_alias_gethtbl();
 	ft_load_2();
 }
 

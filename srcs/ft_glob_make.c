@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 22:12:13 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 18:39:33 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/24 18:19:29 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,22 @@ void	ft_glob_sortchain(t_glob **ret, t_glob *file)
 		tmp = tmp->next;
 	tmp->next = file;
 }
+void	ft_glob_delchain(t_glob *chain)
+{
+	t_glob	*tmp;
+	t_glob	*prev;
 
+	tmp = chain;
+	while (tmp)
+	{
+		prev = tmp;
+		ft_strdel(&tmp->name);
+		ft_strdel(&tmp->path);
+		tmp = tmp->next;
+		free(prev);
+		prev = NULL;
+	}
+}
 char	*ft_glob_makestr(char *path, char *find, char *absolute)
 {
 	DIR				*dirp;
@@ -107,5 +122,6 @@ char	*ft_glob_makestr(char *path, char *find, char *absolute)
 	if (!ret)
 		return (NULL);
 	str = ft_glob_tglobtostr(ret);
+	ft_glob_delchain(ret);
 	return (str);
 }

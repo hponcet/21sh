@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/28 15:45:06 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 03:25:35 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/24 17:10:00 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void		ms_search_exit(void)
 	ft_term_reset();
 	if (g_curs.opt->htbl == 1)
 		ft_hash_delhtbl(g_curs.hash_bin, __HTBL_LEN__);
+	ft_hash_delhtbl(g_curs.alias, __HTBL_LEN__);
 	if (g_cmd && g_cmd[0] && ft_strcmp(g_cmd[0], "exit") == 0 && g_cmd[1])
 		e = atoi(g_cmd[1]);
 	if (e >= 0 && e <= 255)

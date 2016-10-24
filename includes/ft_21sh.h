@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/23 15:49:52 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/24 18:19:10 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct		s_curs
 	int				fd;
 	t_shopt			*opt;
 	t_hash			**hash_bin;
+	t_hash			**alias;
 	char			**env;
 	int				*initpos;
 	t_term			term;
@@ -115,6 +116,19 @@ typedef struct		s_curs
 }					t_curs;
 
 t_curs				g_curs;
+
+/*
+** ft_alias.c
+*/
+char				*ft_alias_delquotes(char *str);
+void				ft_alias_htbltofile(void);
+void				ft_alias_htbladd(char *buf);
+void				ft_alias_gethtbl(void);
+int					ft_alias(char *cmd);
+int					ft_alias_unalias(char *cmd);
+int					ft_alias_search(char **cmd);
+int					ft_alias_new(char **cmd);
+
 
 /*
 ** ft_hsearch.c
@@ -145,6 +159,7 @@ char				*ft_glob_makestr(char *path, char *find, char *absolute);
 int					ft_glob_compare(char *s1, char *s2);
 int					ft_glob_check(char *str);
 void				ft_glob_path(char **ret);
+void				ft_glob_delchain(t_glob *chain);
 
 /*
 ** ft_compl.c
