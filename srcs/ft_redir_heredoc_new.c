@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 12:31:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/04 12:39:48 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/24 20:37:40 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int				ft_heredoc_new(void)
 	}
 	g_curs.hd->trigger = ft_strsub(g_curs.retval, i,
 			ft_heredoc_endtrig(g_curs.retval) - i);
+	i = open("/tmp/.__21sh_tmp_hd", O_TRUNC | O_RDWR);
+	close(i);
 	ft_hist_addtohist(g_curs.retval);
 	ft_strdel(&g_curs.retval);
 	return (1);

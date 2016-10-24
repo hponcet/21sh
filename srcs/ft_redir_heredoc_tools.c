@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/16 15:18:30 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/20 01:45:22 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/24 20:31:41 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int				ft_heredoc_check(void)
 {
 	int		i;
 
+	if (!g_curs.retval)
+		return (-1);
 	i = ft_strlen(g_curs.retval);
 	while (i > -1)
 	{
