@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 17:56:12 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 18:57:18 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/25 19:27:43 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void		ft_chain_addchar(int c)
 	int		i;
 
 	i = -1;
+	if (g_curs.initpos[1] == 1 && g_curs.ls->cp[1] == g_curs.ws[1] && g_curs.ls->cp[0] == g_curs.ws[0] - 1)
+		return ;
 	if (!g_curs.chain)
 	{
 		g_curs.chain = ft_new_chr(c);

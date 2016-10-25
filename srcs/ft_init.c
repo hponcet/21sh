@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/14 05:49:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/24 21:05:35 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/25 19:33:11 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ void		ft_init_window(void)
 	tputs(tgoto(tgetstr("cl", 0), 1, 0), 1, ft_char);
 	ft_put_name();
 	g_curs.initpos[1] = 1;
+	ft_str_tc(g_curs.chain);
 	ft_cursor_pos();
 	ft_count_chain();
 	ft_init_pos();
+	tputs(tgoto(tgetstr("cm", 0), g_curs.ls->cp[0], g_curs.ls->cp[1] - 1),
+			1, ft_char);
 }
