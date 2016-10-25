@@ -6,7 +6,7 @@
 #    By: hponcet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 19:57:28 by hponcet           #+#    #+#              #
-#*   Updated: 2016/10/25 19:37:40 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/25 23:14:32 by hponcet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,12 +133,12 @@ OBJECTS = $(EXEC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	-@ar rc $(NAME) *.o
+	-@ar rc $(NAME) $(OBJECTS)
 	-@ranlib $(NAME)
 	@echo "Libft correctly created."
 
 %.o: %.c
-	-@$(CC) $(CFLAGS) -I ./includes -c $<
+	-@$(CC) $(CFLAGS) -I ./includes -c $< -o $@
 
 clean :
 	-@rm -rf $(OBJECTS)
