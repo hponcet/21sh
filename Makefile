@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/10/25 17:06:31 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/25 17:36:08 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -14,7 +14,7 @@ NAME = 21sh
 
 CC = gcc
 
-CFLAGS = -Wall -Wall -Wextra
+CFLAGS = -Wall -Wall -Wextra -g
 
 SRC =	ft_ast.c \
 		ft_chain.c \
@@ -99,11 +99,11 @@ INC = ./includes/
 
 LIB_FILE = $(addprefix $(LIBFT), $(LIB))
 
-all: $(NAME)
-
 $(NAME): $(OBJECTS) $(LIB_FILE)
 	-@$(CC) $(CFLAGS) $(OBJECTS) -L $(LIBFT) -ltermcap -lft -I$(INC) -o $(NAME)
 	@echo "21sh ready to use !"
+
+all: $(NAME)
 
 $(LIB_FILE):
 	@echo "Waiting, libft is in compilation..."

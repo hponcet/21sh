@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 11:28:50 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/16 15:31:45 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/25 17:58:47 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void		ft_key_opt_directional_up(void)
 	}
 	else
 	{
-		while (tmp && tmp->cp[0] != g_curs.next->cp[0])
+		while (tmp && tmp->prev->cp[0] >= 0 && tmp->cp[0] != g_curs.next->cp[0])
 			tmp = tmp->prev;
 		g_curs.prev = tmp->prev;
 		g_curs.next = tmp;

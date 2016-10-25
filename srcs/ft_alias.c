@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 16:29:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/25 16:52:32 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/25 19:16:48 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,20 @@ int		ft_alias_search(char **cmd)
 int		ft_alias_new(char **cmd)
 {
 	char	**unal;
+	char	*tmp;
 	int		i;
 
 	i = ft_cindex(cmd[1], '=');
 	unal = NULL;
-	if (i >= 1 && cmd[1][i + 1])
+	if (i >= 1 && cmd[1][i + 1] && (unal = ft_strsplit(cmd[1], '=')))
 	{
-		unal = ft_strsplit(cmd[1], '=');
+		if ((tmp = ft_hash_search(g_curs.alias, unal[1], __HTBL_LEN__)))
+		{
+			ft_printf("21sh: alias: Don't make loop dude ;)\n");
+			ft_strdel(&tmp);
+			ft_tabdel(unal);
+			return (1);
+		}
 		ft_alias_unalias(unal[0]);
 		ft_alias_htbladd(cmd[1]);
 		ft_alias_htbltofile();
