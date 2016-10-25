@@ -6,7 +6,7 @@
 #    By: hponcet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 19:57:28 by hponcet           #+#    #+#              #
-#*   Updated: 2016/10/25 17:37:48 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/25 19:37:40 by hponcet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 LIBFT_DIR = srcs/
 
@@ -141,7 +141,7 @@ $(NAME): $(OBJECTS)
 	-@$(CC) $(CFLAGS) -I ./includes -c $<
 
 clean :
-	-@rm -rf *.o
+	-@rm -rf $(OBJECTS)
 
 fclean: clean
 	-@rm -rf $(NAME)
