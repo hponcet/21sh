@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/10/25 16:45:55 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/25 17:06:31 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -113,7 +113,7 @@ $(LIB_FILE):
 	-@$(CC) $(CFLAGS) -I$(INC) -c $< -o $@
 
 clean :
-	-@rm -rf $(SRCS)*.o
+	-@rm -rf $(OBJECTS)
 
 fclean: clean libfclean
 	-@rm -rf $(NAME)
