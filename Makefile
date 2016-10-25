@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/10/24 21:12:39 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/10/25 16:45:55 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -38,6 +38,7 @@ SRC =	ft_ast.c \
 		ft_init.c \
 		ft_key.c \
 		ft_glob.c \
+		ft_glob_sortchain.c \
 		ft_glob_make.c \
 		ft_glob_path.c \
 		ft_hash_bin.c \

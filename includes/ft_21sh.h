@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/24 18:19:10 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/25 16:56:31 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ int					ft_alias_unalias(char *cmd);
 int					ft_alias_search(char **cmd);
 int					ft_alias_new(char **cmd);
 
-
 /*
 ** ft_hsearch.c
 */
@@ -137,6 +136,7 @@ void				ft_hsearch(void);
 int					ft_hsearch_key(char *buf);
 void				ft_hsearch_display(char *cmd);
 int					ft_init_pn(int i);
+
 /*
 ** ft_hash_bin.c
 */
@@ -183,7 +183,8 @@ int					ft_compl_key_dir(char *buf, t_compl **print,
 void				ft_compl_addstrend(char *str, int type);
 void				ft_compl_addstr(char *str);
 int					ft_compl_retstr(t_compl *tmp, char *find, int *pos, int i);
-int					ft_compl_retstrchar(t_compl *tmp, char *find, int *pos, char c);
+int					ft_compl_retstrchar(t_compl *tmp, char *find, int *pos,
+					char c);
 
 /*
 ** ft_dollar.c
@@ -225,6 +226,7 @@ char				*ft_join_tab(char **tb);
 ** ft_getfd.c.c
 */
 void				get_fd(void);
+
 /*
 ** ft_cmd_v.c
 */
@@ -247,6 +249,7 @@ int					ft_cindex_noquote(char *str, char c);
 int					ft_cindex_noquote_rev(char *str, char c);
 int					ft_cindexfrom_noquote_rev(char *str, int index, char c);
 int					ft_cmd_count_quote_rev(char *s, int i, char c);
+
 /*
 ** ft_redir_tools.c
 */
@@ -321,6 +324,7 @@ char				**ft_change_shlvl(char **env);
 void				ft_load(int ac, char**av);
 int					ft_init(void);
 void				ft_init_window(void);
+
 /*
 ** ft_history.c
 */
@@ -424,6 +428,7 @@ void				ft_key_del(void);
 */
 void				ft_key_home(char *buf);
 int					ft_printf(const char *format, ...);
+
 /*
 ** ft_key_opt_directional.c
 */

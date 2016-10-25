@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 20:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/23 15:34:59 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/25 16:51:02 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			ft_compl_key(char *buf, t_compl **print, char *find, int *pos)
 	if (buf[0] == 10)
 		return (ft_compl_retstr(tmp, find, pos, 1));
 	else if (buf[0] == 27 && ft_compl_key_dir(buf, &tmp, find, pos) == 1)
-			return (1);
+		return (1);
 	else if (buf[0] == 9 && buf[1] == 0)
 	{
 		if (tmp == tmp->next)

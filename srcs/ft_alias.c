@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 16:29:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/24 18:07:45 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/25 16:52:32 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int		ft_alias_unalias(char *cmd)
 			ft_strdel(&tmp->name);
 			ft_strdel(&tmp->value);
 			free(tmp);
-			tmp = NULL;
 		}
 	}
 	ft_alias_htbltofile();

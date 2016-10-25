@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 22:12:13 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/24 18:19:29 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/25 16:50:29 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,6 @@ char	*ft_glob_tglobtostr(t_glob *lst)
 	return (ret);
 }
 
-void	ft_glob_sortchain(t_glob **ret, t_glob *file)
-{
-	t_glob	*tmp;
-
-	tmp = *ret;
-	if (!*ret)
-	{
-		*ret = file;
-		return ;
-	}
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = file;
-}
 void	ft_glob_delchain(t_glob *chain)
 {
 	t_glob	*tmp;
@@ -96,6 +82,7 @@ void	ft_glob_delchain(t_glob *chain)
 		prev = NULL;
 	}
 }
+
 char	*ft_glob_makestr(char *path, char *find, char *absolute)
 {
 	DIR				*dirp;
@@ -112,11 +99,9 @@ char	*ft_glob_makestr(char *path, char *find, char *absolute)
 		if (ft_strcmp(s_dir->d_name, "..") == 0
 				|| (ft_strncmp(s_dir->d_name, ".", 1) == 0 && find[0] != '.'))
 			continue ;
-		if (ft_glob_compare(find, s_dir->d_name) != 0)
-		{
-			file = ft_glob_makefile(s_dir, path);
+		if (ft_glob_compare(find, s_dir->d_name) != 0
+				&& (file = ft_glob_makefile(s_dir, path)))
 			ft_glob_sortchain(&ret, file);
-		}
 	}
 	closedir(dirp);
 	if (!ret)
