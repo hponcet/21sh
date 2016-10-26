@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 15:36:51 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/24 20:14:53 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/26 14:44:47 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void		ft_compl_file(char *str)
 	ret[1] = ft_compl_getfind(str);
 	ft_compl_getpath(ret);
 	dir = ft_compl_makechain(ret[0], dir, ret[1]);
+	if (!ret[1])
+		ret[1] = ft_strdup("");
 	if (dir)
 		ft_compl_display(dir, ret[1]);
 	ft_strdel(&ret[0]);
