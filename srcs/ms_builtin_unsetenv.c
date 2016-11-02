@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/11 20:36:43 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/25 23:09:43 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/02 16:06:14 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ char	**ms_builtin_srchndel(int j, char **env)
 	nenv = NULL;
 	while (env[i])
 		i++;
-	if (!(nenv = (char**)malloc(sizeof(char*) * i)))
-		return (NULL);
+	nenv = (char**)malloc(sizeof(char*) * i);
 	nenv[i - 1] = NULL;
 	if (i == 1)
 		return (nenv);

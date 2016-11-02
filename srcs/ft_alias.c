@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 16:29:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/25 23:18:42 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/02 16:08:16 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		ft_alias_new(char **cmd)
 	unal = NULL;
 	if (i >= 1 && cmd[1][i + 1] && (unal = ft_strsplit(cmd[1], '=')))
 	{
-		if ((tmp = ft_hash_search(g_curs.alias, unal[1], __HTBL_LEN__)) 
+		if ((tmp = ft_hash_search(g_curs.alias, unal[1], __HTBL_LEN__))
 				|| ft_strcmp(unal[0], unal[1]) == 0)
 		{
 			ft_strdel(&tmp);

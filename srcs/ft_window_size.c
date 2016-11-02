@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 12:20:26 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/26 16:15:19 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/02 16:06:58 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void		ft_window_size(void)
 
 static void	ft_init_window_find(size_t id)
 {
-		ft_str_tc(g_curs.chain);
-		g_curs.initpos[1] = 1;
-		g_curs.next = NULL;
-		g_curs.prev = g_curs.ls;
-		g_curs.id = g_curs.ls->id + 1;
-		while (g_curs.id != id)
-		{
-			g_curs.id = g_curs.prev->id;
-			g_curs.prev = g_curs.prev->prev;
-		}
-		g_curs.next = g_curs.prev->next;
+	ft_str_tc(g_curs.chain);
+	g_curs.initpos[1] = 1;
+	g_curs.next = NULL;
+	g_curs.prev = g_curs.ls;
+	g_curs.id = g_curs.ls->id + 1;
+	while (g_curs.id != id)
+	{
+		g_curs.id = g_curs.prev->id;
+		g_curs.prev = g_curs.prev->prev;
+	}
+	g_curs.next = g_curs.prev->next;
 }
 
 void		ft_init_window(void)
