@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/03 12:48:34 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/19 00:34:10 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/10/26 01:13:38 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 ** /ft_colors.h"
 */
 
-# define __PROMPT_NAME__ __CYA"✱  "__CLR_END__
+# define __PROMPT_NAME__ __GRN"ッ "__CLR_END__
 /*
 ** ********************************
 ** Curent directory of prompt shell
