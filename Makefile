@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/11/02 15:57:07 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/11/07 16:40:54 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -14,7 +14,7 @@ NAME = 21sh
 
 CC = gcc
 
-CFLAGS = -Wall -Wall -Wextra
+CFLAGS = -Wall -Wall -Wextra -g
 
 SRC =	ft_ast.c \
 		ft_chain.c \
