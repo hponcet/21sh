@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/23 16:29:18 by hponcet           #+#    #+#             */
-/*   Updated: 2016/11/07 16:48:59 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/07 19:35:33 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_alias(char *str)
 	int		i;
 
 	i = 0;
-	if (!str)
+	if (!str || ft_isemptystring(str) == 1)
 		return (0);
 	cmd = ms_parse_cmd(str);
 	if (ft_strcmp(cmd[0], "alias") == 0 && cmd[1])

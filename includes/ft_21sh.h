@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 20:03:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/25 16:56:31 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/07 18:34:58 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -447,6 +447,9 @@ void				ft_cut(void);
 */
 void				ft_debug(void);
 void				ft_debug_head(void);
+
+char				**ft_cmd_delemptycmd(char **cmd);
+int					ft_isemptystring(char *cmd);
 
 #endif
 

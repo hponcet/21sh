@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hash_new.c                                      :+:      :+:    :+:   */
+/*   ft_tabjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/17 21:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 00:34:28 by hponcet          ###   ########.fr       */
+/*   Created: 2016/11/07 20:09:44 by hponcet           #+#    #+#             */
+/*   Updated: 2016/11/07 20:13:19 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_hash.h"
+#include "libft.h"
 
-t_hash		**ft_hash_newtbl(int nb_case)
+char		*ft_tabjoin(char **tb)
 {
-	t_hash	**htbl;
 	int		i;
+	char	*ret;
 
-	i = nb_case - 1;
-	if (!(htbl = (t_hash**)malloc(sizeof(t_hash*) * nb_case + 1)))
+	i = 0;
+	if (!tb)
 		return (NULL);
-	while (i >= 0)
-		htbl[i--] = NULL;
-	return (htbl);
-}
-
-t_hash	*ft_hash_newfile(char *name, char *value)
-{
-	t_hash	*file;
-
-	file = (t_hash*)malloc(sizeof(t_hash));
-	file->name = ft_strdup(name);
-	file->value = ft_strdup(value);
-	file->next = NULL;
-	return (file);
+	while (tb[i])
+	{
+		ret = ft_joinf("%s%s", ret, tb);
+		i++;
+	}
+	return (ret);
 }

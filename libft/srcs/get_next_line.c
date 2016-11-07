@@ -6,9 +6,10 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 17:59:47 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 19:09:15 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/06/03 22:59:28 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "get_next_line.h"
 
 #include "libft.h"
 #include "get_next_line.h"

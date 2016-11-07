@@ -6,7 +6,7 @@
 #    By: hponcet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 19:57:28 by hponcet           #+#    #+#              #
-#*   Updated: 2016/11/07 16:46:09 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/11/07 20:14:05 by hponcet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 LIBFT_DIR = srcs/
 
@@ -27,6 +27,7 @@ EXEC =	srcs/ft_atoi.c \
 		srcs/ft_isalpha.c \
 		srcs/ft_isascii.c \
 		srcs/ft_isdigit.c \
+		srcs/ft_isspace.c \
 		srcs/ft_isprint.c \
 		srcs/ft_itoa.c \
 		srcs/ft_tabdel.c \
@@ -88,10 +89,12 @@ EXEC =	srcs/ft_atoi.c \
 		srcs/ft_strrvrs.c \
 		srcs/ft_strsplit.c \
 		srcs/ft_strstr.c \
+		srcs/ft_strinstr.c \
 		srcs/ft_strsub.c \
 		srcs/ft_strtrim.c \
 		srcs/ft_strrvrs.c \
 		srcs/ft_strrepchar.c \
+		srcs/ft_tabjoin.c \
 		srcs/ft_cindex.c \
 		srcs/ft_cindex_rev.c \
 		srcs/ft_abs.c \

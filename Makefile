@@ -6,7 +6,7 @@
 #*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/04/15 00:42:52 by hponcet           #+#    #+#             *#
-#*   Updated: 2016/11/07 16:40:54 by hponcet          ###   ########.fr       *#
+#*   Updated: 2016/11/07 21:11:19 by hponcet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -14,7 +14,7 @@ NAME = 21sh
 
 CC = gcc
 
-CFLAGS = -Wall -Wall -Wextra -g
+CFLAGS = -Wall -Wall -Wextra -fsanitize=address
 
 SRC =	ft_ast.c \
 		ft_chain.c \
@@ -25,6 +25,7 @@ SRC =	ft_ast.c \
 		ft_char.c \
 		ft_cmd.c \
 		ft_cmd_split.c \
+		ft_cmd_split2.c \
 		ft_cmd_v.c \
 		ft_cursor_pos.c \
 		ft_debug.c \

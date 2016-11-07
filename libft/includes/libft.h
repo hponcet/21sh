@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 14:56:31 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 22:04:45 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/07 20:14:43 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ size_t				ft_strlcat(char *restrict dst, const char *restrict src,
 					size_t size);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
-char				*ft_strstr(const char *big, const char *little);
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
+int					ft_strinstr(char *orig, char *find);
+char				*ft_strstr(const char *big, const char *little);
 char				*ft_strnstr(const char *big, const char *little,
 					size_t len);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -78,6 +79,7 @@ int					ft_printf(const char *format, ...);
 *************** Fonctions de gestion de tableaux ****************
 */
 void				ft_tabdel(char **table);
+char				*ft_tabjoin(char **table);
 /*
 ************** Fonctions de gestion de characters ***************
 */
@@ -103,6 +105,7 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					ft_isspace(char c);
 int					match(char *str1, char *str2);
 int					nmatch(char *str1, char *str2);
 /*

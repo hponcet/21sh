@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/09 14:26:12 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 16:59:22 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/07 17:17:49 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ char			**ms_parse_cmd(char *buf)
 
 	i = 0;
 	j = 0;
+	if (!buf)
+		return (NULL);
 	ret = ms_parse_cmd_core(buf);
 	while (ret[i])
 	{

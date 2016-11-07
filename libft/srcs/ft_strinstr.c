@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strinstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 18:43:47 by hponcet           #+#    #+#             */
-/*   Updated: 2016/02/28 17:27:42 by hponcet          ###   ########.fr       */
+/*   Created: 2016/11/07 14:30:06 by hponcet           #+#    #+#             */
+/*   Updated: 2016/11/07 14:34:49 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+int		ft_strinstr(char *orig, char *find)
 {
-	unsigned char	*str1;
-	unsigned char	*str2;
+	int		i;
+	int		j;
 
-	str1 = (unsigned char*)s1;
-	str2 = (unsigned char*)s2;
-	while (*str1 && *str2 && *str1 == *str2)
+	if ((!find) || (!orig && !find))
+		return (1);
+	if (!find[0])
+		return (1);
+	i = 0;
+	while (orig[i])
 	{
-		++str1;
-		++str2;
+		j = 0;
+		while (orig[i + j] == find[j])
+		{
+			j++;
+			if (!find[j])
+				return (1);
+		}
+		i++;
 	}
-	return (*str1 - *str2);
+	return (0);
 }
