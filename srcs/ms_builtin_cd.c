@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/13 13:36:08 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/24 16:23:56 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/08 14:31:47 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	**ms_builtin_cd_minus(char **env)
 		ft_printf("21sh: cd: no such directory: %s\n", tmp);
 	else
 	{
+		ft_printf("%s\n", tmp);
 		pwd = ft_strjoin("PWD=", tmp);
 		free(tmp);
 		tmp = ms_get_value(env, "PWD");

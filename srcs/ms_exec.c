@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/31 07:24:49 by hponcet           #+#    #+#             */
-/*   Updated: 2016/11/07 20:38:59 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/08 12:41:43 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@ void		ms_exec(char *cmd, char **env)
 	env = ms_builtin_cd(env);
 	if (g_cmd)
 		env = ms_search_builtin_env(cmd, env);
-	if (g_cmd && g_cmd[0][0] == '.' && ms_get_point() < 1)
+	if (g_cmd && g_cmd[0][0] == '.' && ms_get_point(&cmd) < 1)
 		return ;
 	if (g_cmd && g_cmd[0][0] != '/' && g_cmd[0][0] != '~' && (g_curs.opt->htbl)
 			&& !(testbin = ft_hash_search(g_curs.hash_bin, g_cmd[0],
 			__HTBL_LEN__)))
 	{
 		ft_printf("21sh: Command not found: %s\n", g_cmd[0]);
-		ft_strdel(&testbin);
-		return ;
+		return (ft_strdel(&testbin));
 	}
 	if (g_i == 0)
 		ms_exec_fork(cmd, env);

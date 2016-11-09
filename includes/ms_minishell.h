@@ -6,7 +6,7 @@
 /*   By: hponcet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/15 00:16:02 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/18 00:31:06 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/08 12:27:21 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ char				**ms_get_path(char **env);
 char				*ms_get_value(char **env, char *name);
 char				**ms_get_env(char **env);
 void				ms_print_env(char **env);
-int					ms_get_point(void);
+int					ms_get_point(char **cmd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 13:48:10 by hponcet           #+#    #+#             */
-/*   Updated: 2016/09/19 15:43:23 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/08 12:42:10 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,24 @@ void		ms_print_env(char **env)
 	}
 }
 
-int			ms_get_point(void)
+int			ms_get_point(char **cmd)
 {
 	char	*tmp;
 	char	*tmp2;
+	char	*tmp3;
 
 	tmp = NULL;
-	tmp = getcwd(tmp, MAXPATHLEN);
-	if (!tmp)
+	if (ft_strncmp(cmd[0], "./", 2))
 	{
-		ft_putendl("ms: cd: Environnement variable PWD not set.");
-		g_cmd = ms_free_tab(g_cmd);
-		return (0);
+		tmp = getcwd(tmp, MAXPATHLEN);
+		tmp2 = ft_strsub(cmd[0], 2, ft_strlen(cmd[0]) + ft_strlen(tmp) - 1);
+		tmp3 = ft_strjoin(tmp, tmp2);
+		cmd[0] = ft_strdup(tmp3);
+		ft_tabdel(g_cmd);
+		g_cmd = ms_parse_cmd(cmd[0]);
+		ft_strdel(&tmp);
+		ft_strdel(&tmp2);
+		ft_strdel(&tmp3);
 	}
-	tmp2 = ft_strjoin(tmp, g_cmd[0] + 1);
-	free(tmp);
-	free(g_cmd[0]);
-	g_cmd[0] = tmp2;
 	return (1);
 }
