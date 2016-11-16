@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 14:37:08 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/19 16:22:34 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/16 17:24:27 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,25 @@ static void	getpath(char **ret, char *pwd)
 	ret[1] = find;
 }
 
+static void gethomepath(char **cmd)
+{
+	char	*tmp;
+	char	*homepath;
+	char	*find;
+	int		i;
+
+	if (!(homepath = ms_get_value(g_curs.env, "HOME")))
+		homepath = ft_strdup("/Users/");
+	i = ft_cindex_rev(cmd[1], '/');
+	find = ft_strsub(cmd[1], i + 1, ft_strlen(cmd[1]) - i);
+	tmp = ft_strsub(cmd[1], 1, i);
+	free(cmd[1]);
+	cmd[0] = ft_joinf("%s/%s/", homepath, tmp);
+	cmd[1] = find;
+	ft_strdel(&tmp);
+	ft_strdel(&homepath);
+}
+
 void		ft_compl_getpath(char **ret)
 {
 	char	*pwd;
@@ -83,7 +102,9 @@ void		ft_compl_getpath(char **ret)
 		return ;
 	}
 	i = ft_cindex_rev(ret[1], '/');
-	if (i == 0)
+	if (ret[1][0] == '~' && ret[1][1] == '/')
+		gethomepath(ret);
+	else if (i == 0)
 		getroot(ret);
 	else if (ret[1][0] == '/' && i > 0)
 		getpathroot(ret);

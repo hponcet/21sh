@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 20:20:22 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/25 16:51:02 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/16 17:08:18 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			ft_compl_key(char *buf, t_compl **print, char *find, int *pos)
 		return (ft_compl_retstr(tmp, find, pos, 0));
 	tputs(tgoto(tgetstr("cm", 0), pos[0] - 1, pos[1] - 1), 1, ft_char);
 	ft_putstr(tmp->name + ft_strlen(find));
-	tputs(tgetstr("ce", 0), 1, ft_char);
+	tputs(tgetstr("cd", 0), 1, ft_char);
 	*print = tmp;
 	return (0);
 }
