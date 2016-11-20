@@ -6,7 +6,7 @@
 /*   By: hponcet <hponcet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 16:25:03 by hponcet           #+#    #+#             */
-/*   Updated: 2016/10/21 18:36:28 by hponcet          ###   ########.fr       */
+/*   Updated: 2016/11/20 15:05:19 by hponcet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int			ft_glob_check(char *str)
 	len = ft_strlen(str) - 1;
 	while (len >= 0)
 	{
-		if (str[len] == '[' || str[len] == '?' || str[len] == '*'
-				|| str[len] == '{')
+		if (str[len] == '['
+				|| (str[len] == '?' && len > 0 && str[len - 1] != '$')
+				|| str[len] == '*' || str[len] == '{')
 			return (1);
 		if (str[len] == '\"' || str[len] == '\'' || str[len] == 96)
 			len -= ft_glob_count_quote_rev(str, len, str[len]);
